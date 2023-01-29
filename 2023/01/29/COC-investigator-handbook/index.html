@@ -16,22 +16,22 @@
   <meta name="author" content="Tekhne Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="介绍了人工智能的历史、计算理论和几种智能计算方法。">
+    <meta name="description" content="Introduction Call of Cthulhu is a horror roleplaying game based on the writings of Howard Phillips Lovecraft. Lovecraft penned a tremendous body of work during the 1920s and 1930s concerning both">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI Fundamentals - C1 绪论">
-<meta property="og:url" content="http://example.com/2023/01/15/AI-Fundamentals-1/index.html">
+<meta property="og:title" content="investigator&#39;s handbook Chapter1">
+<meta property="og:url" content="http://example.com/2023/01/29/COC-investigator-handbook/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
-<meta property="og:description" content="介绍了人工智能的历史、计算理论和几种智能计算方法。">
+<meta property="og:description" content="Introduction Call of Cthulhu is a horror roleplaying game based on the writings of Howard Phillips Lovecraft. Lovecraft penned a tremendous body of work during the 1920s and 1930s concerning both">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-01-15T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-14T16:52:31.338Z">
+<meta property="article:published_time" content="2023-01-29T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-29T10:30:47.265Z">
 <meta property="article:author" content="Tekhne Chen">
-<meta property="article:tag" content="AI">
+<meta property="article:tag" content="COC">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>AI Fundamentals - C1 绪论 - Tek&#39;s Notes</title>
+  <title>investigator&#39;s handbook Chapter1 - Tek&#39;s Notes</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AI Fundamentals - C1 绪论"></span>
+            <span id="subtitle" data-typed-text="investigator&#39;s handbook Chapter1"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-15 08:00" pubdate>
-          January 15, 2023 am
+        <time datetime="2023-01-29 18:00" pubdate>
+          January 29, 2023 pm
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          994 words
+          1.8k words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          9 mins
+          16 mins
         
       </span>
     
@@ -272,65 +272,78 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AI Fundamentals - C1 绪论</h1>
+            <h1 style="display: none">investigator&#39;s handbook Chapter1</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="人工智能历史">人工智能历史</h3>
+                <h2 id="introduction">Introduction</h2>
+<p><em>Call of Cthulhu</em> is a horror <code>roleplaying game</code>
+based on the writings of <em>Howard Phillips Lovecraft</em>. Lovecraft
+penned a tremendous body of work during the 1920s and 1930s concerning
+both horrors from beyond and from within.</p>
+<h3 id="purpose-of-the-game">Purpose of the Game</h3>
+<p><strong><em>Players</em></strong> take the role of intrepid
+investigators of the unknown ("investigators"), attempting to seek out,
+understand and eventually destroy the horrors, mysteries, and secrets of
+the Cthulhu Mythos.</p>
+<p><strong><em>A game moderator</em></strong>, known as the Keeper of
+Arcane Lore ("Keeper"), within the rules of the game, sets up situations
+for the players to confront.</p>
+<p>The game rules <strong><em>use dice to determine</em></strong> if an
+action succeeds or fails when a dramatic conflict presents itself.</p>
+<h3 id="time-covered">Time Covered</h3>
+<p>Many Call of Cthulhu scenarios are set in the United States in the
+1920s called the Classic Era. This book uses both the Classic Era and
+our own Modern-Day as period settings.</p>
+<h3 id="preparations">Preparations</h3>
 <ul>
-<li>起源：1955，《人工智能达特茅斯夏季研究项目提案》</li>
-<li>本书定义：以机器为载体所实现的人类/生物智能。</li>
+<li>The Call of Cthulhu Rulebook—only needed by the Keeper.</li>
+<li><strong><em>Roleplaying dice.</em></strong></li>
+<li>Paper.</li>
+<li>Pencils and an eraser.</li>
+<li>Two or more people to game with—one person must play the role of
+Keeper.</li>
+<li>A quiet place.</li>
+<li>Three or four hours in which to play the game.</li>
 </ul>
-<h3 id="可计算载体">可计算载体</h3>
-<h4 id="形式化系统">形式化系统</h4>
-<p>以下性质保证一个形式化系统的有效性：</p>
+<p>Players and Keeper should each have their own set of dice:</p>
 <blockquote>
-<p><code>完备性</code>：所有能由某一形式化系统推得的知识可由该系统推得。
-<code>一致性/自洽性self-consistency/非矛盾性</code>：所有该系统可推导的知识不同时能推得其否定。
-<code>可判定性</code>：所有该系统可推得的知识，存在一个算法可在有限步内判定其真假。</p>
+<ul>
+<li>percentage dice (D100), consisting of two10-sided dice rolled at the
+same time,0 - 9 and 00-90 respectively.</li>
+<li>a four-sided die (D4)</li>
+<li>a six-sided die (D6)</li>
+<li>an eight-sided die (D8)</li>
+<li>a twenty-sided die (D20).</li>
+</ul>
 </blockquote>
-<p><code>哥德尔不完备定理</code>
-任何表达力足够强的（递归可枚举）形式系统不同时具有一致性和完备性。系统本身的一致性不能在系统内证明。</p>
-<h4 id="机械化图灵机">机械化：图灵机</h4>
-<p><strong>描述</strong>：图灵机是一个抽象的机械计算装置，它有一条无限长的纸带，纸带分成了一个一个可擦写小方格，可放入数据、指令或保持空置。程序事先储存指令集，读写控制指针从左到右依次从纸带上读入信息并按照指令集进行操作，输出结果到纸带方格上，直到计算结束。即图灵机停机。</p>
-<p><strong>可计算</strong>：
-一个任务是可计算的，当其对应的图灵机可在有限步骤后停机。</p>
-<p><strong>注意</strong>
-<code>原始递归函数</code>和<code>λ-演算</code>和<code>图灵机</code>在功能上等效。任何可计算函数（/不可计算函数）通过这三种方式均可（/不可）完成计算。</p>
-<h3 id="智能计算方法">智能计算方法</h3>
+<h2 id="cooperation-and-competition">Cooperation and Competition</h2>
 <blockquote>
-<p>推理、搜索和约束满足是人工智能求解的三大方法。</p>
+<p>Gaming is a social pastime. Whether or not investigators cooperate,
+the players should.</p>
 </blockquote>
-<h4 id="符号主义为核心的逻辑推理">符号主义为核心的逻辑推理</h4>
-<p>推理是从已知前提推出新结论的过程。符号主义的人工智能的推理建立在一套高度概括抽象、严格精确的符号系统中。</p>
+<h3 id="winners-and-losers">Winners and Losers</h3>
+<p>In COC, there are no winners and losers in the standard competitive
+sense.</p>
 <ul>
-<li><p>归纳推理：从特殊到一般</p></li>
-<li><p>演绎推理：从一般到特殊</p></li>
-<li><p>因果推理：判断事物间存在的因果关系。
-常用方法：结构因果模型SCM和因果图<em>casual diagram</em>。</p>
-<ul>
-<li><p>关联<em>association</em>： 统计相关</p></li>
-<li><p>干预<em>intervention</em> ： 无法直接从数据得到的关系</p></li>
-<li><p>反事实<em>counterfactual</em> ：
-条件取反向值观测到的结果。用来定义因果关系。</p>
-<blockquote>
-<p>条件变量A，观测到结果B。令A取负向值，观测到结果B'。A和B存在因果关系，当且仅当B和B'差异存在，且统计上显著。
-即因为A，所以B；如果没有A，那么没有B。A是B的唯一前提。</p>
-</blockquote></li>
-</ul></li>
+<li><strong>common goal</strong>: to discover and foil some nefarious
+plot being perpetrated by the minions of some dark cult or secret
+society.</li>
+<li><strong>opposition</strong>: alien or hostile controlled by an
+impartial Keeper.</li>
 </ul>
-<p>应用： 专家系统</p>
-<h4 id="问题求解为核心的搜索">问题求解为核心的搜索</h4>
-<p>搜索是根据已有信息寻找满足约束条件的问题答案。</p>
+<p>Winning in such a situation depends on <strong><em>whether the
+investigators succeed in their goal</em></strong>.</p>
+<p><strong><em>Survived investigators</em></strong> will gain:</p>
 <ul>
-<li>无信息搜索<em>uninformed</em>: DFS,BFS</li>
-<li>有信息搜索<em>informed</em>: 贪婪最佳优先搜索，A star搜索</li>
-<li>对抗搜索<em>adversarial/ game</em>：最小最大，ab剪枝，蒙特卡洛树搜索
-是通过两个智能体通过竞争实现相反的利益实现的。</li>
+<li>power from arcane volumes of forgotten lore</li>
+<li>knowledge of horrendous monsters</li>
+<li>advancement in their skills (as they become more experienced! )</li>
 </ul>
-<h4 id="数据驱动为核心的机器学习">数据驱动为核心的机器学习</h4>
-<h4 id="博弈对抗为核心的决策智能">博弈对抗为核心的决策智能</h4>
+<p>The players’ investigators will continue to progress, un til their
+demise or retirement.</p>
+<h2 id="section"></h2>
 
                 
               </div>
@@ -349,8 +362,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/AI-Fundamentals/" class="category-chain-item">AI Fundamentals</a>
+  <a href="/categories/COC/" class="category-chain-item">COC</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/COC/Investigator-s-handbook/" class="category-chain-item">Investigator&#39;s handbook</a>
+  
+  
+
   
 
       </span>
@@ -364,7 +384,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/AI/">#AI</a>
+        <a href="/tags/COC/">#COC</a>
       
     </div>
   
@@ -376,8 +396,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AI Fundamentals - C1 绪论</div>
-      <div>http://example.com/2023/01/15/AI-Fundamentals-1/</div>
+      <div>investigator&#39;s handbook Chapter1</div>
+      <div>http://example.com/2023/01/29/COC-investigator-handbook/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +409,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 15, 2023</div>
+          <div>January 29, 2023</div>
         </div>
       
       
@@ -421,18 +441,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/26/GeneralPhysics-25/" title="General Physics 25">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">General Physics 25</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/14/AI-Fundamentals/" title="AI Fundamentals - C4 监督学习">
-                        <span class="hidden-mobile">AI Fundamentals - C4 监督学习</span>
+                      <a href="/2023/01/26/GeneralPhysics-25/" title="General Physics 25">
+                        <span class="hidden-mobile">General Physics 25</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
