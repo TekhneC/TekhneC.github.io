@@ -23,11 +23,14 @@
 <meta property="og:site_name" content="Tek&#39;s Notes">
 <meta property="og:description" content="Electric Charge and Coulomb&#39;s Law">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/01/26/GeneralPhysics-25/img/posts/GP/25_1.jpg">
+<meta property="og:image" content="http://example.com/2023/01/26/GeneralPhysics-25/img/posts/GP/25_2.jpg">
 <meta property="article:published_time" content="2023-01-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-29T08:53:56.274Z">
+<meta property="article:modified_time" content="2023-01-30T15:47:37.511Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Physics">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/01/26/GeneralPhysics-25/img/posts/GP/25_1.jpg">
   
   
   
@@ -223,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k words
+          4.8k words
         
       </span>
     
@@ -234,7 +237,7 @@
         
         
         
-          25 mins
+          41 mins
         
       </span>
     
@@ -412,8 +415,71 @@ m_e = 9.1 \times 10^{-31} kg
 </ol>
 <h2 id="continuous-charge-distribution">Continuous Charge
 Distribution</h2>
-<p>For discrete charge distribution, the superpositions of vectors may
-work.</p>
+<p>Though the charge is quantized in essence, the charge's distributions
+are considered continuous in macroscopic EM. For discrete charge
+distributions, the superpositions of vectors may work. For continuous
+distributions, we divide the charge into infinitesimal charged elements
+and each element is regarded as a point charge.</p>
+<h3 id="charge-density">Charge density</h3>
+<ul>
+<li>Linear charge density <span class="math inline">\(\lambda =
+\frac{\rm d\it{q}}{\rm d\it{x}}\)</span></li>
+<li>Surface charge density <span class="math inline">\(\sigma =
+\frac{\rm d\it{q}}{\rm d\it{A}}\)</span></li>
+<li>Volume charge density <span class="math inline">\(\rho = \frac{\rm
+d\it{q}}{\rm d\it{V}}\)</span></li>
+</ul>
+<p><span class="math display">\[
+\rm d{\it\vec{F}_{q_0}} = \frac{1}{4\pi\epsilon_0}\frac{q_0(\rho\rm d\it
+V)}{\vert\vec{r} - \vec{r}&#39;\vert^3} (\vec{r} - \vec{r}&#39;) \\
+\vec{F}_{q_0} = \iiint_{q}\rm d{\it\vec{F}_{q_0}}
+\]</span></p>
+<h3 id="examples">Examples</h3>
+<h4 id="ring">Ring</h4>
+<p>A ring of radius <span class="math inline">\(R\)</span> is charged
+<span class="math inline">\(q\)</span> uniformly. A point charge <span
+class="math inline">\(q_0\)</span> is at distance <span
+class="math inline">\(z\)</span> from the center of the ring.</p>
+<p><img src="img\posts\GP\25_1.jpg" srcset="/img/loading.gif" lazyload /> <span class="math display">\[
+\lambda = \frac{q}{2\pi R}\\
+\rm d {\it q} = \lambda (\it R \rm d \theta) =  \frac{\it q \rm d
+\phi}{2\pi}\\
+\rm d {\it F} = \frac{1}{4\pi\epsilon_0}\frac{\it q_0\rm d \it q}{\it
+z^2 \rm + \it R^2} = \frac{1}{8\pi^2\epsilon_0}\frac{\it q_0q \rm d
+\phi}{\it z^2 \rm + \it R^2}\\
+F_{xy} = 0\\
+F_z = \int_{0}^{2\pi}{\cos\theta\rm d\it F}
+=  \int_{0}^{2\pi}{\frac{1}{8\pi^2\epsilon_0}\frac{\it zq_0q \rm d
+\phi}{(\it z^2 \rm + \it R^2)^{\frac{3}{2}}}}
+= \frac{1}{4\pi\epsilon_0}\frac{\it zq_0q}{(\it z^2 \rm + \it
+R^2)^{\frac{3}{2}}} \rightarrow \frac{1}{4\pi\epsilon_0}\frac{\it
+q_0q}{\it z^2}\quad(\frac{R}{z} \rightarrow 0)
+\]</span> In vector form: <span class="math display">\[
+\vec{F} = \vec{F}_z = \frac{1}{4\pi\epsilon_0}\frac{\it zq_0q}{(\it z^2
+\rm + \it R^2)^{\frac{3}{2}}}\hat{k}
+\rightarrow \frac{1}{4\pi\epsilon_0}\frac{\it q_0q}{\it
+z^2}\hat{k}\quad(\frac{R}{z} \rightarrow 0)
+\]</span></p>
+<h4 id="disk">Disk</h4>
+<p>A disk of radius <span class="math inline">\(R\)</span> is charged
+<span class="math inline">\(q\)</span> uniformly. A point charge <span
+class="math inline">\(q_0\)</span> is at distance <span
+class="math inline">\(z\)</span> from the center of the disk.</p>
+<p><img src="img\posts\GP\25_2.jpg" srcset="/img/loading.gif" lazyload /> <span class="math display">\[
+\sigma = \frac{q}{\pi R^2}\\
+\]</span> Divide the disk into infinitesimal charged rings, which has
+been calculated above. $$ \rm d {} = = \</p>
+<p> = <em>{0}^{R}{} = </em>{0}^{R}{} = (1 - ) <span
+class="math display">\[
+In vector form:
+\]</span> = _z = ( ) <span class="math display">\[
+Using $(1+x)^\alpha \rightarrow 1+\alpha x$ when $x$ gets close to $0$,
+\]</span> ( ) $$</p>
+<h2 id="charge-conservation">Charge Conservation</h2>
+<blockquote>
+<p>In any physical process happened in a closed system, the algebraic
+sum of the total charges remains invariant.</p>
+</blockquote>
 <h2 id="vecs-and-scals">Vecs and Scals</h2>
 <h3 id="notation">Notation</h3>
 <p>Vectors are specified by <strong><em>magnitude(length)</em></strong>
@@ -566,9 +632,9 @@ F_z\hat{z}\)</span> .</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/29/COC-investigator-handbook/" title="investigator&#39;s handbook Chapter1">
+                      <a href="/2023/01/29/COC-investigator-handbook/" title="IHandbook Chapter 1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">investigator&#39;s handbook Chapter1</span>
+                        <span class="hidden-mobile">IHandbook Chapter 1</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
