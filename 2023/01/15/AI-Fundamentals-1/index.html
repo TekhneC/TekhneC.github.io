@@ -43,6 +43,8 @@
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -286,18 +288,15 @@
 <h4 id="形式化系统">形式化系统</h4>
 <p>以下性质保证一个形式化系统的有效性：</p>
 <blockquote>
-<p><code>完备性</code>：所有能由某一形式化系统推得的知识可由该系统推得。
-<code>一致性/自洽性self-consistency/非矛盾性</code>：所有该系统可推导的知识不同时能推得其否定。
+<p><code>完备性</code>：所有能由某一形式化系统推得的知识可由该系统推得。<br>
+<code>一致性/自洽性self-consistency/非矛盾性</code>：所有该系统可推导的知识不同时能推得其否定。<br>
 <code>可判定性</code>：所有该系统可推得的知识，存在一个算法可在有限步内判定其真假。</p>
 </blockquote>
-<p><code>哥德尔不完备定理</code>
-任何表达力足够强的（递归可枚举）形式系统不同时具有一致性和完备性。系统本身的一致性不能在系统内证明。</p>
-<h4 id="机械化图灵机">机械化：图灵机</h4>
+<p><code>哥德尔不完备定理</code> 任何表达力足够强的（递归可枚举）形式系统不同时具有一致性和完备性。系统本身的一致性不能在系统内证明。</p>
+<h4 id="机械化：图灵机">机械化：图灵机</h4>
 <p><strong>描述</strong>：图灵机是一个抽象的机械计算装置，它有一条无限长的纸带，纸带分成了一个一个可擦写小方格，可放入数据、指令或保持空置。程序事先储存指令集，读写控制指针从左到右依次从纸带上读入信息并按照指令集进行操作，输出结果到纸带方格上，直到计算结束。即图灵机停机。</p>
-<p><strong>可计算</strong>：
-一个任务是可计算的，当其对应的图灵机可在有限步骤后停机。</p>
-<p><strong>注意</strong>
-<code>原始递归函数</code>和<code>λ-演算</code>和<code>图灵机</code>在功能上等效。任何可计算函数（/不可计算函数）通过这三种方式均可（/不可）完成计算。</p>
+<p><strong>可计算</strong>： 一个任务是可计算的，当其对应的图灵机可在有限步骤后停机。</p>
+<p><strong>注意</strong> <code>原始递归函数</code>和<code>λ-演算</code>和<code>图灵机</code>在功能上等效。任何可计算函数（/不可计算函数）通过这三种方式均可（/不可）完成计算。</p>
 <h3 id="智能计算方法">智能计算方法</h3>
 <blockquote>
 <p>推理、搜索和约束满足是人工智能求解的三大方法。</p>
@@ -305,20 +304,31 @@
 <h4 id="符号主义为核心的逻辑推理">符号主义为核心的逻辑推理</h4>
 <p>推理是从已知前提推出新结论的过程。符号主义的人工智能的推理建立在一套高度概括抽象、严格精确的符号系统中。</p>
 <ul>
-<li><p>归纳推理：从特殊到一般</p></li>
-<li><p>演绎推理：从一般到特殊</p></li>
-<li><p>因果推理：判断事物间存在的因果关系。
+<li>
+<p>归纳推理：从特殊到一般</p>
+</li>
+<li>
+<p>演绎推理：从一般到特殊</p>
+</li>
+<li>
+<p>因果推理：判断事物间存在的因果关系。<br>
 常用方法：结构因果模型SCM和因果图<em>casual diagram</em>。</p>
 <ul>
-<li><p>关联<em>association</em>： 统计相关</p></li>
-<li><p>干预<em>intervention</em> ： 无法直接从数据得到的关系</p></li>
-<li><p>反事实<em>counterfactual</em> ：
-条件取反向值观测到的结果。用来定义因果关系。</p>
+<li>
+<p>关联<em>association</em>：  统计相关</p>
+</li>
+<li>
+<p>干预<em>intervention</em> ： 无法直接从数据得到的关系</p>
+</li>
+<li>
+<p>反事实<em>counterfactual</em> ： 条件取反向值观测到的结果。用来定义因果关系。</p>
 <blockquote>
-<p>条件变量A，观测到结果B。令A取负向值，观测到结果B'。A和B存在因果关系，当且仅当B和B'差异存在，且统计上显著。
+<p>条件变量A，观测到结果B。令A取负向值，观测到结果B’。A和B存在因果关系，当且仅当B和B’差异存在，且统计上显著。<br>
 即因为A，所以B；如果没有A，那么没有B。A是B的唯一前提。</p>
-</blockquote></li>
-</ul></li>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 <p>应用： 专家系统</p>
 <h4 id="问题求解为核心的搜索">问题求解为核心的搜索</h4>
@@ -326,7 +336,7 @@
 <ul>
 <li>无信息搜索<em>uninformed</em>: DFS,BFS</li>
 <li>有信息搜索<em>informed</em>: 贪婪最佳优先搜索，A star搜索</li>
-<li>对抗搜索<em>adversarial/ game</em>：最小最大，ab剪枝，蒙特卡洛树搜索
+<li>对抗搜索<em>adversarial/ game</em>：最小最大，ab剪枝，蒙特卡洛树搜索<br>
 是通过两个智能体通过竞争实现相反的利益实现的。</li>
 </ul>
 <h4 id="数据驱动为核心的机器学习">数据驱动为核心的机器学习</h4>
@@ -493,7 +503,6 @@
 
   
   
-
 
 
 
@@ -688,49 +697,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
