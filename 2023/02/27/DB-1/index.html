@@ -1,0 +1,1120 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DBMS is used to maintain, query large datasets. The Benefits of DBMS include recovery from system crashes, concurrent access, quick application development, data integrity, and security. The levels of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database system C1 Intro into DB">
+<meta property="og:url" content="http://example.com/2023/02/27/DB-1/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="DBMS is used to maintain, query large datasets. The Benefits of DBMS include recovery from system crashes, concurrent access, quick application development, data integrity, and security. The levels of">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_1.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_2.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_3.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_4.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_5.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_6.png">
+<meta property="og:image" content="http://example.com/img/posts/DB/1_7.png">
+<meta property="article:published_time" content="2023-02-27T15:30:00.000Z">
+<meta property="article:modified_time" content="2023-02-27T17:03:56.002Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Database">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/DB/1_1.png">
+  
+  
+  
+  <title>Database system C1 Intro into DB - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Database system C1 Intro into DB"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-27 23:30" pubdate>
+          February 27, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          80 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Database system C1 Intro into DB</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Course-Info">Course Info</h2>
+<h3 id="Labs">Labs</h3>
+<p>5 labs and lab reports.</p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>完成要求</th>
+<th>报告</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>独立</td>
+<td>独立</td>
+</tr>
+<tr>
+<td>图书管理系统</td>
+<td>独立</td>
+<td>独立</td>
+</tr>
+<tr>
+<td>MINI SQL</td>
+<td>可组队</td>
+<td>独立（侧重于自己完成的部分）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Examination-and-Grading-Policy">Examination and Grading Policy</h3>
+<p>Close book test, but allowing taking 1 A4 page note.</p>
+<table>
+<thead>
+<tr>
+<th>Assignments &amp; Exercises</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Course quiz</td>
+<td>2 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> 5</td>
+</tr>
+<tr>
+<td>Experiments and Projs</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Final</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Assignments">Assignments</h3>
+<ul>
+<li><strong>DDL</strong>: 6.19 23:55</li>
+<li><strong>course FTP</strong>: 10.214.131.93, user: <code>csdbs</code>, password: <code>csdbs</code></li>
+<li><strong>Submission:</strong> Paper-based + some programming; at the end of class on the due date.</li>
+</ul>
+<h2 id="Database-System">Database System</h2>
+<p>A <strong>database-management system (DBMS)</strong> is <em><u>database</u></em> and <u><em>a set of programs</em></u> to access,update and manage data in DB;  a <em><strong>large, complex</strong></em> software system designed to <em><strong>store, manage, and facilitate access</strong></em> to databases.</p>
+<blockquote>
+<p><strong>database</strong>:<br>
+a collection of <u>interrelated</u> data containing information relevant to an enterprise;<br>
+usually valuable, large, integrated and accessed by multiple users and applications;<br>
+A <u>large</u> collection of <u>integrated and persistent</u> data.<br>
+A collection of information that exists <u>over a long period of time</u>.</p>
+</blockquote>
+<h2 id="Purpose-of-DBS">Purpose of DBS</h2>
+<h3 id="Database-Applications">Database Applications</h3>
+<p><em><strong>Data processing and management</strong></em> are the most important fields of computer applications.</p>
+<blockquote>
+<p><code>Before  Database System:</code> <strong>File Process System</strong> supported by a conventional OS</p>
+<ul>
+<li>
+<p>New application programs must be written if necessary, and new data files are created as required.</p>
+</li>
+<li>
+<p>But over a long period of time, data files may be in <em>different formats</em>.</p>
+</li>
+<li>
+<p>Data files are <em>independent each other</em>.</p>
+</li>
+<li>
+<p><strong>7 Drawbacks</strong>:</p>
+<ol>
+<li>
+<p>Data redundancy and inconsistency: duplication in different files in different formats</p>
+</li>
+<li>
+<p>Difficulty in accessing data</p>
+</li>
+<li>
+<p>Data isolation: multiple files and formats, hard to retrieve, share</p>
+</li>
+<li>
+<p>Integrity problems: adding or changing constraints needs programing</p>
+</li>
+<li>
+<p>No atomicity of updates</p>
+<blockquote>
+<p><code>e.g.</code> <em>Failures may leave database in an inconsistent state with partial updates carried out.</em></p>
+</blockquote>
+</li>
+<li>
+<p>concurrent access control</p>
+<blockquote>
+<p><code>e.g.</code><em>Uncontrolled concurrent access can lead to inconsistency like reading and updating simultaneously.</em></p>
+</blockquote>
+</li>
+<li>
+<p>Security problems</p>
+</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h4 id="Why-DB">Why DB?</h4>
+<ul>
+<li>
+<p><strong>Modeling and design</strong> of databases: <em><strong>Get/Abstract</strong></em> data models from the real world, and then translate them into the forms suitable for the target DBMS — tables, views.</p>
+</li>
+<li>
+<p><strong>Programming</strong>:</p>
+</li>
+<li>
+<p>Use database — queries and update of data.</p>
+</li>
+<li>
+<p>SQL = “intergalactic data-speak”.</p>
+</li>
+</ul>
+<blockquote>
+<p>Serval  access approaches:</p>
+<ul>
+<li>by using interactive tools provided by DBMS</li>
+<li>Invoke ODBC/JDBC  by using development tools</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>DBMS implementation</strong></li>
+</ul>
+<h3 id="Characteristics">Characteristics</h3>
+<ul>
+<li>Efficiency and scalability in <em><u>data access</u></em>.</li>
+<li>Reduced <em><u>application development time</u></em>.</li>
+<li>(physical and logical) Data <em><u>independence</u></em> . (见后)</li>
+<li>Data <em><u>integrity(一致) and security</u></em>.</li>
+<li><em><u>Concurrent access</u></em>(并发) and <em><u>robustness</u></em> (i.e. recovery系统崩溃后回滚到正确状态).</li>
+</ul>
+<h3 id="DBMS-Marketplace">DBMS Marketplace</h3>
+<h4 id="Relational-DBMS">Relational DBMS</h4>
+<p>Oracle, Sybase, IBM DB2,Microsoft SQL-Server</p>
+<h4 id="object-oriented-DB">object-oriented DB</h4>
+<h4 id="Open-source">Open source</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.mysql.com">MySQL</a>: the most popular open source database for small system on web sites, a key part of LAMP.</li>
+<li><a target="_blank" rel="noopener" href="http://www.postgresql.org">PostgreSQL</a>: a highly scalable, open source object-relational database management system</li>
+<li><a target="_blank" rel="noopener" href="https://www.yuque.com/docs/share/3fc172c2-77d3-484e-8d5a-4fb1504d654b?#">OpenGauss</a></li>
+<li>PolarDB</li>
+</ul>
+<h2 id="View-of-Data">View of Data</h2>
+<h3 id="Levels-of-Data-Abstraction">Levels of Data Abstraction</h3>
+<ul>
+<li>
+<p><strong>Physical level</strong>: describes how a record/tuple is stored.</p>
+</li>
+<li>
+<p><strong>Logical level</strong>: describes data stored in database, and the <em><u>relationships</u></em> among the data on upper level.</p>
+</li>
+<li>
+<p><strong>View level</strong>: application programs <u><em>hide details</em></u> of data types. Note that views <u><em>can also hide information</em></u> for security purposes.</p>
+</li>
+</ul>
+<p><img src="/img/posts/DB/1_1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Schemas-and-Instances">Schemas and Instances</h3>
+<p><strong>Schema</strong>: the structure of the database on different level.</p>
+<blockquote>
+<p>Analogous to type information of a variable in a program.</p>
+<ul>
+<li><strong>Physical schema</strong>: database structure design at the physical level.</li>
+<li><strong>Logical schema</strong>: database structure design at the logical level.</li>
+<li><strong>Subschema</strong>: schema at view level .</li>
+</ul>
+</blockquote>
+<p><strong>Instance</strong>: the actual content of the database at a particular point in time.</p>
+<blockquote>
+<p>Analogous to the value of a variable .</p>
+</blockquote>
+<p><img src="/img/posts/DB/1_2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Physical-Independence-vs-Logical-Independence">Physical Independence vs. Logical Independence</h3>
+<p><strong>definition of independence:</strong> Ability to modify a schema definition <em><u>at one level</u></em> without affecting a schema definition at a higher level.</p>
+<ul>
+<li>
+<p><strong>Physical data independence</strong>: the ability to modify the physical schema without changing the logical schema.</p>
+<blockquote>
+<p><code>NOTE</code> <em>Applications depend on the logical schema and are insulated from how data is structured and stored.</em></p>
+<p><em>Physical Independence is <u><strong>One of the most important benefits</strong></u> of using a DBMS!</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>Logical data independence</strong>： <em><u>protect application</u></em> programs from changes in logical structure of data.</p>
+<blockquote>
+<p><code>NOTE</code> It’s <em><u>hard to achieve</u></em> Logical data independence as the application programs are <em><u>heavily dependent</u></em> on the logical structure of data.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Data-Models">Data Models</h3>
+<p><strong>Data model</strong>: a collection of conceptual tools for describing <u><em>data structure, relationships, semantics(语义), constraints.</em></u></p>
+<p>Different level of data abstraction needs different data model to describe:</p>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th>Entity-Relationship model</th>
+<th>Relational model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conceptual design</td>
+<td>Logical design</td>
+</tr>
+</tbody>
+</table>
+<p>Other models like Object-oriented model, Semi-structured data models (XML), network model, hierarchical model, etc.</p>
+</li>
+</ul>
+<h2 id="Database-Language">Database Language</h2>
+<h3 id="Data-Definition-Language-DDL">Data Definition Language (DDL)</h3>
+<ul>
+<li>
+<p>Specifies a <u><em>database scheme</em></u> as a set of definitions of relational schema.</p>
+</li>
+<li>
+<p>Specifies <u><em>storage structure, access methods, and consistency constraints</em></u>.</p>
+</li>
+<li>
+<p>DDL statements are compiled, resulting in <u><em>a set of tables</em></u> stored in a special file called <strong>data dictionary.</strong></p>
+<blockquote>
+<p><code>Data dictionary</code> contains metadata about Database schema, Integrity constraints( Primary Key(祖码，可唯一标识实体的编码), Referential integrity) and Authorization.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Data-Manipulation-Language-DML">Data Manipulation Language (DML)</h3>
+<p><strong>functions</strong>:</p>
+<ul>
+<li><u><em>Retrieve</em></u> data from the database</li>
+<li><em><u>Insert / delete / update</u></em> data in the database</li>
+</ul>
+<blockquote>
+<p><em>DML also known as <strong>query language.</strong></em></p>
+</blockquote>
+<p><strong>classes</strong>:</p>
+<ul>
+<li><strong>Procedural DML</strong> – user specifies what data is required and how to get those data.<br>
+<code>e.g.</code> C, Pascal, Java, etc.</li>
+<li><strong>Nonprocedural DML</strong> – user specifies what data is required <em><u>without specifying how to get</u></em> those data.<br>
+<code>e.g.</code> SQL, Prolog, etc.</li>
+</ul>
+<h3 id="Data-Control-Language-DCL">Data Control Language (DCL)</h3>
+<h3 id="SQL-Structured-Query-Language">SQL (Structured Query Language )</h3>
+<p>SQL = DDL+ DML+DCL ，the most widely used <u><em>non-procedural query</em></u> language. It’s <em><u>Set-based, declarative</u></em>, and procedural extensions are offered by different database systems.</p>
+<p><strong>usage</strong>:</p>
+<blockquote>
+<ol>
+<li>Use SQL directly in the <em><u>interactive environment</u></em>.<br>
+<code>e.g.</code> Query Analyzer of SQL Server; Sql Plus and Work Sheet of Oracle;mysql command line client of MySQL, etc.</li>
+<li>Use SQL by <em><u>host language through ODBC / JDBC</u></em>.</li>
+<li>Use SQL by <u><em>host language with embed-SQL</em></u>.</li>
+</ol>
+</blockquote>
+<h2 id="Database-Design">Database Design</h2>
+<h3 id="Steps">Steps</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Contents</th>
+<th>Explanation</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Requirement analysis</td>
+<td>data, applications, and operations needed</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Conceptual database design</td>
+<td>A high-level description of data, constraints</td>
+<td>Entity-Relationship (E-R) model or a similar high level data model.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Logical database design</td>
+<td>Converting the conceptual design into a DB schema</td>
+<td></td>
+</tr>
+<tr>
+<td>4(理论)</td>
+<td>Schema refinement</td>
+<td>Normalization of relations</td>
+<td>Check relational schema for redundancies and related anomalies.</td>
+</tr>
+<tr>
+<td>5(设计)</td>
+<td>Physical database design</td>
+<td>Indexing, query, clustering, and DB tuning</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create and initialize the database</td>
+<td>Load initial data and test.</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Security design</td>
+<td>Identify different user groups and their roles.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="/img/posts/DB/1_3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Entity-Relationship-E-R-Model-of-real-world">Entity-Relationship (E-R) Model  of real world</h3>
+<p><strong>Entities (objects)</strong>: described by <u><em>a set of attributes</em></u>.</p>
+<p><strong>Relationships</strong>: between entities.</p>
+<blockquote>
+<p>Database design in E-R model is usually converted to design in the relational model .</p>
+</blockquote>
+<p>E-R diagram:</p>
+<p><img src="/img/posts/DB/1_4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Relational-Model">Relational Model</h3>
+<p>Transfer E-R diagrams into relational schema.</p>
+<h2 id="Database-Users-and-Administrators">Database Users and Administrators</h2>
+<h3 id="Database-Users">Database Users</h3>
+<p>Users are differentiated by the <em><u>way they expect to interact</u></em> with the system.</p>
+<ul>
+<li>
+<p><strong>Naive users</strong>:  invoke one of the permanent application programs that have been written previously by a high level language.</p>
+<p><code>e.g.</code> people accessing database over the web, bank tellers, clerical staff.</p>
+</li>
+<li>
+<p><strong>Professional users</strong>:</p>
+<ul>
+<li><strong>Application programmers</strong> : interact with system <em><u>via SQL calls</u></em>.</li>
+<li><strong>Sophisticated users</strong> : form requests in a database <u><em>query language</em></u>.<br>
+<code>e.g.</code> Online Analytical Processing (OLAP), Data mining.</li>
+<li><strong>Specialized users</strong>: <em><u>write specialized database applications</u></em> that do not fit into the traditional data processing framework.<br>
+<code>e.g.</code> CAD, Expert System (ES), KDB.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Database-Administrators-DBA">Database Administrators (DBA)</h3>
+<p>A special user having <em><u>central control</u></em> over database and programs accessing <u><em>those data</em></u>(DB).</p>
+<p><strong>characteristics</strong>:</p>
+<ul>
+<li><em><u>the highest privilege</u></em> for the database.</li>
+<li><u><em>coordinates all the activities</em></u> of the database system.</li>
+<li><em><u>controls all users</u></em> authority to the database.</li>
+<li>good understanding of the enterprise’s information resources and requirements.</li>
+</ul>
+<p><strong>duties</strong>:</p>
+<ul>
+<li>Definition of <u><em>storage structure, access method and schema</em></u></li>
+<li>Modification of <em><u>schema and physical organization</u></em></li>
+<li>Granting of <u><em>authorization for data access</em></u></li>
+<li>Routing <u><em>maintenance</em></u>
+<ul>
+<li>Monitoring performance and responding to changes in requirements</li>
+<li>Security for the database (e.g. periodically backup database, recovery when failure)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/posts/DB/1_5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Transaction-Management">Transaction Management</h2>
+<blockquote>
+<p><u><em>Concurrent use/access</em></u> is important, but causes problems/conflict.</p>
+</blockquote>
+<p>A <strong>transaction</strong>: a collection of <u><em>operations</em></u> that performs <u><em>a single logical function</em></u> in a database application.</p>
+<ul>
+<li><strong>requirements（ACID）</strong>: atomicity, consistence, isolation, durability.</li>
+<li><strong>Transaction-management</strong>: The component ensures that the d<u><em>atabase remains in a consistent (or correct) state</em></u>, although system failures  and transaction failures.<br>
+<code>e.g.</code> power failures and operating system crashes</li>
+<li><strong>Concurrency-control manager</strong> : <u><em>controls the interaction</em></u> among the concurrent transactions.</li>
+</ul>
+<h2 id="Database-Architecture">Database Architecture</h2>
+<h3 id="Storage-Manager">Storage Manager</h3>
+<p>A program module that <u><em>provides the interface</em></u> between the low-level <u><em>data</em></u> stored in the database and the <u><em>application programs</em></u> and <u><em>queries</em></u> submitted to the system.</p>
+<p><strong>tasks</strong>:</p>
+<ul>
+<li>Interaction with the file manager</li>
+<li>Efficient <u><em>storing, retrieving and updating</em></u> of data</li>
+</ul>
+<p><strong>contents</strong>:</p>
+<ul>
+<li>
+<p><u><em>Transaction</em></u> manager</p>
+</li>
+<li>
+<p><u><em>Authorization and integrity</em></u> manger</p>
+</li>
+<li>
+<p><em><u>File</u></em> manager (interaction with the file system to process data files, data dictionary, and index files)</p>
+</li>
+<li>
+<p><u><em>Buffer</em></u> manager</p>
+</li>
+</ul>
+<h3 id="Query-Processor">Query Processor</h3>
+<p>Query Processor includes <u><em>DDL interpreter, DML compiler, and query processing</em></u>, accomplishing tasks of <u><em>Parsing and translation, Optimization and Evaluation</em></u>.</p>
+<p><img src="/img/posts/DB/1_6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="What-does-Optimizer-do">What does Optimizer do?</h4>
+<p>There are alternative ways of evaluating a given query: Equivalent expressions but different algorithms for each operation. <u><em>Cost difference</em></u> between a good and a bad way of evaluating a query can be enormous.</p>
+<p>Estimate the cost of operations  and take the execution plan is important.</p>
+<ul>
+<li>Depends critically on <u><em>statistical information</em></u> about relations which the database must maintain</li>
+<li>Need to estimate statistics for intermediate results to compute cost of complex expressions</li>
+</ul>
+<h3 id="Overall-System-Structure">Overall System Structure</h3>
+<p><img src="/img/posts/DB/1_7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Application-Architecture">Application Architecture</h3>
+<p>The architecture of a database system is greatly influenced by the <u><em>underlying computer system</em></u> on which the database is running.</p>
+<ul>
+<li>Centralized</li>
+<li>Client-server</li>
+<li>Parallel (multi-processor)</li>
+<li>Distributed</li>
+</ul>
+<h3 id="History-of-Database-Systems">History of Database Systems</h3>
+<h4 id="1950s-and-early-1960s">1950s and early 1960s</h4>
+<p>Data processing using magnetic <u><em>tapes(only sequential access) for storage, punched cards for input</em></u>.</p>
+<h4 id="Late-1960s-and-1970s">Late 1960s and 1970s</h4>
+<p><u><em>Hard disks</em></u> allowed direct access to data.</p>
+<p><u><em>Network and hierarchical data models</em></u> in widespread use.</p>
+<p><em>Ted Codd</em> defines the <u><em>relational data model</em></u></p>
+<p>High-performance (for the era) <u><em>transaction processing</em></u></p>
+<h4 id="1980s">1980s</h4>
+<p>Research relational prototypes evolve into commercial systems, SQL becomes industrial standard.</p>
+<p><u><em>Parallel and distributed database systems</em></u>.</p>
+<p><u><em>Object-oriented database systems</em></u> .</p>
+<h4 id="1990s">1990s</h4>
+<p>Large decision support and data-mining applications.</p>
+<p>Large multi-terabyte data warehouses.</p>
+<p>Emergence of Web commerce</p>
+<h4 id="Early-2000s">Early 2000s:</h4>
+<p><u><em>XML and XQuery standards</em></u></p>
+<p>Automated <u><em>database administration</em></u></p>
+<h4 id="Later-2000s">Later 2000s</h4>
+<p>Giant data storage systems</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Database-system/" class="category-chain-item">Database system</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Database/">#Database</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Database system C1 Intro into DB</div>
+      <div>http://example.com/2023/02/27/DB-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 27, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/28/Cognitive-Neuroscience-1/" title="CognitiveNeuroscience C1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CognitiveNeuroscience C1</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/21/DS-04/" title="DS04 Trees">
+                        <span class="hidden-mobile">DS04 Trees</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1128 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Course Info Contents  Introduction to object-oriented programming with a strong software engineering foundation. aimed at producing and maintaining large, high-quality software systems.  Buzzwords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OOP C1 Introduction">
+<meta property="og:url" content="http://example.com/2023/02/28/OOProgramming-1/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Course Info Contents  Introduction to object-oriented programming with a strong software engineering foundation. aimed at producing and maintaining large, high-quality software systems.  Buzzwords">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-28T15:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-28T16:38:32.617Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>OOP C1 Introduction - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OOP C1 Introduction"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-28 23:00" pubdate>
+          February 28, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OOP C1 Introduction</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Course-Info">Course Info</h2>
+<h3 id="Contents">Contents</h3>
+<ul>
+<li>Introduction to object-oriented programming with <u><em>a strong software engineering</em></u> foundation.</li>
+<li>aimed at <u><em>producing and maintaining</em></u> <u><em>large, high-quality</em></u> software systems.</li>
+</ul>
+<h3 id="Buzzwords">Buzzwords</h3>
+<table>
+<thead>
+<tr>
+<th>encapsulation</th>
+<th>封装</th>
+<th>inheritance</th>
+<th>继承</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>polymorphism</td>
+<td></td>
+<td>overriding</td>
+<td>改写</td>
+</tr>
+<tr>
+<td>interface</td>
+<td></td>
+<td>cohesion</td>
+<td></td>
+</tr>
+<tr>
+<td>coupling</td>
+<td></td>
+<td>collection classes</td>
+<td></td>
+</tr>
+<tr>
+<td>template</td>
+<td></td>
+<td>responsibility-driven design</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Grading-Policy">Grading Policy</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Percentage</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In-class quiz</td>
+<td>5</td>
+<td>学在浙大/ paper work</td>
+</tr>
+<tr>
+<td>Assignment</td>
+<td>16</td>
+<td>one problem set, on PTA.</td>
+</tr>
+<tr>
+<td>Lab/Projects</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>Mid-Term Exam</td>
+<td>5</td>
+<td>90-min at lab period, W9</td>
+</tr>
+<tr>
+<td>Final</td>
+<td>50</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="C-and-C">C and C++</h2>
+<h3 id="Strengths-and-Weakness-of-C">Strengths and  Weakness of  C</h3>
+<table>
+<thead>
+<tr>
+<th>Strength</th>
+<th>Weakness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Efficient program</td>
+<td>Insufficient <u><em>type checking</em></u></td>
+</tr>
+<tr>
+<td>Direct access to <u><em>machine</em></u></td>
+<td>Poor support for <u><em>programming-in-the-large</em></u></td>
+</tr>
+<tr>
+<td>suitable for OS and ES Flexible</td>
+<td><em><u>Procedure-oriented</u></em> programming</td>
+</tr>
+</tbody>
+</table>
+<h3 id="History-of-C">History of  C++</h3>
+<h4 id="1978">1978</h4>
+<ul>
+<li>BS at Cambridge, UK.</li>
+<li>Simulation program in <em>Simula</em>.</li>
+<li>Supports classes, inheritance, and type check Poor performance</li>
+</ul>
+<h4 id="1979">1979</h4>
+<p>BS at AT&amp;T Labs, Cpre, C w/ classes</p>
+<h4 id="1980">1980</h4>
+<p>most C++ features but virtual functions</p>
+<h4 id="1983">1983</h4>
+<p>C++ w/ virtual functions, named C++ by Rick Mascitti 1985 Cfront</p>
+<h4 id="1985">1985</h4>
+<p>“The C++ Programming Language”</p>
+<h4 id="1990">1990</h4>
+<p>ANSI C++ Committee ISO/ANSI Standard C++ in 1998: ISO/IEC 14882</p>
+<blockquote>
+<p><code>NOTE</code> 所有考试内容均为98标准。</p>
+</blockquote>
+<blockquote>
+<p>The goal of C++ is to support for <u><em>object-oriented programming</em></u> to combine <u><em>flexibility and efficiency</em></u> of C.</p>
+</blockquote>
+<h3 id="improvements-of-C">improvements of  C++</h3>
+<p>C++ builds on C, but support more styles of programming and provides more features.</p>
+<ul>
+<li>Data abstraction</li>
+<li>Access control</li>
+<li>Initialization &amp; cleanup</li>
+<li>References Function</li>
+<li>overloading</li>
+<li>Streams for I/O</li>
+<li>Name control</li>
+<li>Operator overloading</li>
+<li>More safe and powerful memory management</li>
+<li>Templates</li>
+<li>Exception handling</li>
+</ul>
+<h2 id="Characters-and-String">Characters and String</h2>
+<blockquote>
+<p><code>ref</code> <em>Introduction to Programming with C++</em> Page 142-157.</p>
+</blockquote>
+<h3 id="Characterchar">Character<code>char</code></h3>
+<blockquote>
+<p>A character data type represents a single character.</p>
+</blockquote>
+<p><strong>char literal</strong>: a single character enclosed in single quotation marks <code>' '</code>.<br>
+<strong>string literal</strong>: must be enclosed in quotation marks <code>&quot; &quot;</code>. And quotation marks will be paired 1 by 1 in order.<br>
+<code>e.g.</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">cout &lt;&lt; <span class="hljs-string">&quot;He said &quot;</span>Programming is fun<span class="hljs-string">&quot;&quot;</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<p>The statement has a <em>compile error</em>. The compiler thinks the second quotation character is the end of the string and does not know what to do with the rest of the characters.</p>
+<h4 id="Escape-sequence">Escape sequence</h4>
+<table>
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Name</th>
+<th>ASCII Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\b</td>
+<td>Backspace</td>
+<td>8</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Tab</td>
+<td>9</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>Linefeed</td>
+<td>10</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>Formfeed</td>
+<td>12</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Carriage Return</td>
+<td>13</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>Backslash</td>
+<td>92</td>
+</tr>
+<tr>
+<td>\&quot;</td>
+<td>Double Quote</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<p><code>e.g.</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">cout &lt;&lt; <span class="hljs-string">&quot;He said \&quot;Programming is fun\&quot;&quot;</span> &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<p><code>NOTE</code></p>
+<ul>
+<li><strong>whitespace characters</strong>: The characters <code>' ', '\t', '\f', '\r'</code> and<code> '\n'</code>.</li>
+<li><strong>\n vs. endl</strong>: Both moves the cursor to the next line. However, using <code>endl</code> ensures that the output is displayed immediately on all platform.</li>
+</ul>
+<h4 id="Casting">Casting</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">char</span> a = <span class="hljs-number">0XFF41</span>; <span class="hljs-comment">// The lower 8 bits hex code 41 is assigned to a</span><br><span class="hljs-type">char</span> b = <span class="hljs-number">65.25</span>;  <span class="hljs-comment">// 65 is assigned to variable b </span><br><span class="hljs-type">int</span> c = <span class="hljs-string">&#x27;A&#x27;</span>;     <span class="hljs-comment">// The ASCII code of character A(65) is assigned to c</span><br><span class="hljs-type">int</span> d = <span class="hljs-string">&#x27;2&#x27;</span> + <span class="hljs-string">&#x27;3&#x27;</span>;<span class="hljs-comment">// The ASCII code for &#x27;2&#x27; is 50 and for &#x27;3&#x27; is 51 </span><br>cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; <span class="hljs-string">&quot; &quot;</span>&lt;&lt; c &lt;&lt; <span class="hljs-string">&quot; &quot;</span>&lt;&lt; d &lt;&lt; endl;<br><span class="hljs-type">int</span> j = <span class="hljs-number">2</span> + <span class="hljs-string">&#x27;a&#x27;</span>; <br>cout &lt;&lt; j &lt;&lt; <span class="hljs-string">&quot; is the ASCII code for character &quot;</span> &lt;&lt; <span class="hljs-built_in">static_cast</span>&lt;<span class="hljs-type">char</span>&gt;(j) &lt;&lt; endl;<br><span class="hljs-comment">//display 99 is the ASCII code for character c</span><br></code></pre></td></tr></table></figure>
+<h4 id="Comparing-and-Testing">Comparing and Testing</h4>
+<p>Two characters can be compared <u><em>using the relational operators</em></u> just like comparing two numbers. This is done by <u><em>comparing the ASCII codes</em></u> of the two characters.</p>
+<h4 id="Character-Functions">Character Functions</h4>
+<p>C++ provides several functions for testing a character and for converting a character <u><em>in the <code>&lt;cctype&gt;</code> header file.</em></u></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>isdigit(ch)</code></td>
+<td>Returns true if the specified character is a <u><em>digit.</em></u></td>
+</tr>
+<tr>
+<td><code>isalpha(ch)</code></td>
+<td>Returns true if the specified character is a <u><em>letter</em></u>.</td>
+</tr>
+<tr>
+<td><code>isalnum(ch)</code></td>
+<td>Returns true if the specified character is a <u><em>letter or digit.</em></u></td>
+</tr>
+<tr>
+<td><code>islower(ch)</code></td>
+<td>Returns true if the specified character is a <u><em>lowercase</em></u> letter.</td>
+</tr>
+<tr>
+<td><code>isupper(ch) </code></td>
+<td>Returns true if the specified character is an <u><em>uppercase</em></u> letter.</td>
+</tr>
+<tr>
+<td><code>isspace(ch) </code></td>
+<td>Returns true if the specified character is a <u><em>whitespace</em></u> character.</td>
+</tr>
+<tr>
+<td><code>tolower(ch)</code></td>
+<td>Returns the <u><em>lowercase</em></u> of the specified character.</td>
+</tr>
+<tr>
+<td><code>toupper(ch)</code></td>
+<td>Returns the <u><em>uppercase</em></u> of the specified character.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Stringstring">String<code>string</code></h3>
+<blockquote>
+<p>A string is a sequence of characters. string is a <code>object type</code>,rather a <code>primitive type</code>.</p>
+<p><em>Objects are defined using <code>classes</code>. String is a predefined class in the <code>&lt;string&gt;</code> header file. An object is also known as an instance of a class.</em></p>
+<p><em>By default, a string is <u>initialized</u> to an empty string(containing no characters) <code>&quot;&quot;</code></em>.但声明空<code>char</code>仍为任意值。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string&gt;</span></span><br>string str;                      <span class="hljs-comment">//Define variable of string</span><br>string str1 = <span class="hljs-string">&quot;Hello&quot;</span>;           <span class="hljs-comment">//Initialize with string constant</span><br>cin &gt;&gt; str;                      <span class="hljs-comment">//Read and write string</span><br>cout &lt;&lt; str;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>NOTE</code> <code>cin/cout</code> 和 <code>printf/scanf</code> 是不同的库，有不同的IO缓冲机制。混用可能会造成混乱。同样，<code>new/delete</code>和<code>malloc/free</code>也不可混用。</p>
+</blockquote>
+<h4 id="Concatenation-for-string">Concatenation for string</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++">string a = <span class="hljs-string">&quot;aa&quot;</span>;<br><span class="hljs-function">string <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-string">&quot;bb&quot;</span>)</span></span>;<br>string c = a + b;<br>cout &lt;&lt; c;                    <span class="hljs-comment">//display aabb</span><br><br>string d = <span class="hljs-string">&quot;aa&quot;</span> + <span class="hljs-string">&quot;bb&quot;</span>;       <span class="hljs-comment">//incorrect!</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><em>It is illegal to concatenate <u>two string literals</u>!</em></p>
+</blockquote>
+<h4 id="instance-functions">instance functions</h4>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>length() </code></td>
+<td>Returns the <u><em>number of characters</em></u> in this string.</td>
+</tr>
+<tr>
+<td><code>size()</code></td>
+<td>Same as length().</td>
+</tr>
+<tr>
+<td><code>at(index)</code></td>
+<td>Returns the <u><em>character at the specified index</em></u> from this string.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>NOTE </code> C++ provides the subscript operator for accessing the character at a specified index in a string using the syntax <code>stringName[index]</code>. And the index must be between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>N</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>h</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">stringName.length() - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal">am</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>.</p>
+<p><code>NOTE</code>The dot <code>.</code> is an operator that retrieve a member of a <u><em>struct</em></u> in C.</p>
+</blockquote>
+<ul>
+<li><strong>Comparing Strings</strong>: alphabetical(ACII) order.</li>
+</ul>
+<h4 id="Reading-Strings">Reading Strings</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">string city;<br><span class="hljs-comment">//using cin object, input ends with a whitespace character</span><br>cin &gt;&gt; city;<br><span class="hljs-comment">//using getline function in &lt;string&gt;</span><br><span class="hljs-built_in">getline</span>(cin,city,<span class="hljs-string">&#x27;\n&#x27;</span>); <span class="hljs-comment">//or getline(cin,city);</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>getline(cin, s, delimitCharacter)</code> , stops reading characters when the <u><em>delimiter character is encountered</em></u>.</p>
+<p>The <code>delimitCharacter</code> is <u><em>read but not stored</em></u> into the string <code>s</code>.</p>
+<p>The <code>delimitCharacter</code> has a default value <code>'\n'</code>.</p>
+</blockquote>
+<h4 id="The-String-Class">The String Class</h4>
+<blockquote>
+<p><code>ref</code> <em>Introduction to Programming with C++</em> Page 392-398.</p>
+</blockquote>
+<ul>
+<li><strong>Constructing a String</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//first creates a string object using &quot;Hi&quot;,then copies the object to s1</span><br>string s1 = <span class="hljs-string">&quot;Hi&quot;</span>; <br><span class="hljs-comment">//better way</span><br><span class="hljs-function">string <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Hi&quot;</span>)</span></span>;<br><span class="hljs-comment">//create string from C-strings</span><br><span class="hljs-type">char</span> s[] = <span class="hljs-string">&quot;Hi&quot;</span>;<br><span class="hljs-function">string <span class="hljs-title">s3</span><span class="hljs-params">(s)</span></span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>appending</strong></p>
+<table>
+<thead>
+<tr>
+<th>string object</th>
+<th>overload functions</th>
+<th>Description: all returns a string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>.append(string s)</code></td>
+<td>Appends <code>s</code> into this string object <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.append(string s,int index,int n)</code></td>
+<td>Appends <code>n</code> number of characters in <code>s</code> <u><em>starting at the position <code>index</code></em></u> to <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.append(string s,int n)</code></td>
+<td>Appends the <u><em>first <code>n</code> number of characters</em></u> in <code>s</code> to <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.append(int n,char ch)</code></td>
+<td>Appends <u><em><code>n</code> copies of <code>ch</code></em></u> to <code>str</code>.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">string <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><br>s1.<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot; to C plus plus&quot;</span>);         <span class="hljs-comment">//Welcome to C plus plus</span><br>s2.<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot; to C plus plus&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>);     <span class="hljs-comment">//Welcometo C p</span><br>s3.<span class="hljs-built_in">append</span>(<span class="hljs-string">&quot; to C plus plus&quot;</span>,<span class="hljs-number">5</span>);       <span class="hljs-comment">//Welcome to C</span><br>s4.<span class="hljs-built_in">append</span>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;C&#x27;</span>);                     <span class="hljs-comment">//Welcome toCCCCC</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Assigning</strong></p>
+<table>
+<thead>
+<tr>
+<th>string object</th>
+<th>overload functions</th>
+<th>Description: all returns a string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>.assign(char[] s)</code></td>
+<td>Assigns array of characters or a C-string <code>s</code> to <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.assign(string s)</code></td>
+<td>Assigns string <code>s</code> to <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.assign(string s, int index,int n)</code></td>
+<td>Assigns <code>n</code> number of characters in <code>s</code> <u><em>starting at the position <code>index</code></em></u> to  <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.assign(string s, int n) </code></td>
+<td>Assigns the <u><em>first <code>n</code> number of characters</em></u> in <code>s</code> to <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.assign(int n, char  ch)</code></td>
+<td>Assigns <u><em><code>n</code> copies of <code>ch</code></em></u> to <code>str</code>.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">string <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><span class="hljs-function">string <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>;<br><br>s1.<span class="hljs-built_in">assign</span>(<span class="hljs-string">&quot;Hello Dalla&quot;</span>);             <span class="hljs-comment">//Hello Dalla</span><br>s2.<span class="hljs-built_in">assign</span>(<span class="hljs-string">&quot;Hello Dalla&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>);         <span class="hljs-comment">//ello D</span><br>s3.<span class="hljs-built_in">assign</span>(<span class="hljs-string">&quot;Hello Dalla&quot;</span>,<span class="hljs-number">5</span>);           <span class="hljs-comment">//Hello</span><br>s4.<span class="hljs-built_in">assign</span>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;C&#x27;</span>);                     <span class="hljs-comment">//CCCCC</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Clear, erase, and empty</strong></p>
+<table>
+<thead>
+<tr>
+<th>string object</th>
+<th>overload functions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>.clear()</code></td>
+<td>Removes all characters in <code>str</code>, returns a string.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.erase(int index,int n)</code></td>
+<td>Removes n characters from <code>str</code> <u><em>starting at position <code>index</code></em></u>,returns a string.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.empty()</code></td>
+<td>Returns true if <code>str</code> is empty.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">string <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>; <br>s1.<span class="hljs-built_in">erase</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)                        <span class="hljs-comment">//Weme</span><br>s1.<span class="hljs-built_in">clear</span>();                           <span class="hljs-comment">// s1 is now empty</span><br>cout &lt;&lt; s1.<span class="hljs-built_in">empty</span>() &lt;&lt; endl;           <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>length,size,capacity and c_str()</strong></p>
+<table>
+<thead>
+<tr>
+<th>string object</th>
+<th>overload functions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>.length()</code></td>
+<td>Returns the number(int) of characters in <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.size()</code></td>
+<td>same as <code>.length()</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td>`.capacity()</td>
+<td>Returns the size of <em>the storage allocated</em> for <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.c_str()</code></td>
+<td>Returns a <em>C-string</em> for <code>str</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.data()</code></td>
+<td>same as <code>.c_str()</code>.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Comparing and Obtaining</strong></p>
+<table>
+<thead>
+<tr>
+<th>string object</th>
+<th>overload functions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td><code>.compare(string s)</code></td>
+<td>Returns an integer greater than 0, 0, or less than 0 if <code>str</code> is greater than, equal to, or less than <code>s</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.compare(int index, int n,string s)</code></td>
+<td>Compares <code>str</code>with substring <code>s(index, …, index + n - 1)</code>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.substr(int index, int n)</code></td>
+<td>Returns a <u><em>substring of <code>n</code> characters</em></u> from <code>str</code> <u><em>starting at position <code>index</code></em></u>.</td>
+</tr>
+<tr>
+<td>str</td>
+<td><code>.substr(int index)</code></td>
+<td>Returns a <u><em>substring</em></u> of <code>str</code> <u><em>starting at position <code>index</code></em></u>.</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">string <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcome&quot;</span>)</span></span>; <br><span class="hljs-function">string <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Welcomg&quot;</span>)</span></span>;<br>cout &lt;&lt; s1.<span class="hljs-built_in">compare</span>(s2) &lt;&lt; endl;           <span class="hljs-comment">// –1 </span><br>cout &lt;&lt; s2.<span class="hljs-built_in">compare</span>(s1) &lt;&lt; endl;           <span class="hljs-comment">// 1</span><br>cout &lt;&lt; s1.<span class="hljs-built_in">compare</span>(<span class="hljs-string">&quot;Welcome&quot;</span>) &lt;&lt; endl;    <span class="hljs-comment">// 0</span><br>cout &lt;&lt; s1.<span class="hljs-built_in">substr</span>(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>) &lt;&lt; endl;          <span class="hljs-comment">//co</span><br>cout &lt;&lt; s1.<span class="hljs-built_in">substr</span>(<span class="hljs-number">3</span>) &lt;&lt; endl;             <span class="hljs-comment">//come</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Searching</strong></p>
+</li>
+<li>
+<p><strong>Inserting and Replacing</strong></p>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">insert</span>(const string&amp;, int len); <span class="hljs-built_in">insert</span>(int pos, const string&amp; s); <br><span class="hljs-built_in">replace</span>();<br><span class="hljs-built_in">find</span>()<br></code></pre></td></tr></table></figure>
+<h2 id="Objects-with-Pointers">Objects with Pointers</h2>
+<h2 id="Dynamically-allocated-memory">Dynamically allocated memory</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OOP C1 Introduction</div>
+      <div>http://example.com/2023/02/28/OOProgramming-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 28, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/28/Cognitive-Neuroscience-1/" title="CognitiveNeuroscience C1">
+                        <span class="hidden-mobile">CognitiveNeuroscience C1</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
