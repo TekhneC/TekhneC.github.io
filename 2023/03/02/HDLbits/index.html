@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Verilog Language Basics Wire Wires (and other signals) in Verilog are directional:  information flows in only one direction, from (usually one, often called a driver that drives a value onto a wire) s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDLbits Problem set">
+<meta property="og:url" content="http://example.com/2023/03/02/HDLbits/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Verilog Language Basics Wire Wires (and other signals) in Verilog are directional:  information flows in only one direction, from (usually one, often called a driver that drives a value onto a wire) s">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-05T15:56:02.777Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Computer Hardware">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>HDLbits Problem set - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HDLbits Problem set"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-02 00:00" pubdate>
+          March 2, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HDLbits Problem set</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Verilog-Language">Verilog Language</h2>
+<h3 id="Basics">Basics</h3>
+<h4 id="Wire">Wire</h4>
+<p><code>Wires</code> (and other signals) in Verilog are <u><em>directional</em></u>:  information flows in only one direction, from (usually one, often called a <code>driver</code> that <em>drives</em> a value onto a wire) <code>source</code> to the <code>sinks</code>.</p>
+<blockquote>
+<p><strong>A module with 1 input and 1 output behaves like a <code>wire</code>.</strong></p>
+<p><em>The ports on a module</em> also have a direction. An input port is <em>driven by</em> something from outside the module, while an output port <em>drives</em> something outside. Viewed from inside the module, an input port is a <code>driver</code> or <code>source</code>, while an output port is a <code>sink</code>.</p>
+</blockquote>
+<blockquote>
+<p>A wire cannot have more than one driver. A wire that <u><em>has no drivers</em></u> will have an <u><em>undefined value</em></u> (often treated as 0 when synthesizing hardware).</p>
+</blockquote>
+<h5 id="Declaration">Declaration</h5>
+<p>Any wire(or other ypes) to connect internal components together needs to be declared <u><em>in the body of the module</em></u> before it is <u><em>first used</em></u>.</p>
+<h5 id="continuous-assignment">continuous assignment</h5>
+<p>In a Verilog <u><em>“continuous assignment”</em></u> (<code>assign left_side = right_side;</code>), the value of the signal on the right side is <em>driven</em> onto the wire on the left side. The assignment is <u><em>“continuous”</em></u> because the <u><em>assignment continues all the time</em></u> even if the right side’s value changes. (Not a one-time event.)</p>
+<p>The <strong>order</strong> of multiple <code>assign</code> statements in which they appear in the code <em><strong>does not matter</strong></em> !!!.</p>
+<blockquote>
+<p><code>assign</code> describe <u><em>connections between things</em></u>, <u><em>not the action of copying</em></u> a value from one thing to another. And it must be highlighted that  <code>assign</code> are not creating wires but creating the connections between wires.</p>
+<p>An <code>assign</code> statement drives a wire with a value. This value can be any as long as it’s a <u><em>combinational function</em></u>.</p>
+</blockquote>
+<h4 id="Gate">Gate</h4>
+<h5 id="NOT-Gate-Inverter">NOT Gate/Inverter</h5>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> Not_Gate( <span class="hljs-keyword">input</span> in, <span class="hljs-keyword">output</span> out );<br>	<span class="hljs-keyword">assign</span> out = ~in;<br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+<h5 id="And-Gate">And Gate</h5>
+<blockquote>
+<p>Verilog has separate <u><em>bitwise-AND</em></u> (<code>&amp;</code>) and <u><em>logical-AND</em></u> (<code>&amp;&amp;</code>) operators.</p>
+</blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> Add_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>	<span class="hljs-keyword">assign</span> out = a &amp; b;<br><span class="hljs-keyword">endmodule</span><br><br><span class="hljs-keyword">module</span> NAdd_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>    <span class="hljs-keyword">assign</span> out = ~(a &amp; b);<br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+<h5 id="Or-Nor-Gate">Or/Nor Gate</h5>
+<blockquote>
+<p>Verilog has separate <u><em>bitwise-OR</em></u> (<code>|</code>) and <u><em>logical-OR</em></u> (<code>||</code>) operators.</p>
+</blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> Or_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>    <span class="hljs-keyword">assign</span> out = a | b;<br><span class="hljs-keyword">endmodule</span><br><br><span class="hljs-keyword">module</span> Nor_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>    <span class="hljs-keyword">assign</span> out = ~(a | b);<br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+<h5 id="Xor-Xnor-Gate">Xor/ Xnor Gate</h5>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> XNor_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>    <span class="hljs-keyword">assign</span> out = (a &amp; ~b) | (~a &amp; b);<br><span class="hljs-keyword">endmodule</span><br><br><span class="hljs-keyword">module</span> XNor_Gate( <br>    <span class="hljs-keyword">input</span> a, <br>    <span class="hljs-keyword">input</span> b, <br>    <span class="hljs-keyword">output</span> out );<br>    <span class="hljs-keyword">assign</span> out = (~a &amp; ~b) | (a &amp; b);        <span class="hljs-comment">//assign out = a^b</span><br><span class="hljs-keyword">endmodule</span><br></code></pre></td></tr></table></figure>
+<h3 id="Vectors">Vectors</h3>
+<p><code>Vectors</code> are used to <u><em>group related signals</em></u> <u><em>using one name</em></u> to make it more convenient to manipulate.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>: <span class="hljs-number">0</span>] myVec;           <span class="hljs-comment">//The declaration places the dimensions before the vector name.</span><br><span class="hljs-keyword">wire</span> [ <span class="hljs-number">3</span>: <span class="hljs-number">0</span>] outVec;<br><span class="hljs-keyword">assign</span> out = myVec[<span class="hljs-number">10</span>];       <span class="hljs-comment">//The part select places the dimensions after the vector name.</span><br><span class="hljs-keyword">assign</span> outVec = myVec[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>];<br></code></pre></td></tr></table></figure>
+<h4 id="Declaration-2">Declaration</h4>
+<p>Vectors must be <em><strong>declared</strong></em></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">type</span> [upper:lower] vector_name;<br></code></pre></td></tr></table></figure>
+<p>where <code>type</code> specifies the <u><em>datatype</em></u> of the vector, usually <code>wire</code>or <code>reg</code>, and additionally<code>input</code> and <code>output</code> (port type).</p>
+<blockquote>
+<p>The <em><strong>endianness</strong></em> of a vector is whether <u><em>little-endian</em></u>(the the least significant bit has a lower index <code>e.g.</code> [3:0]) or <u><em>big-endian</em></u>(, <code>e.g.</code>[0:3]). But it <u><em>must always be the same way</em></u> once a vector is declared with a particular endianness.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">wire</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] vec1;             <span class="hljs-comment">//little-endian</span><br><span class="hljs-keyword">wire</span> [<span class="hljs-number">0</span>:<span class="hljs-number">3</span>] vec2;             <span class="hljs-comment">//big-endian</span><br><span class="hljs-keyword">assign</span> vec1[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;   <span class="hljs-comment">//bad</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><code>NOTE</code><em><strong>Implicit nets</strong></em> are often a source of <u><em>hard-to-detect bugs</em></u>. Net-type signals can be <u><em>implicitly created</em></u> by:</p>
+<ol>
+<li>an <code>assign</code> statement</li>
+<li>attaching something undeclared to a module port.</li>
+</ol>
+<p>Implicit nets are always <u><em>one-bit wires</em></u> and causes bugs if you had intended to use a vector. <u><em>Disabling</em></u> creation of implicit nets can be done using the ``default_nettype none` directive.</p>
+</blockquote>
+<h4 id="Unpacked-vs-Packed-Arrays">Unpacked vs. Packed Arrays</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Packed dimensions</th>
+<th>Unpacked dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>declared</td>
+<td><u><em>before</em></u> the vector name</td>
+<td><em><u>after</u></em> the name</td>
+</tr>
+<tr>
+<td></td>
+<td>The bits are packed together into a blob</td>
+<td></td>
+</tr>
+<tr>
+<td><code>NOTE</code></td>
+<td>relevant in a simulator but not in hardware</td>
+<td>used to declare <u><em>memory arrays</em></u></td>
+</tr>
+</tbody>
+</table>
+<h4 id="Access">Access</h4>
+<p>Accessing an entire vector is done <u><em>using the vector name</em></u>.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">wire</span> [<span class="hljs-number">8</span>:<span class="hljs-number">0</span>] w;<br><span class="hljs-keyword">wire</span> [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] a;<br><span class="hljs-keyword">assign</span> w = a;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>It takes the <em>entire 4-bit vector</em> <code>a</code> and assigns it to the <em>entire 8-bit vector</em> <code>w</code>.  It is <u><em>zero-extended</em></u> or <u><em>truncated</em></u> as appropriate If the lengths of the right and left sides <em><u>don’t match</u></em>.</p>
+</blockquote>
+<p>Accessing a portion of a vector is done by<code>part-select</code>.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">4</span>:<span class="hljs-number">1</span>] x;<br><span class="hljs-keyword">input</span> <span class="hljs-keyword">wire</span> [<span class="hljs-number">3</span>:-<span class="hljs-number">2</span>] z;<br>w[<span class="hljs-number">3</span>:<span class="hljs-number">0</span>]      <span class="hljs-comment">// Only the lower 4 bits of w</span><br>x[<span class="hljs-number">1</span>]        <span class="hljs-comment">// The lowest bit of x</span><br>x[<span class="hljs-number">1</span>:<span class="hljs-number">1</span>]      <span class="hljs-comment">// The lowest bit of x</span><br>z[-<span class="hljs-number">1</span>:-<span class="hljs-number">2</span>]    <span class="hljs-comment">// Two lowest bits of z</span><br></code></pre></td></tr></table></figure>
+<h4 id="Concatenation-and-replication">Concatenation and replication</h4>
+<p>The <em><strong>concatenation operator</strong></em> <code>&#123;,&#125;</code> is used to <u><em>create larger vectors</em></u> by <u><em>concatenating smaller portions of a vector together</em></u>.</p>
+<blockquote>
+<p><code>NOTE</code><em>Concatenation</em> needs to know <em><u>the width</u></em> of <em><u>every</u></em> component. Thus <code>&#123;1, 2, 3&#125;</code> is <em><strong>illegal</strong></em> and results in the error message: <code>unsized constants are not allowed in concatenations</code>.</p>
+</blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">input</span> [<span class="hljs-number">15</span>:<span class="hljs-number">0</span>] in;<br><span class="hljs-keyword">output</span> [<span class="hljs-number">23</span>:<span class="hljs-number">0</span>] out;<br><span class="hljs-keyword">assign</span> &#123;out[<span class="hljs-number">7</span>:<span class="hljs-number">0</span>], out[<span class="hljs-number">15</span>:<span class="hljs-number">8</span>]&#125; = in;         <span class="hljs-comment">// Swap two bytes.</span><br><span class="hljs-keyword">assign</span> out[<span class="hljs-number">15</span>:<span class="hljs-number">0</span>] = &#123;in[<span class="hljs-number">7</span>:<span class="hljs-number">0</span>], in[<span class="hljs-number">15</span>:<span class="hljs-number">8</span>]&#125;;    <span class="hljs-comment">// Swap two bytes, out[23:16] are not assigned.</span><br><span class="hljs-keyword">assign</span> out = &#123;in[<span class="hljs-number">7</span>:<span class="hljs-number">0</span>], in[<span class="hljs-number">15</span>:<span class="hljs-number">8</span>]&#125;;          <span class="hljs-comment">// The 16-bit vector on the right is extended to match the 24-bit out.</span><br>                                           <span class="hljs-comment">// So out[23:16] are zero.</span><br></code></pre></td></tr></table></figure>
+<p>The <em><strong>replication operator</strong></em> allows <u><em>repeating a vector and concatenating them together</em></u> when sometimes you want the same thing concatenated together many times.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">&#123;num&#123;vector&#125;&#125;                               <span class="hljs-comment">//replicates `vector` by `num` times. </span><br></code></pre></td></tr></table></figure>
+<p><code>num</code> must be a constant and both sets of braces are required.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs verilog">&#123;<span class="hljs-number">5</span>&#123;<span class="hljs-number">1&#x27;b1</span>&#125;&#125;           <span class="hljs-comment">// 5&#x27;b11111</span><br>&#123;<span class="hljs-number">2</span>&#123;a,b,c&#125;&#125;          <span class="hljs-comment">// &#123;a,b,c,a,b,c&#125;</span><br>&#123;<span class="hljs-number">3&#x27;d5</span>, &#123;<span class="hljs-number">2</span>&#123;<span class="hljs-number">3&#x27;d6</span>&#125;&#125;&#125;   <br>&#123;<span class="hljs-number">3&#x27;d5</span>, <span class="hljs-number">2</span>&#123;<span class="hljs-number">3&#x27;d6</span>&#125;&#125;   <span class="hljs-comment">//illegal</span><br></code></pre></td></tr></table></figure>
+<h4 id="Bitwise-vs-Logical-Operators">Bitwise vs. Logical Operators</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>between</th>
+<th>Description</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bitwise operation</code></td>
+<td><em>2 N-bit vectors</em></td>
+<td><em><strong>replicates</strong></em> the operation <em><strong>for each bit</strong></em></td>
+<td><em>1 N-bit output</em></td>
+</tr>
+<tr>
+<td><code>logical operation </code></td>
+<td><em>2 N-bit vectors</em></td>
+<td>treats the <em><strong>entire</strong></em> vector as <em><strong>a boolean value</strong></em>, <code>true</code>for non-zero and <code>false</code> for zero.</td>
+<td><em>1-bit output</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Module">Module</h3>
+<p>A <code>module</code> is a <u><em>circuit</em></u> that <u><em>interacts</em></u> with its outside <u><em>through input and output ports</em></u>. Larger and more complex circuits are built by <em><u>composing</u></em> bigger modules out of smaller modules and other pieces (<code>e.g.</code> <code>assign</code> and <code>always</code> blocks) <code>i.e.</code> <code>hierarchy</code>.</p>
+<blockquote>
+<ul>
+<li>
+<p><em>Modules can contain instances of other modules</em> as long as all of the modules used belong to the <em><u>same project</u></em> (so the <code>compiler</code> knows where to find them all).</p>
+</li>
+<li>
+<p>Code for different modules are not nested.</p>
+</li>
+</ul>
+</blockquote>
+<p>When connecting modules, only t<u><em>he ports</em></u> on the module are important.</p>
+<h4 id="Connecting-Signals-to-Ports">Connecting Signals to Ports</h4>
+<h5 id="By-position">By position</h5>
+<p>Ports are connected <u><em>left to right</em></u> <u><em>according to the module’s declaration</em></u> when instantiating a module.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">mod_a instance1 ( wa, wb, wc );<br></code></pre></td></tr></table></figure>
+<ul>
+<li>instantiates a module of type <code>mod_a</code></li>
+<li>gives an <code>instance name</code> of “<em>instance1</em>”</li>
+<li>connects signal <code>wa</code>, <code>wb</code> and <code>wc</code> to the <strong>first, second and third</strong> ports (<code>in1</code>,<code>in2</code> and <code>out</code>) of the new module.</li>
+</ul>
+<blockquote>
+<p><code>Drawbacks</code>  If the module’s <u><em>port list changes</em></u>, all instantiations of the module will also need to be found and changed to match.</p>
+</blockquote>
+<h5 id="By-name">By name</h5>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">mod_a instance2 ( <span class="hljs-variable">.out</span>(wc), <span class="hljs-variable">.in1</span>(wa), <span class="hljs-variable">.in2</span>(wb) );<br></code></pre></td></tr></table></figure>
+<ul>
+<li>instantiates a module of type <code>mod_a</code></li>
+<li>gives an <code>instance name</code> of “*instance 2”</li>
+<li>connects signal <code>wa</code>, <code>wb</code> and <code>wc</code> to the ports <em><strong>named</strong></em> <code>in1</code>,<code>in2</code> and <code>out</code> of the module.</li>
+</ul>
+<blockquote>
+<p><code>Advantages</code>It allows wires to remain correctly connected even <u><em>if the port list changes</em></u>. This syntax is more verbose, although.</p>
+<p><code>Note</code> The ordering of ports is <em><u>irrelevant</u></em> because the connection will be made to the correct name, <u><em>regardless of its position in the sub-module’s port list</em></u>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Multiple-signal ports</strong>: Like everywhere else in Verilog, the vector length of the port does not have to match the wire connecting to it(<code>zero-padding</code> or <code>trucation</code> will work to make them match).</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Computer-Science/Computer-Organization/" class="category-chain-item">Computer Organization</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Computer-Hardware/">#Computer Hardware</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HDLbits Problem set</div>
+      <div>http://example.com/2023/03/02/HDLbits/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 2, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/03/AI-Logic01/" title="AI Logic 01">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI Logic 01</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/01/MusicAdmiring-1/" title="MusicAdmiring-1">
+                        <span class="hidden-mobile">MusicAdmiring-1</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
