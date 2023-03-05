@@ -26,8 +26,9 @@
 <meta property="og:image" content="http://example.com/img/posts/CO/1_1.png">
 <meta property="og:image" content="http://example.com/img/posts/CO/1_2.png">
 <meta property="og:image" content="http://example.com/img/posts/CO/1_3.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/1_4.png">
 <meta property="article:published_time" content="2023-03-01T02:18:27.000Z">
-<meta property="article:modified_time" content="2023-03-03T02:09:52.575Z">
+<meta property="article:modified_time" content="2023-03-05T18:12:10.188Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/posts/CO/1_1.png">
@@ -228,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          9.3k words
         
       </span>
     
@@ -239,7 +240,7 @@
         
         
         
-          18 mins
+          78 mins
         
       </span>
     
@@ -335,7 +336,63 @@
 </ul>
 <h4 id="Present-and-Tomorrow">Present and Tomorrow</h4>
 <h4 id="Classes-of-Computers">Classes of Computers</h4>
+<table>
+<thead>
+<tr>
+<th>Personal computers(PC)</th>
+<th>Server computers</th>
+<th>Supercomputers</th>
+<th>Embedded computers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General purpose, variety of software</td>
+<td><u><em>Network</em></u> based</td>
+<td>High-end <u><em>scientific and engineering calculations</em></u></td>
+<td>Hidden as components of systems</td>
+</tr>
+<tr>
+<td>Subject to <em><u>cost/performance tradeoff</u></em></td>
+<td>High <u><em>capacity, performance, reliability</em></u></td>
+<td>Highest capability but represent a small fraction of the overall computer market</td>
+<td>Stringent power/performance/cost <u><em>constraints</em></u></td>
+</tr>
+<tr>
+<td></td>
+<td>Range from small servers to building sized</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h4 id="Performance">Performance</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algorithm</td>
+<td>number of source-level statements and I/O operations</td>
+</tr>
+<tr>
+<td>Programming language, complier and architecture</td>
+<td>number of machine instructions for each statement</td>
+</tr>
+<tr>
+<td>Processor and memory system</td>
+<td>the speed of execution of instructions</td>
+</tr>
+<tr>
+<td>I/O system(Hardware and operating system)</td>
+<td>the speed of execution of I/O operations</td>
+</tr>
+</tbody>
+</table>
 <h3 id="Great-ideas">Great ideas</h3>
 <ul>
 <li>
@@ -345,21 +402,23 @@
 </blockquote>
 </li>
 <li>
-<p>Abstraction to Simplify Design</p>
-<p>Lower-level details are hidden to higher levels. <u><em>Instruction set architecture</em></u> is the interface between hardware and lowest-level software</p>
+<p><strong>Abstraction to Simplify Design</strong></p>
+<p>Lower-level details are hidden to higher levels. <u><em>Instruction set architecture</em></u>(<em>ISA</em>) is the interface between hardware and lowest-level software.</p>
 </li>
 <li>
-<p>Make the common case fast</p>
+<p><strong>Make the common case fast</strong></p>
 </li>
 <li>
-<p>Performance via <u><em>Parallelism(并行), Pipelining(流水线), Prediction(预测加速执行)</em></u></p>
+<p><strong>Performance via <u><em>Parallelism(并行), Pipelining(流水线), Prediction(预测加速执行)</em></u></strong></p>
 </li>
 <li>
-<p><u><em>Hierarchy</em></u> of Memory</p>
+<p><strong><u><em>Hierarchy</em></u> of Memory</strong></p>
 <p><img src="/img/posts/CO/1_2.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
 <li>
-<p>Dependability via <u><em>Redundancy</em></u></p>
+<p><strong>Dependability via <u><em>Redundancy</em></u></strong></p>
+<p>Since any physical device can fail, we make systems dependable by <u><em>including redundant components</em></u> that<br>
+can take over when a failure occurs and to <u><em>help detect failures</em></u>.</p>
 </li>
 </ul>
 <h3 id="Below-Your-Program">Below Your Program</h3>
@@ -378,7 +437,7 @@
 </tr>
 <tr>
 <td>System software</td>
-<td>aimed at programmers，including Operation System (Virtual memory, File system, IO device drivers), Compiler, Assembler</td>
+<td>aimed at programmers;<br />including Operation System (Virtual memory, File system, IO device drivers), Compiler and Assembler</td>
 </tr>
 <tr>
 <td>Hard ware</td>
@@ -421,57 +480,262 @@
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
-<th></th>
+<th>Type</th>
+<th>Description</th>
+<th>Note</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>CRT</strong> (raster cathode ray tube)</td>
-<td>Scan an image one line at a time,Pixels and the bit map.</td>
+<td>Scan an image <u><em>one line at a time</em></u>. <br />Pixels and the bit map.</td>
 <td>The more <u><em>bits per pixel</em></u>, the more colors to be displayed</td>
 </tr>
 <tr>
 <td><strong>LCD</strong> (liquid crystal display)</td>
-<td>Thin and low-power, LCD is not the source of light, but to form a twisting helix that bends light entering.</td>
-<td></td>
+<td>Thin and low-power.<br />LCD is not the source of light, but to <u><em>form a twisting</em></u> helix that <u><em>bends light entering</em></u>.</td>
+<td>Use an <u><em>active matrix</em></u> that has a tiny transistor switch at each pixel to control current precisely and make sharper images.</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><code>pixel</code> The <u><em>smallest individual picture element</em></u>. Screens are composed of hundreds of thousands to millions of pixels, <u><em>organized in a matrix</em></u>.</p>
+</blockquote>
+<blockquote>
+<h5 id="The-display-principle"><strong>The display principle</strong></h5>
+<ul>
+<li>
+<p>A color display might use 8 bits for <u><em>each</em></u> of the <u><em>three colors</em></u> (red, blue, and green), for <u><em>24 bits per pixel</em></u>.</p>
+</li>
+<li>
+<p>Hardware support for graphics consists mainly of a <em><strong>raster refresh buffer</strong></em>  (<em><strong>frame buffer</strong></em>) to store bit map.</p>
+</li>
+<li>
+<p>The image to be represented onscreen is stored in the frame buffer, and the bit pattern per pixel is read out to the graphics display at the <code>refresh rate</code>.</p>
+</li>
+<li>
+<p>The Goal of bit map is to faithfully represent what is on the screen.</p>
+</li>
+</ul>
+</blockquote>
 <h4 id="Motherboard"><strong>Motherboard</strong></h4>
 <p>Thin, green, plastic, covered with dozens of small rectangles which contain <u><em>integrated circuits</em></u> (chips). Three pieces:</p>
 <blockquote>
 <ol>
 <li>the piece connecting to the I/O devices</li>
-<li>memory</li>
+<li>memory:]</li>
 <li>processor</li>
 </ol>
 </blockquote>
-<p><strong>CPU</strong>:</p>
+<h5 id="CPU-Processor">CPU / Processor</h5>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th>Components</th>
+<th>Descritions</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Datapath</td>
-<td>performs operations on data</td>
+<td>performs <u><em>arithmetic operations.</em></u></td>
 </tr>
 <tr>
 <td>Control</td>
-<td>sequences datapath, memory, …</td>
+<td><u><em>commands</em></u> the datapath, memory, and I/O devices according to the instructions of the program</td>
 </tr>
 <tr>
 <td>Cache memory</td>
-<td>Small fast SRAM</td>
+<td>Small fast SRAM, acts as a buffer</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Memory</strong>:</p>
+<h5 id="Memory">Memory</h5>
+<p><strong>main/primary memory</strong></p>
+<ul>
+<li>Place to keep <u><em>running programs</em></u> and <u><em>data needed</em></u>.</li>
+<li>DRAM chips.</li>
+</ul>
+<p>The main memory is <em><strong>volatile</strong></em>, it forgets when it loses power.</p>
+<p><strong>secondary memory</strong></p>
+<ul>
+<li>store programs and data <u><em>between runs</em></u>.</li>
+<li>flash memory in PMDs and magnetic disks in servers.</li>
+</ul>
+<p>It is <em><strong>nonvolatile</strong></em>, it retains data even in the absence of a power source.</p>
+<blockquote>
+<p><code>e.g.</code></p>
+<ul>
+<li>Magnetic disk(Floppy disk, Hard disk)</li>
+<li>CD (optical compact disk)</li>
+<li>Magnetic tape</li>
+<li>Solid state memory</li>
+</ul>
+</blockquote>
+<h4 id="Network">Network</h4>
+<p>Networks interconnecting whole computers allows computer users to <em><u>extend the power of computing by including communication.</u></em></p>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Communication: Information is exchanged between computers at high speeds.</li>
+<li>Resource sharing: Computers on the network can share I/O devices.</li>
+<li>Nonlocal access: Users need not be near the computer they are using.</li>
+</ul>
+<h5 id="Local-area-network-LAN-Ethernet">Local area network(LAN) / Ethernet</h5>
+<p>A network designed to carry data within a <u><em>geographically confined area</em></u>. Also LAN are interconnected with switches that can also provide routing <u><em>services and security</em></u>.</p>
+<h5 id="Wide-area-network-WAN-Internet">Wide area network (WAN) / Internet</h5>
+<p>A network extended over hundreds of kilometers that <em><u>can</u></em><br>
+<em><u>span a continent.</em></u> Typically based on <u><em>optical fibers</em></u> and are leased from telecommunication companies.</p>
+<h5 id="Wireless-network-WiFi-Bluetooth">Wireless network: WiFi, Bluetooth</h5>
+<p>All users <u><em>in an immediate area</em></u> share the <u><em>airwaves</em></u>.</p>
+<h4 id="Integrated-Circuits">Integrated Circuits</h4>
+<blockquote>
+<p><code>transistor</code> An on/off switch controlled by an<br>
+electric signal.</p>
+<p><code>IC</code> a chip that combined dozens to hundreds of transistors.</p>
+</blockquote>
+<p>Electronics technology continues to evolve:</p>
+<ul>
+<li>Increased capacity and performance</li>
+<li>Reduced cost</li>
+</ul>
+<h5 id="manufacturing-process">manufacturing process</h5>
+<p><img src="/img/posts/CO/1_4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="IC-cost">IC cost</h5>
+<blockquote>
+<p>A single microscopic flaw in the wafer itself or in one of the dozens of patterning steps can result in <u><em>that area of the wafer failing</em></u>.</p>
+</blockquote>
+<p>These <em><strong>defects</strong></em> make it virtually impossible to manufacture a perfect wafer.</p>
+<p>The simplest way to cope with imperfection is to <em>place many independent components on a single</em> <em>wafer</em>. The patterned wafer is then chopped up, or <code>diced</code>, into these components called <code>dies</code> / <code>chips</code>.</p>
+<blockquote>
+<p><code>die/chip</code> The individual rectangular sections that are <u><em>cut from a wafer</em></u>.</p>
+</blockquote>
+<blockquote>
+<p><code>yield</code> The percentage of good dies from the total number of dies on the wafer.</p>
+</blockquote>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>D</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>P</mi><mi>W</mi></mrow><mrow><msub><mi>N</mi><mrow><mi>D</mi><mi>P</mi><mi>W</mi></mrow></msub><mo>×</mo><mi>y</mi><mi>i</mi><mi>e</mi><mi>l</mi><mi>d</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">CPD = \frac{CPW}{N_{DPW} \times yield}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">W</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">i</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">d</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>N</mi><mrow><mi>D</mi><mi>P</mi><mi>W</mi></mrow></msub><mo>≈</mo><mfrac><msub><mi>A</mi><mi>w</mi></msub><msub><mi>A</mi><mi>d</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">N_{DPW} \approx \frac{A_{w}}{A_d}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">W</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mi>i</mi><mi>e</mi><mi>l</mi><mi>d</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><msub><mi>N</mi><mrow><mi>D</mi><mi>P</mi><mi>A</mi></mrow></msub><mo>×</mo><msub><mi>A</mi><mi>d</mi></msub><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">yield = \frac{1}{(1 + (N_{DPA} \times A_d / 2))^2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">i</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2574em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/2</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>P</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">CPD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span>,  Cost per die.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>P</mi><mi>W</mi></mrow><annotation encoding="application/x-tex">CPW</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span>, Cost per wafer.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mrow><mi>D</mi><mi>P</mi><mi>W</mi></mrow></msub></mrow><annotation encoding="application/x-tex">N_{DPW}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">W</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, Dies per wafer.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">A_{w}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">A_d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, Wafer area and Die area.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mrow><mi>D</mi><mi>P</mi><mi>A</mi></mrow></msub></mrow><annotation encoding="application/x-tex">N_{DPA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, Defects per area.</li>
+</ul>
+<p><code>NOTE</code><u><em>Nonlinear relation</em></u> to area and defect rate.</p>
+<ul>
+<li>Wafer cost and area are fixed</li>
+<li>Defect rate determined by manufacturing process</li>
+<li>Die area determined by architecture and circuit design</li>
+</ul>
+<h4 id="Performance-2">Performance</h4>
+<p><em><strong>response time</strong></em> / <em><strong>execution time</strong></em> :  The total time required for the computer to <u><em>complete a task</em></u>, including disk accesses, memory accesses, I/O activities, operating system overhead, CPU execution time, and so on.</p>
+<p><em><strong>throughput / bandwidth</strong></em> : Another measure of performance, it is the <u><em>number of tasks completed per unit time</em></u>.</p>
+<table>
+<thead>
+<tr>
+<th>response time(most cases)</th>
+<th>throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>need different performance metrics</td>
+<td>servers</td>
+</tr>
+<tr>
+<td>need different sets of applications to benchmark personal mobile devices</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Decreasing response time almost always improves throughput.</p>
+</blockquote>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">c</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">X</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">X</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\rm Performance_X = \frac{1}{ExecutionTime_X}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.1574em;vertical-align:-0.836em;"></span><span class="mord"><span class="mord mathrm">Performanc</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">ExecutionTim</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>Use the phrase <em>“X is n times faster than Y”</em>/&quot;<em>X is n times as fast as Y&quot;</em> to mean</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">c</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">X</mi></msub></mrow><mrow><mi mathvariant="normal">P</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">c</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">Y</mi></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">Y</mi></msub></mrow><mrow><mi mathvariant="normal">E</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><msub><mi mathvariant="normal">e</mi><mi mathvariant="normal">X</mi></msub></mrow></mfrac><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\rm \frac{Performance_X}{Performance_Y} = \frac{
+ExecutionTime_Y}{ExecutionTime_X} = \it n
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.2074em;vertical-align:-0.836em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">Performanc</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight" style="margin-right:0.025em;">Y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">Performanc</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">ExecutionTim</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">ExecutionTim</span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight" style="margin-right:0.025em;">Y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathit">n</span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> is <em>Relative Performance</em>.</p>
+<h5 id="Measuring-Execution-Time">Measuring Execution Time</h5>
+<ul>
+<li>
+<p><strong>Elapsed time</strong> :<br>
+<u><em>Total</em></u> response time, including all aspects like processing, I/O, OS overhead, idle time ……<br>
+It determines <u><em>system performance</em></u>.</p>
+</li>
+<li>
+<p><strong>CPU time</strong>: The actual time the CPU spends <u><em>processing a given job</em></u>, discounting I/O time, other jobs’ shares.</p>
+<blockquote>
+<ul>
+<li>
+<p><em><strong>user CPU time</strong></em> The CPU time spent in a <u><em>program itself</em></u>.</p>
+</li>
+<li>
+<p><em><strong>system CPU time</strong></em> The CPU time spent <u><em>in the operating system performing tasks</em></u> on behalf of the program.</p>
+</li>
+</ul>
+<p>Different programs are affected differently by <u><em>CPU performance</em></u> and <u><em>system performance</em></u>.</p>
+<blockquote>
+<p><em>We will use the term <code>system performance</code> to refer to <code>elapsed time</code> on an unloaded system and <code>CPU performance</code> to refer to <code>user CPU time</code>.</em></p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p><strong>CPU Clocking</strong></p>
+<p>Operation of digital hardware governed by a constant-rate clock.</p>
+<p><em><strong>(clock) tick, (clock) cycle</strong></em>: The time for one clock period, usually of the processor clock running at a constant rate.</p>
+<p><em><strong>Clock period</strong></em>: duration of a clock cycle.</p>
+<p><em><strong>Clock frequency (rate)</strong></em>: cycles per second.</p>
+</li>
+</ul>
+<h5 id="CPU-Performance-and-Factors">CPU Performance and Factors</h5>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mspace width="1em"/><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>C</mi><mi>P</mi><mi>U</mi><mspace width="1em"/><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>C</mi><mi>y</mi><mi>c</mi><mi>l</mi><mi>e</mi><mi>s</mi><mo>×</mo><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>P</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>o</mi><mi>d</mi></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mspace width="1em"/><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>C</mi><mi>y</mi><mi>c</mi><mi>l</mi><mi>e</mi><mi>s</mi></mrow><mrow><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>R</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></mfrac></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\rm CPU\quad Time &amp;= CPU\quad ClockCycles\times ClockPeriod\\
+&amp;= \frac{CPU\quad ClockCycles}{ClockRate}
+\end{align}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.8574em;vertical-align:-1.6787em;"></span><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1787em;"><span style="top:-4.7102em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">CPU</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathrm">Time</span></span></span></span><span style="top:-2.6787em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6787em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1787em;"><span style="top:-4.7102em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">yc</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">es</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span></span></span><span style="top:-2.6787em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">yc</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">es</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6787em;"><span></span></span></span></span></span></span></span><span class="tag"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.1787em;"><span style="top:-4.7102em;"><span class="pstrut" style="height:3.3714em;"></span><span class="eqn-num"></span></span><span style="top:-2.6787em;"><span class="pstrut" style="height:3.3714em;"></span><span class="eqn-num"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6787em;"><span></span></span></span></span></span></span></span></span></p>
+<p>Performance improved by :</p>
+<ul>
+<li>Reducing number of <u><em>clock cycles</em></u></li>
+<li>Increasing <u><em>clock rate</em></u></li>
+<li>But hardware designer must often trade off clock rate against cycle count</li>
+</ul>
+<h5 id="Instruction-Performance">Instruction Performance</h5>
+<blockquote>
+<p><code>Clock cycles per instruction (CPI)</code>  Average number of clock cycles per instruction for a program<br>
+or program fragment.</p>
+</blockquote>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mspace width="1em"/><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mo>×</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mrow></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><msub><mi mathvariant="normal">I</mi><mi mathvariant="normal">i</mi></msub><mo>×</mo><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><msub><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi></msub></mrow></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\rm CPU\quad ClockCycles &amp;= \rm InstructionsCount \times CPI\\
+&amp; = \sum_{i = 1}^{n}{\rm CPI_i\times InstructionsCount_i}
+\end{align}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.7291em;vertical-align:-2.1145em;"></span><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.6145em;"><span style="top:-5.4259em;"><span class="pstrut" style="height:3.6514em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">CPU</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathrm">ClockCycles</span></span></span></span><span style="top:-3.1145em;"><span class="pstrut" style="height:3.6514em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.1145em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.6145em;"><span style="top:-5.4259em;"><span class="pstrut" style="height:3.6514em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathrm">InstructionsCount</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">CPI</span></span></span></span><span style="top:-3.1145em;"><span class="pstrut" style="height:3.6514em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">CP</span><span class="mord"><span class="mord mathrm">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">InstructionsCoun</span><span class="mord"><span class="mord mathrm">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.1145em;"><span></span></span></span></span></span></span></span><span class="tag"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.6145em;"><span style="top:-5.4259em;"><span class="pstrut" style="height:3.6514em;"></span><span class="eqn-num"></span></span><span style="top:-3.1145em;"><span class="pstrut" style="height:3.6514em;"></span><span class="eqn-num"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.1145em;"><span></span></span></span></span></span></span></span></span></p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mspace width="1em"/><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mo>×</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi><mo>×</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mo>×</mo><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mrow><mrow><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>R</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow></mfrac></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr><mtr><mtd class ="mtr-glue"></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>I</mi><mi>C</mi><mo>×</mo><mi>C</mi><mi>P</mi><mi>I</mi><mo>×</mo><msub><mi>T</mi><mi>c</mi></msub></mrow></mstyle></mtd><mtd class ="mtr-glue"></mtd><mtd class ="mml-eqn-num"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\rm CPU\quad Time &amp;= \rm InstructionsCount \times CPI\times ClockPeriod\\
+&amp;= \frac{\rm InstructionsCount \times CPI}{ClockRate}\\
+&amp;= IC \times CPI \times T_c
+\end{align}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.3463em;vertical-align:-2.4232em;"></span><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9232em;"><span style="top:-5.4435em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">CPU</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathrm">Time</span></span></span></span><span style="top:-3.4232em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"></span></span><span style="top:-1.5972em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.4232em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9232em;"><span style="top:-5.4435em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathrm">InstructionsCount</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">CPI</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">ClockPeriod</span></span></span></span><span style="top:-3.4232em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">Cl</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">InstructionsCount</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathrm">CPI</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-1.5972em;"><span class="pstrut" style="height:3.3603em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.4232em;"><span></span></span></span></span></span></span></span><span class="tag"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9232em;"><span style="top:-5.4435em;"><span class="pstrut" style="height:3.3603em;"></span><span class="eqn-num"></span></span><span style="top:-3.4232em;"><span class="pstrut" style="height:3.3603em;"></span><span class="eqn-num"></span></span><span style="top:-1.5972em;"><span class="pstrut" style="height:3.3603em;"></span><span class="eqn-num"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.4232em;"><span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li><em><strong>Instruction Count(IC)</strong></em> for a program: Determined by <u><em>program, ISA and compiler</em></u></li>
+<li><em><strong>Average cycles per instruction(CPI)</strong></em> : Determined by <u><em>CPU hardware</em></u>.<br>
+If different instructions have different CPI : <u><em>Average CPI</em></u> affected by instruction mix</li>
+</ul>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mspace width="1em"/><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mrow></mfrac><mo>=</mo><munderover><mo>∑</mo><mrow><mi mathvariant="normal">i</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">n</mi></munderover><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><msub><mi mathvariant="normal">I</mi><mi mathvariant="normal">i</mi></msub><mo>×</mo><mfrac><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><msub><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi></msub></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mrow></mfrac></mrow></mrow><annotation encoding="application/x-tex">\rm CPI = \frac{CPU\quad ClockCycles}{InstructionsCount} = \sum_{i = 1}^{n}{\rm CPI_i\times \frac{InstructionsCount_i}{InstructionsCount}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9349em;vertical-align:-1.2835em;"></span><span class="mord"><span class="mord mathrm">CPI</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">InstructionsCount</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">CPU</span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathrm">ClockCycles</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8665em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">i</span><span class="mrel mtight">=</span><span class="mord mathrm mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2835em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord mathrm">CP</span><span class="mord"><span class="mord mathrm">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">InstructionsCount</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathrm">InstructionsCoun</span><span class="mord"><span class="mord mathrm">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></span></span></p>
+<p>Performance depends on</p>
+<ul>
+<li>Algorithm: affects IC, possibly CPI</li>
+<li>Programming language: affects IC, CPI</li>
+<li>Compiler: affects IC, CPI</li>
+<li>Instruction set architecture: affects IC, CPI, Tc</li>
+</ul>
 
                 
               </div>
