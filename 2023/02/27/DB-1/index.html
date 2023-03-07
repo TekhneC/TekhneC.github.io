@@ -18,7 +18,7 @@
   
     <meta name="description" content="DBMS is used to maintain, query large datasets. The Benefits of DBMS include recovery from system crashes, concurrent access, quick application development, data integrity, and security. The levels of">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Database system C1 Intro into DB">
+<meta property="og:title" content="DB C1 Intro into DB">
 <meta property="og:url" content="http://example.com/2023/02/27/DB-1/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
 <meta property="og:description" content="DBMS is used to maintain, query large datasets. The Benefits of DBMS include recovery from system crashes, concurrent access, quick application development, data integrity, and security. The levels of">
@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/img/posts/DB/1_6.png">
 <meta property="og:image" content="http://example.com/img/posts/DB/1_7.png">
 <meta property="article:published_time" content="2023-02-27T15:30:00.000Z">
-<meta property="article:modified_time" content="2023-02-27T17:03:56.002Z">
+<meta property="article:modified_time" content="2023-03-07T10:28:03.191Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Database">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
   
   
   
-  <title>Database system C1 Intro into DB - Tek&#39;s Notes</title>
+  <title>DB C1 Intro into DB - Tek&#39;s Notes</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Database system C1 Intro into DB"></span>
+            <span id="subtitle" data-typed-text="DB C1 Intro into DB"></span>
           
         </div>
 
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.5k words
+          9.8k words
         
       </span>
     
@@ -244,7 +244,7 @@
         
         
         
-          80 mins
+          82 mins
         
       </span>
     
@@ -282,7 +282,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Database system C1 Intro into DB</h1>
+            <h1 style="display: none">DB C1 Intro into DB</h1>
             
             
               <div class="markdown-body">
@@ -482,16 +482,18 @@ A collection of information that exists <u>over a long period of time</u>.</p>
 <ul>
 <li>
 <p><strong>Physical data independence</strong>: the ability to modify the physical schema without changing the logical schema.</p>
-<blockquote>
-<p><code>NOTE</code> <em>Applications depend on the logical schema and are insulated from how data is structured and stored.</em></p>
-<p><em>Physical Independence is <u><strong>One of the most important benefits</strong></u> of using a DBMS!</em></p>
-</blockquote>
+<div class="note note-info">
+            <p><code>NOTE</code> <em>Applications depend on the logical schema and are insulated from how data is structured and stored.</em></p><p><em>Physical Independence is <u><strong>One of the most important benefits</strong></u> of using a DBMS!</em></p>
+          </div>
 </li>
 <li>
 <p><strong>Logical data independence</strong>： <em><u>protect application</u></em> programs from changes in logical structure of data.</p>
 <blockquote>
-<p><code>NOTE</code> It’s <em><u>hard to achieve</u></em> Logical data independence as the application programs are <em><u>heavily dependent</u></em> on the logical structure of data.</p>
+<p><code>Application programs</code> Programs that are used to <em><u>interact with the database</u></em> in this fashion.</p>
 </blockquote>
+<div class="note note-info">
+            <p><code>NOTE</code> It’s <em><u>hard to achieve</u></em> Logical data independence as the application programs are <em><u>heavily dependent</u></em> on the logical structure of data.</p>
+          </div>
 </li>
 </ul>
 <h3 id="Data-Models">Data Models</h3>
@@ -528,7 +530,7 @@ A collection of information that exists <u>over a long period of time</u>.</p>
 <li>
 <p>DDL statements are compiled, resulting in <u><em>a set of tables</em></u> stored in a special file called <strong>data dictionary.</strong></p>
 <blockquote>
-<p><code>Data dictionary</code> contains metadata about Database schema, Integrity constraints( Primary Key(祖码，可唯一标识实体的编码), Referential integrity) and Authorization.</p>
+<p><code>Data dictionary</code> contains metadata about Database schema, Integrity constraints( Primary Key(主码，可唯一标识实体的编码), Referential integrity) and Authorization.</p>
 </blockquote>
 </li>
 </ul>
@@ -551,15 +553,9 @@ A collection of information that exists <u>over a long period of time</u>.</p>
 <h3 id="Data-Control-Language-DCL">Data Control Language (DCL)</h3>
 <h3 id="SQL-Structured-Query-Language">SQL (Structured Query Language )</h3>
 <p>SQL = DDL+ DML+DCL ，the most widely used <u><em>non-procedural query</em></u> language. It’s <em><u>Set-based, declarative</u></em>, and procedural extensions are offered by different database systems.</p>
-<p><strong>usage</strong>:</p>
-<blockquote>
-<ol>
-<li>Use SQL directly in the <em><u>interactive environment</u></em>.<br>
-<code>e.g.</code> Query Analyzer of SQL Server; Sql Plus and Work Sheet of Oracle;mysql command line client of MySQL, etc.</li>
-<li>Use SQL by <em><u>host language through ODBC / JDBC</u></em>.</li>
-<li>Use SQL by <u><em>host language with embed-SQL</em></u>.</li>
-</ol>
-</blockquote>
+<div class="note note-success">
+            <p><strong>usage</strong>:</p><ol><li><p>Use SQL directly in the <em><u>interactive environment</u></em>.<br><code>e.g.</code> Query Analyzer of SQL Server; Sql Plus and Work Sheet of Oracle;mysql command line client of MySQL, etc.</p></li><li><p>Use SQL by <em><u>host language through ODBC / JDBC</u></em>.</p><blockquote><ul><li><p>The Open Database Connectivity (ODBC) standard defines application program interfaces for use with <em>C and several other languages</em>.</p></li><li><p>The Java Database Connectivity (JDBC) standard defines a corresponding interface for the <em>Java language</em>.</p></li></ul></blockquote></li><li><p>Use SQL by <u><em>host language with embed-SQL</em></u>.</p></li></ol>
+          </div>
 <h2 id="Database-Design">Database Design</h2>
 <h3 id="Steps">Steps</h3>
 <table>
@@ -788,7 +784,7 @@ A collection of information that exists <u>over a long period of time</u>.</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Database system C1 Intro into DB</div>
+      <div>DB C1 Intro into DB</div>
       <div>http://example.com/2023/02/27/DB-1/</div>
     </div>
     <div class="license-meta">
@@ -843,8 +839,8 @@ A collection of information that exists <u>over a long period of time</u>.</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/21/DS-04/" title="DS01 Trees">
-                        <span class="hidden-mobile">DS01 Trees</span>
+                      <a href="/2023/02/03/Scenario-1/" title="Scn | 树海深处的黑暗">
+                        <span class="hidden-mobile">Scn | 树海深处的黑暗</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
