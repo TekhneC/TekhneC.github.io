@@ -1,0 +1,913 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="history   Early times of neural electricit In 1868, Bernstein first recorded the electrical properties of a neuron, termed as action potential (AP). AP does not change over the distance, the shape kee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CN02 Biophysics of Neural Computation">
+<meta property="og:url" content="http://example.com/2023/03/14/CN-02/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="history   Early times of neural electricit In 1868, Bernstein first recorded the electrical properties of a neuron, termed as action potential (AP). AP does not change over the distance, the shape kee">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_1.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_2.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_3.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_4.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_5.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_6.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_7.png">
+<meta property="og:image" content="http://example.com/img/posts/CN/2_8.png">
+<meta property="article:published_time" content="2023-03-14T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-19T17:11:46.562Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/CN/2_1.png">
+  
+  
+  
+  <title>CN02 Biophysics of Neural Computation - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CN02 Biophysics of Neural Computation"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-14 12:00" pubdate>
+          March 14, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CN02 Biophysics of Neural Computation</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="history">history</h2>
+<ul>
+<li>
+<p><strong>Early times of neural electricit</strong><br>
+In 1868, Bernstein first recorded the electrical properties of a neuron, termed as <em><strong>action potential (AP)</strong></em>. <code>AP</code> <u><em>does not change over the distance</em></u>, the shape keeps the same:</p>
+<blockquote>
+<p>sharp rise,<br>
+rapidly decrease,<br>
+slowly recover to its normal value.</p>
+<p><img src="/img/posts/CN/2_1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</blockquote>
+</li>
+<li>
+<p><strong>20th century of the neural electrophysiology</strong></p>
+<p>In 1900s, Louis Lapicque found that <u><em>higher voltage, the quicker the neuron respond</em></u>, the lower voltage the slower respond. A mathematic equation about the neural electricity based on Ohm’s law and <u><em>the integrate-and-fire model</em></u> of the neuron was established.</p>
+<p>In 1920s, Edgar Adrian found <u><em>the “all-or-nothing” principle</em></u>: a neuron either emits an <code>action potential</code> or it does not.</p>
+<blockquote>
+<p>If <u><em>stronger stimulation</em></u> is applied: The neuron <u><em>emits more</em></u> of the exact the same <code>action potentials</code>.</p>
+<p>The neural system <u><em>cares more about quantity</em></u> than quality (analogy value).</p>
+</blockquote>
+</li>
+<li>
+<p><strong>21st century of neurophysiology</strong></p>
+<p>The rapid and precise signaling of synapses forms the basis for all information.</p>
+</li>
+</ul>
+<h2 id="Characteristics-of-Neural-Computation-Systems">Characteristics of Neural Computation Systems</h2>
+<ul>
+<li>基本计算单元：Neurons</li>
+<li>信号传递：Signaling is organized in the <u><em>same way</em></u> in all neurons</li>
+<li>神经元的多样性：Neurons differ most <u><em>at the molecular level</em></u></li>
+<li>神经可塑性：
+<ul>
+<li>Neuron <u><em>carefully selects to connect</em></u> each other;</li>
+<li>Neural connections <u><em>can be modified</em></u> by <u><em>experience</em></u></li>
+</ul>
+</li>
+</ul>
+<div class="note note-info">
+            <p><em><strong>Some Facts about Cortex(皮层)</strong></em></p><p>The neocortex is the seat of human  reasoning.</p><p>Its <u><em>30 billion</em></u> or so neurons,forming columns, are  organized in <u><em>six layers</em></u>. The layers of the column are  indicated by</p><blockquote><ul><li>L1, at the surface of the brain;</li><li>through L6, the deepest  cortical layer.</li><li>L5, where Cell bodies are.</li></ul></blockquote><p>Human Brain is of 78 billion neurons, having 1000 trillion <em><strong>synapse</strong></em>(突触). Human brain is of <u><em>low power</em></u>(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>20</mn><mi>w</mi><mi>a</mi><mi>t</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">\approx 20 watts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">a</span><span class="mord mathnormal">tt</span><span class="mord mathnormal">s</span></span></span></span>) in a <u><em>low volume</em></u>($ \approx 1.5L$).</p>
+          </div>
+<div class="note note-success">
+            <p><code>Example</code> <em><strong>Retinal Neurons</strong></em></p><p>a multi-layered network:</p><ul><li>Photoreceptors-bipolar cells-ganglion cells in feedforward pathway;</li><li>Horizontal cells and amacrine cells in lateral pathway.</li></ul><p>The <code>action potentials</code>  arising from the ganglion cells is the <u><em>sole source</em></u> of output from the retina to the rest of the brain.</p><p><em><strong>Olfactory Neuron</strong></em></p>
+          </div>
+<div class="note note-primary">
+            <ul><li>Neurons have different structures and functions</li><li>Neurons differ most at the molecular level</li><li>Signaling is organized in the same way</li><li>Neural connections can be modified by experience</li></ul>
+          </div>
+<h2 id="Neural-Morphology-神经元形态">Neural Morphology 神经元形态</h2>
+<p>The nervous system has <u><em>two classes of cells</em></u>: Neurons and glial cells.</p>
+<h3 id="Neurons">Neurons</h3>
+<blockquote>
+<p><em><strong>Neurons</strong></em> are <u><em>excitable cells</em></u> which can <u><em>transmit the impulses</em></u>, <u><em>signaling units</em></u> of the nervous system.</p>
+</blockquote>
+<h4 id="Classification">Classification</h4>
+<ul>
+<li>
+<p><strong>By Morphology</strong>:</p>
+<ol>
+<li>
+<p><em><strong>unipolar neurons</strong></em></p>
+<p><u><em>single nerve fiber</em></u> extends from cell body then <u><em>branching into</em></u> <u><em>one</em></u> <em><strong>axon(轴突)</strong></em> and <u><em>one</em></u> <em><strong>dendrite(树突)</strong></em>.</p>
+<p><img src="/img/posts/CN/2_2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p><em><strong>bipolar neurons</strong></em></p>
+<p><u><em>one <code>axon</code> and one <code>dendrite</code></em></u> from cell body; found in special sensory areas (eyes, ears, nose).</p>
+<p><img src="/img/posts/CN/2_3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p><em><strong>multipolar neurons</strong></em></p>
+<p><u><em>one <code>axon</code> and many <code>dendrites</code></em></u> from cell body; carrying information in <em><strong>cerebral cortex,CNS</strong></em>.</p>
+<p><img src="/img/posts/CN/2_4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>By Function</strong>:</p>
+<ol>
+<li><em><strong>sensory(感觉) neurons</strong></em></li>
+<li><em><strong>motor(运动) neurons</strong></em></li>
+<li><em><strong>inter(中间)neurons</strong></em></li>
+</ol>
+</li>
+<li>
+<p><strong>By Synapses</strong>:</p>
+<ol>
+<li>excitatory(兴奋) neurons</li>
+<li>inhibitory(抑制) neurons</li>
+</ol>
+</li>
+</ul>
+<p>There are also other classifications such as patterns of local and long-range connectivity, developmental history, gene expression profile, intrinsic  physiology, and strategies to encode information.</p>
+<h3 id="Glial-cells-胶质细胞">Glial cells(胶质细胞)</h3>
+<blockquote>
+<p><em><strong>Glial cells</strong></em> are <u><em>nonexcitable cells</em></u> which can <u><em>support nourishment and protect the neurons</em></u>.</p>
+</blockquote>
+<p><img src="/img/posts/CN/2_5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Why-different-types-of-neurons">Why different types of neurons?</h3>
+<p>To form neurons’ architecture.</p>
+<h2 id="Neural-Structure-神经元结构">Neural Structure  神经元结构</h2>
+<blockquote>
+<p>The neural structures decide the expression and transmission of neural signaling.</p>
+<p>Signaling of all neurons is organized in the same way.</p>
+</blockquote>
+<p><img src="/img/posts/CN/2_6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Dendrites">Dendrites</h3>
+<p>Input component, produces graded local signals.</p>
+<h3 id="Soma-胞体"><em>Soma</em>(胞体)</h3>
+<p>The integrative zone, makes the decision to generate an AP.</p>
+<h3 id="Axon">Axon</h3>
+<p>Conductive component, propagates an all-or-none AP .</p>
+<h3 id="Axon-end-轴突终端"><em>Axon-end</em> (轴突终端)</h3>
+<p>Output component, releases neurotransmitter, interact with other  neurons.</p>
+<blockquote>
+<p>Most neurons have the four functional regions to signal: <u><em>Input Component, Trigger or Integrative Component, Conductive Component, Output Component.</em></u></p>
+</blockquote>
+<h3 id="Neurons-differ-most-at-the-molecular-level">Neurons differ most at the molecular level</h3>
+<ul>
+<li>Different <u><em>molecular composites</em></u>: Distinctive proteins, enzymes, neurotransmitters, receptors</li>
+<li>Different <u><em>combination of ion channels</em></u>: Various thresholds, excitability, firing properties  (<em>Modeling studies only consider</em>)</li>
+</ul>
+<h3 id="Brain-Works-via-AP-or-Spikes">Brain Works via <code>AP</code> (or <code>Spikes</code>)</h3>
+<ol>
+<li>Direction (方向性, 沿轴突向下游传递)</li>
+<li>All-or-nothing (on-off) 神经脉冲</li>
+<li>Non-degrading(一致性, 沿轴突传递的活动强度一致)</li>
+</ol>
+<h2 id="Ion-channels-离子通道">Ion channels 离子通道</h2>
+<blockquote>
+<p><em><strong>Ion channels</strong></em> are <u><em>proteins</em></u> that <u><em>span the cell membrane</em></u> (跨膜蛋白质).</p>
+</blockquote>
+<div class="note note-info">
+            <p><em><strong>membrane: two-layers structure</strong></em></p><ul><li><p>two-layers structure consisting of well-insulated <em><strong>phospholipids(磷脂)</strong></em> which act as a barrier to <u><em>water-soluble molecules</em></u></p></li><li><p><em><strong>Resting membrane potential</strong></em>: ***Selective permeability(选择性渗透)***to some ions and the <em><strong>concentration gradients</strong></em> formed by <u><em>active pumping</em></u> lead to <u><em>a difference in electrical potential</em></u> across the membrane.</p><blockquote><p>The concentration gradient for K+ <u><em>forces K+ out of the cell</em></u>, developing a <u><em>net negative charge inside</em></u> the neuron.</p></blockquote></li></ul>
+          </div>
+<h3 id="Properties">Properties</h3>
+<ul>
+<li><u><em>Recognize and select</em></u> specific ions</li>
+<li><u><em>Open and close</em></u> in response to specific <u><em>electrical, mechanical and chemical</em></u> signals</li>
+<li><u><em>Conduct</em></u> ions through the membrane</li>
+</ul>
+<div class="note note-info">
+            <ol><li><u><em>Rapid signaling</em></u> in the neuron depends on ion channel.</li><li>Currents through single ion channels can be recorded.</li></ol>
+          </div>
+<h3 id="shared-characteristics">shared characteristics</h3>
+<ul>
+<li>
+<p>The flux of ions through a channel is <u><em>PASSIVE</em></u>, which meas no energy comsumption and <u><em>electrochemical driving force</em></u> - determined.</p>
+<div class="note note-info">
+            <p><em><strong>Electrochemical driving force</strong></em></p><p>Determined by two factors:</p><ul><li>The <u><em>electrical potential difference</em></u> across the membrane</li><li>The <u><em>concentration gradient</em></u> of the permeate ions across the  membrane</li></ul>
+          </div>
+</li>
+<li>
+<p>The opening and closing of ion channels involve <u><em>onformational(形态与结构) changes</em></u>. Three models of changes:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>localized</td>
+<td>conformational</td>
+<td>in one region</td>
+</tr>
+<tr>
+<td>generalized</td>
+<td>structural</td>
+<td>along the length</td>
+</tr>
+<tr>
+<td></td>
+<td>blocking particle swing into and out</td>
+<td>channel mouth</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="Four-types-of-ion-channels">Four types of ion channels</h3>
+<ul>
+<li><em><strong>Voltage-gating</strong></em> （电压门控）</li>
+<li><em><strong>Phosphorylation-gating</strong></em>（磷酸化门控）</li>
+<li><em><strong>Ligand-gating</strong></em> （配合基门控）</li>
+<li><em><strong>Stretch/pressure-gating</strong></em> （机械门控）</li>
+</ul>
+<p><img src="/img/posts/CN/2_7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Electrical-properties-and-Membrane-Potential-电学特性及膜电位">Electrical properties and Membrane Potential 电学特性及膜电位</h2>
+<h3 id="Membrane-potential">Membrane potential</h3>
+<blockquote>
+<p><em><strong>Membrane potential</strong></em> is a difference of electrical potential across the membrane.</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>V</mi><mi>m</mi></msub><mo>=</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_m = V_{in} - V_{out}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<h4 id="Cell-Polarization">Cell Polarization</h4>
+<ul>
+<li><em><strong>depolartization</strong></em>(去极化）:  a less negative <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">V_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li><em><strong>Hyperpolarization</strong></em>(超极化): a more negative <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">V_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<h4 id="Resting-membrane-potential"><code>Resting membrane potential</code></h4>
+<blockquote>
+<p><em><strong>Resting membrane potential</strong></em> is the <code>membrane potential</code> of a cell <u><em>at rest</em></u> without any stimulus.</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>V</mi><mi>r</mi></msub><mo>=</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo><mover><mo><mo>=</mo></mo><mstyle mathsize="0.9em"><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow></mstyle></mover></mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_r = V_{in} - V_{out} \overset{\small{V_{out} = 0}}{=} V_{in}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.4779em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mop op-limits"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.3279em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">=</span></span></span><span style="top:-3.6129em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord sizing reset-size3 size5"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2601em;"><span style="top:-2.45em;margin-left:-0.2222em;margin-right:0.0556em;"><span class="pstrut" style="height:2.6em;"></span><span class="sizing reset-size5 size2 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<ul>
+<li>results from <u><em>the separation of charges</em></u> across the cell membrane (positive ~ negative);</li>
+<li>determined by <u><em>resting ion channels</em></u>.</li>
+</ul>
+<ol>
+<li>Unequal distribution of ions inside and outside</li>
+<li>The permeabilities of ion channals: open/close, selectivity</li>
+</ol>
+<h4 id="Equilibrium-potential">Equilibrium potential</h4>
+<blockquote>
+<p><em><strong>Equilibrium potential</strong></em> is the membrane potential for <u><em>one single ion</em></u> when its <u><em>chemical and electrical gradients</em></u> are equal in magnitude.</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>V</mi><mrow><mi>E</mi><mi>q</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>R</mi><mi>T</mi></mrow><mrow><mi>z</mi><mi>F</mi></mrow></mfrac><mi>ln</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo stretchy="false">[</mo><mi>X</mi><msub><mo stretchy="false">]</mo><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub></mrow><mrow><mo stretchy="false">[</mo><mi>X</mi><msub><mo stretchy="false">]</mo><mrow><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">V_{Eq} = \frac{RT}{zF}\ln{(\frac{[X]_{out}}{[X]_{in}})}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">Eq</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">RT</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></span></p>
+</blockquote>
+<h4 id="Electrogenic-pumps-电力泵">Electrogenic pumps 电力泵</h4>
+<p>Here is the workflow of Sodium – Potassium pump.</p>
+<p><img src="/img/posts/CN/2_8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Equivalent-circuit">Equivalent circuit</h4>
+<p>The <u><em>functional properties</em></u> including Membrane and ion channels of the neuron can be represented in an  electrical equivalent circuit.</p>
+<h3 id="Electrical-properties">Electrical properties</h3>
+<h4 id="Passive">Passive</h4>
+<blockquote>
+<p><em><strong>Passive properties</strong></em> refer to the <u><em>capacitative and resistive</em></u> aspects inherent in neuronal membrane.</p>
+</blockquote>
+<ul>
+<li>The <u><em>resting membrane resistance</em></u></li>
+<li>The membrane <u><em>capacitance</em></u></li>
+<li>The intracellular axial resistance <u><em>along axons and dendrites</em></u></li>
+</ul>
+<h4 id="Active">Active</h4>
+<blockquote>
+<p><em><strong>Active properties</strong></em> mean that the <u><em>electrical potentials</em></u> across the plasma membrane may be affected by the <u><em>activation of voltage, ligand(配对基), or second messenger(第二信使) gated transmembrane ionic channels.</em></u></p>
+</blockquote>
+<p>神经递质 （Neurotransmitter</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AI/Cognitive-Neuroscience/" class="category-chain-item">Cognitive Neuroscience</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CN02 Biophysics of Neural Computation</div>
+      <div>http://example.com/2023/03/14/CN-02/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 14, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/14/OOP-2/" title="OOP C2 Class">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OOP C2 Class</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/14/Course-Info/" title="Course Info">
+                        <span class="hidden-mobile">Course Info</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

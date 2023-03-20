@@ -1,0 +1,888 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Course Info 人工智能： 机器能展示的智能。实现人工智能的途径主要包括符号主义和亚符号主义。     符号主义 亚符号主义     特点 使用符号语言表示知识 基于统计学理论    通过符号演算进行判断推理 从数据中获得模式和规律   对象 认知智能 感知智能   优势 通用性、可解释性 不需要显式知识    人工智能逻辑研究人工智能的逻辑基学础，其核心是知识的表示和推理。推理研究一组命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIL01 Intro">
+<meta property="og:url" content="http://example.com/2023/03/03/AIL-1/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Course Info 人工智能： 机器能展示的智能。实现人工智能的途径主要包括符号主义和亚符号主义。     符号主义 亚符号主义     特点 使用符号语言表示知识 基于统计学理论    通过符号演算进行判断推理 从数据中获得模式和规律   对象 认知智能 感知智能   优势 通用性、可解释性 不需要显式知识    人工智能逻辑研究人工智能的逻辑基学础，其核心是知识的表示和推理。推理研究一组命">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/posts/AIL/1_1.png">
+<meta property="article:published_time" content="2023-03-03T02:09:39.000Z">
+<meta property="article:modified_time" content="2023-03-17T04:24:55.901Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/AIL/1_1.png">
+  
+  
+  
+  <title>AIL01 Intro - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AIL01 Intro"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-03 10:09" pubdate>
+          March 3, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AIL01 Intro</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="Course-Info">Course Info</h3>
+<p><strong>人工智能</strong>： 机器能展示的智能。实现人工智能的途径主要包括符号主义和亚符号主义。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>符号主义</th>
+<th>亚符号主义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特点</td>
+<td>使用符号语言表示知识</td>
+<td>基于统计学理论</td>
+</tr>
+<tr>
+<td></td>
+<td>通过符号演算进行判断推理</td>
+<td>从数据中获得模式和规律</td>
+</tr>
+<tr>
+<td>对象</td>
+<td>认知智能</td>
+<td>感知智能</td>
+</tr>
+<tr>
+<td>优势</td>
+<td>通用性、可解释性</td>
+<td>不需要显式知识</td>
+</tr>
+</tbody>
+</table>
+<p><strong>人工智能逻辑</strong>研究人工智能的逻辑基学础，其核心是知识的表示和推理。<strong>推理</strong>研究一组命题（<strong>前提</strong>）和一个新命题（<strong>结论</strong>）之间的关系，称为<strong>推理关系</strong>。前提、结论和推理关系的三元组被称为<strong>论证<em>argument</em></strong>。</p>
+<p><strong>命题</strong>：可以明确判断对错的陈述句。</p>
+<h2 id="推理的类型">推理的类型</h2>
+<h3 id="演绎推理deduction">演绎推理<em>deduction</em></h3>
+<p>经典演绎推理包括命题逻辑和一阶逻辑。</p>
+<ul>
+<li>
+<p><em><strong>演绎论证</strong></em>是<strong>有效的</strong>当且仅当 <u>若前提为真则结论也必然为真</u>。</p>
+</li>
+<li>
+<p><em><strong>论证形式</strong></em>是<strong>有效的</strong>当且仅当 <u>对变项的 <em>任意</em> 解释，不会出现前提为真而结论为假</u>。演绎论证的有效性取决于各个命题的形式，与命题的真假无关。称论证形式有效的演绎推理是有效的/具有正确性。</p>
+<blockquote>
+<p><code>e.g.</code></p>
+<ol>
+<li>
+<p>有效的三段论</p>
+<blockquote>
+<ul>
+<li>所有M是P。</li>
+<li>所有S是M。</li>
+<li>所以，所有S是M。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>无效的形式</p>
+<blockquote>
+<ul>
+<li>所有的A满足B。</li>
+<li>所有的C不是A。</li>
+<li>所以，所有的C不满足B。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>在形式有效性的刻画中，各个命题必须表示确定、完备的知识。如果知识是<em><strong>不确定</strong></em>的或<em><strong>不完备</strong></em>的，则无法套用。</p>
+<ul>
+<li>
+<p><em><strong>不确定</strong></em>信息：不知道确切真值的信息。大多数信息在某种程度上是不确定的。</p>
+</li>
+<li>
+<p><strong>不完备</strong>信息：在某个时刻主体不知道当前环境中的所有信息。</p>
+</li>
+</ul>
+<p><code>e.g.</code></p>
+<blockquote>
+<ul>
+<li>鸟会飞。 <code>鸟没有包含所有的鸟</code></li>
+<li>A是鸟。</li>
+<li>所以A会飞。</li>
+</ul>
+</blockquote>
+<p>在演绎推理的基础上加上<em><strong>正常性假设</strong></em>或<em><strong>可废止规则</strong></em>以对不完备的知识进行推理。即走向非单调推理。</p>
+<ul>
+<li>
+<p><em><strong>正常性假设</strong></em>：在没有知识可证明不正常则可以得到<u><em>暂时性结论</em></u>。</p>
+<p><code>e.g.</code></p>
+<blockquote>
+<ul>
+<li>
+<p>鸟会飞，除非可以证明它不正常。</p>
+</li>
+<li>
+<p>A是鸟。</p>
+</li>
+<li>
+<p>所以A会飞。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><em><strong>可废止规则</strong></em>：在基于规则的系统中包含着<u>硬性规则（演绎论证）</u>和*<u>可废止规则（可废止论证）</u>*。每条规则包括：</p>
+<ul>
+<li>规则头 - 论证结论</li>
+<li>规则身体 - 论证前提</li>
+<li>规则符号 - 推理关系</li>
+</ul>
+<p>对可废止规则，当身体 / 前提为真，头 / 结论 <em><strong>通常</strong></em>为真，但可以被其他更优秀的规则替代，该规则废止。</p>
+<p><code>e.g.</code></p>
+<blockquote>
+<ul>
+<li>
+<p>典型地，鸟会飞。</p>
+</li>
+<li>
+<p>A是鸟。</p>
+</li>
+<li>
+<p>所以，A大概会飞。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="归纳推理">归纳推理</h3>
+<p>从观察现象到一般原理。所得到的结论不一定为真。</p>
+<p><code>e.g.</code></p>
+<blockquote>
+<ul>
+<li>这些豆子来自这个袋子。</li>
+<li>这些豆子是白色的。</li>
+<li>因此，来自这个袋子的豆子都是白色的。</li>
+</ul>
+</blockquote>
+<h4 id="Q-如何评价归纳推理和演绎推理？">Q 如何评价归纳推理和演绎推理？</h4>
+<h3 id="溯因推理">溯因推理</h3>
+<p>从观察现象到最佳解释。最佳解释不一定为真。</p>
+<blockquote>
+<p>Q 溯因推理与因果推理？</p>
+</blockquote>
+<h3 id="论证层面的推理">论证层面的推理</h3>
+<p>通过分析论证方面的 <em><strong>攻击关系</strong></em> 和 <em><strong>支持关系</strong></em>，可以确定对一个论证采取 接受 / 拒绝 / 不做论证的态度。</p>
+<h2 id="AI主要研究方向">AI主要研究方向</h2>
+<p>人工智能逻辑研究*<u>逻辑语言</u>*和<u><em>推理规则</em></u>；<u><em>语言表示</em></u>（如一阶逻辑语言、基于规则的语言）、<u><em>语法规则</em></u>（将关系/连接表示为公式）、<u><em>语义模型</em></u>（公式的解释）。</p>
+<h3 id="完备知识与演绎逻辑">完备知识与演绎逻辑</h3>
+<ul>
+<li><strong>命题逻辑</strong>：简单（原子）命题，复合命题及其之间的推导关系。</li>
+<li><strong>一阶逻辑</strong>：含一阶谓词、量词的命题及其推导关系。表达力较强，但计算复杂度较高。</li>
+<li><strong>描述逻辑</strong>：在Semantic Web和知识图谱的背景下，在一阶逻辑中表达能力较低、可计算性较好的刻画概念（体系）、个体及其关系的片段（simplified）。</li>
+</ul>
+<h3 id="不完备知识与非单调逻辑">不完备知识与非单调逻辑</h3>
+<p>一阶经典逻辑无法支撑不完备知识下的逻辑语言和推理机制。</p>
+<blockquote>
+<p><em><strong>框架问题 frame problem</strong></em>：不完备的知识往往因为例外的存在而无法确定真假。存在例外的知识被称为<em><strong>常识</strong></em>。表保证命题P结论为真的前提往往是一个复杂的命题组，包括P的条件和一般情况下均成立的命题组，这些前提条件被称为<em><strong>框架公理</strong></em>。<u><em>框架公理数量过多、难以穷举</em></u> 的情况被称为<code>框架问题</code>。</p>
+<p>一个行动带来的改变、维持的不变和相关性难以确定。</p>
+</blockquote>
+<p>为解决框架问题而扩展一阶逻辑。</p>
+<h4 id="正常性假设和缺省规则">正常性假设和缺省规则</h4>
+<p>一条缺省规则的组成如下：</p>
+<blockquote>
+<p><code>前提条件：辩护条件 / 结论</code></p>
+</blockquote>
+<p>给定一条缺省规则，则结论可以被推出，当</p>
+<ul>
+<li>前提条件<strong>可证</strong></li>
+<li>辩护条件的<strong>反面不可证</strong>。</li>
+</ul>
+<div class="note note-warning">
+            <p>反面不可证与可证并不等价。</p>
+          </div>
+<blockquote>
+<p><code>e.g</code></p>
+<p><code>Normal Form</code> 转动点火钥匙： 发动机启动 / 发动机启动</p>
+<p>足球赛被安排了：当天未下雪 / 球赛如期举行</p>
+</blockquote>
+<p>由缺省规则推出的结论是暂时的，可能被补充的新信息推翻。辩护条件的选择决定了该缺省规则的表达能力。通过缺省规则，可定义一些命题的不可证明性和特定命题的可证明性。</p>
+<div class="note note-info">
+            <ul><li><em><strong>非单调逻辑</strong></em>：原有结论允许因为新信息的出现而推翻。</li><li>单调性与可靠性息息相关。单调往往意味着可靠。</li></ul>
+          </div>
+<h4 id="可废止规则-defeasible-rule">可废止规则 defeasible rule</h4>
+<p>通常表达</p>
+<blockquote>
+<p>典型地 / 在一般情况下， 如果A，那么B。</p>
+</blockquote>
+<p>当A成立时，有较充分的理由相信B成立，但允许存在<code>例外</code>。但这种例外并未被明确表示出来，与<code>缺省规则</code>中可由<code>辩护条件</code>明确表示的方法不同。</p>
+<div class="note note-info">
+            <ul><li><p><em><strong>缺省规则</strong></em>：使用常识对前提集进行扩展，但<u><em>推理规则</em></u>仍然是可靠的演绎逻辑。</p><p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mtext>前提</mtext><mo separator="true">,</mo><mtext>正常性假设</mtext></mrow><mo>→</mo><mtext>结论</mtext></mrow><annotation encoding="application/x-tex">{前提,正常性假设} \rightarrow 结论</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord cjk_fallback">前提</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord cjk_fallback">正常性假设</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">结论</span></span></span></span></span></p></li><li><p><em><strong>可废止规则</strong></em> ： 对推理规则进行拓展。</p><p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>前提</mtext><mo>⇒</mo><mtext>结论</mtext></mrow><annotation encoding="application/x-tex">前提 \Rightarrow 结论</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">前提</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">结论</span></span></span></span></span></p></li><li></li></ul>
+          </div>
+<h3 id="概率论与归纳逻辑">概率论与归纳逻辑</h3>
+<p>归纳逻辑是证据支持的逻辑，前提的真为结论的真提供一定程度的支持，而不能确保结论的真。</p>
+<p>归纳的<em><strong>支持程度</strong></em> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>： 在逻辑上使得前提为真的可能的世界状态中，结论必须（只要）在比例<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 上为真。</p>
+<div class="note note-info">
+            <p>使用概率论的思想分析<code>归纳论证/有风险论证</code>。</p><ul><li>对于完备知识，可以使用<code>客观概率</code>进行衡量；</li><li>对于不完备知识，往往基于<code>主观概率</code>进行衡量。</li></ul>
+          </div>
+<h3 id="基于论证的逻辑">基于论证的逻辑</h3>
+<blockquote>
+<p><code>global logic</code> 和 <code>local logic</code> 在<code>local logic</code>无法推理时，可考虑引入其他环境中的条件。</p>
+</blockquote>
+<p>根据论证之间的<code>冲突</code>和<code>支持</code>关系评估论证的可接受性。</p>
+<p><strong>基于论证的推理</strong>：</p>
+<ul>
+<li>
+<p>表达<code>支持</code>和<code>冲突</code>关系</p>
+</li>
+<li>
+<p>建立理性评价原则以覆盖不一致情境</p>
+</li>
+<li>
+<p><em><strong>形式辩论推理</strong></em>：包括<em><strong>抽象论辩</strong></em>和<em><strong>结构化论辩</strong></em>。</p>
+<p><code>抽象论辩</code> 从相互<code>冲突</code>的论证中选择可接受的论证子集，如A1，A2，A3。</p>
+<p><code>结构化论辩</code> 构架论证并定义论证之间的<code>冲突</code>和<code>击败</code>关系以使推理结果的逻辑特性良好，如A3攻击A2，A1和A2相互攻击。</p>
+</li>
+</ul>
+<p><img src="/img/posts/AIL/1_1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/AI/Logic/" class="category-chain-item">Logic</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AIL01 Intro</div>
+      <div>http://example.com/2023/03/03/AIL-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 3, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/05/CO-0,1/" title="CO0,1 Introduction">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CO0,1 Introduction</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/02/HDLbits/" title="HDLbits Problem set">
+                        <span class="hidden-mobile">HDLbits Problem set</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
