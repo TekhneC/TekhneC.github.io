@@ -16,20 +16,24 @@
   <meta name="author" content="Tekhne Chen">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="CN 03">
-<meta property="og:url" content="http://example.com/2023/03/21/CN-03/index.html">
+    <meta name="description" content="Overview of  SQL History  SQL-86: the first standard by ANSI and ISO standard. SQL-89: minor revision, an extended standard. SQL-92: currently supported by most commercial RDBMS. SQL-99: a major exten">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB C3 Basic SQL">
+<meta property="og:url" content="http://example.com/2023/03/25/DB-03/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Overview of  SQL History  SQL-86: the first standard by ANSI and ISO standard. SQL-89: minor revision, an extended standard. SQL-92: currently supported by most commercial RDBMS. SQL-99: a major exten">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-21T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-21T01:20:18.665Z">
+<meta property="og:image" content="http://example.com/img/posts/DB/3_1.png">
+<meta property="article:published_time" content="2023-03-25T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-27T14:12:19.809Z">
 <meta property="article:author" content="Tekhne Chen">
-<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Database">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/DB/3_1.png">
   
   
   
-  <title>CN 03 - Tek&#39;s Notes</title>
+  <title>DB C3 Basic SQL - Tek&#39;s Notes</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CN 03"></span>
+            <span id="subtitle" data-typed-text="DB C3 Basic SQL"></span>
           
         </div>
 
@@ -211,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-21 12:00" pubdate>
-          March 21, 2023 pm
+        <time datetime="2023-03-25 18:00" pubdate>
+          March 25, 2023 pm
         </time>
       </span>
     
@@ -223,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          2.6k words
         
       </span>
     
@@ -234,7 +238,7 @@
         
         
         
-          1 mins
+          22 mins
         
       </span>
     
@@ -272,12 +276,112 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CN 03</h1>
+            <h1 style="display: none">DB C3 Basic SQL</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h3 id="Overview-of-SQL">Overview of  SQL</h3>
+<h4 id="History">History</h4>
+<ul>
+<li><em>SQL-86</em>: the first standard by ANSI and ISO standard.</li>
+<li><em>SQL-89</em>: minor revision, an extended standard.</li>
+<li><em>SQL-92</em>: currently supported by most commercial RDBMS.</li>
+<li><em>SQL-99</em>: a major extension of SQL-92, partly supported now.</li>
+<li>following version: SQL:2003, SQL:2006, SQL:2008, SQL:2011, and most recently SQL:2016.</li>
+</ul>
+<h4 id="SQL-Conformance-levels">SQL Conformance levels</h4>
+<ul>
+<li>Entry level SQL (入门级)</li>
+<li>Transitional SQL (过渡级)</li>
+<li>Intermediate SQL (中间级)</li>
+<li>Full SQL (完全级)</li>
+</ul>
+<blockquote>
+<p>Now no DBMS products achieve Full SQL level.</p>
+</blockquote>
+<h4 id="SQL-Parts">SQL Parts</h4>
+<h5 id="Data-Definition-Language-DDL">Data-Definition Language, DDL</h5>
+<table>
+<thead>
+<tr>
+<th>Create</th>
+<th>drop</th>
+<th>alter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>table</td>
+<td>table</td>
+<td>table</td>
+</tr>
+<tr>
+<td>index</td>
+<td>index</td>
+<td></td>
+</tr>
+<tr>
+<td>view</td>
+<td>view</td>
+<td></td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>trigger</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em><strong>Schema</strong></em>: Commands for <u><em>defining</em></u> relation schemas, <em><u>deleting</u></em> relations, and <u><em>modifying</em></u> relation schemas.</li>
+<li><em><strong>Integrity</strong></em>: Commands for specifying <u><em>integrity constraints</em></u> that the data stored in the database must satisfy. Updates that violate integrity constraints are disallowed.</li>
+<li><em><strong>View definition</strong></em>: Commands for defining views.</li>
+</ul>
+<h5 id="Data-Manipulation-Language-DML">Data-Manipulation Language ,DML</h5>
+<ul>
+<li>
+<p>Select … From</p>
+</li>
+<li>
+<p>Insert, Delete,Update</p>
+</li>
+</ul>
+<p>Commands to <u><em>query information</em></u> from the database and to <u><em>insert</em></u> tuples into, <em><u>delete</u></em> tuples from, and <em><u>modify</u></em> tuples in the database.</p>
+<h5 id="Data-Control-Language-DCL">Data-Control Language (DCL)</h5>
+<ul>
+<li>Grant, Revoke</li>
+</ul>
+<p>Commands for <u><em>specifying access rights</em></u> to relations and views.</p>
+<h5 id="Other-Parts">Other Parts</h5>
+<ul>
+<li><em><strong>Transaction control</strong></em>: SQL includes commands for <u><em>specifying the beginning and end points of transactions</em></u>.</li>
+<li><em><strong>Embedded SQL and dynamic SQL</strong></em>. Embedded and dynamic SQL define how SQL statements can be embedded within general-purpose programming languages, such as C, C++, and Java.</li>
+</ul>
+<div class="note note-success">
+            <p>Here shows the <em><strong>banking example</strong></em> through the chapter.</p><blockquote><p><em>branch</em>(<em>branch-name</em>, <em>branch-city</em>, <em>assets</em>)</p><p><em>customer</em>(<em>customer-name</em>, <em>customer-street</em>, <em>customer-city</em>)</p><p><em>account</em>(<em>account-number</em>, <em>branch-name</em>, <em>balance</em>)</p><p><em>loan</em>(<em>loan-number</em>, <em>branch-name</em>, <em>amount</em>)</p><p><em>depositor</em>(<em>customer-name</em>, <em>account-number</em>)</p><p><em>borrower</em>(<em>customer-name</em>, <em>loan-number</em>)</p></blockquote><p><img src="/img/posts/DB/3_1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+          </div>
+<h2 id="Data-Definition-Language">Data Definition Language</h2>
+<h3 id="SQL-Data-Definition-Domain-types">SQL Data Definition / Domain types</h3>
+<p>char(n): A fixed-length character string with user-specified length n. The full form, character, can be used instead.<br>
+• varchar(n): A variable-length character string with user-specified maximum length n.The full form, character varying,isequivalent.<br>
+• int: An integer (a finite subset of the integers that is machine dependent). The full form, integer, is equivalent.<br>
+• smallint: A small integer (a machine-dependent subset of the integer type). • numeric(p, d): A fixed-point number with user-specified precision. The number consists ofp digits (plus a sign), and d of the p digits are to the right of the decimal point. Thus, numeric(3,1) allows 44.5 to be stored exactly, but neither 444.5nor 0.32 can be stored exactly in a field of this type.<br>
+• real, double precision: Floating-point and double-precision floating-point numbers with machine-dependent precision.<br>
+• float(n): A floating-point number with precision of at least n digits.</p>
+<p>qCreate table</p>
+<p>qDrop and alter table</p>
+<p>qCreate index</p>
+<h2 id="Basic-Structure">Basic Structure</h2>
+<h2 id="Set-Operations">Set Operations</h2>
+<h2 id="Aggregate-Functions">Aggregate Functions</h2>
+<h2 id="Null-Values">Null Values</h2>
+<h2 id="Nested-Subqueries">Nested Subqueries</h2>
+<h2 id="Views">Views</h2>
+<h2 id="Derived-Relations">Derived Relations</h2>
+<h2 id="Modification-of-the-Database">Modification of the Database</h2>
+<h2 id="Joined-Relations">Joined Relations</h2>
+
                 
               </div>
             
@@ -295,15 +399,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  <a href="/categories/Database-system/" class="category-chain-item">Database system</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/AI/Cognitive-Neuroscience/" class="category-chain-item">Cognitive Neuroscience</a>
-  
-  
-
   
 
       </span>
@@ -317,7 +414,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/AI/">#AI</a>
+        <a href="/tags/Database/">#Database</a>
       
     </div>
   
@@ -329,8 +426,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CN 03</div>
-      <div>http://example.com/2023/03/21/CN-03/</div>
+      <div>DB C3 Basic SQL</div>
+      <div>http://example.com/2023/03/25/DB-03/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +439,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 21, 2023</div>
+          <div>March 25, 2023</div>
         </div>
       
       
@@ -374,9 +471,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/21/DS-03/" title="DS-03 Inverted File Index">
+                      <a href="/2023/03/27/DB-04/" title="DB C4 Advanced SQL">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DS-03 Inverted File Index</span>
+                        <span class="hidden-mobile">DB C4 Advanced SQL</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -384,8 +481,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/21/OOP-3/" title="OOP C3 Container">
-                        <span class="hidden-mobile">OOP C3 Container</span>
+                      <a href="/2023/03/24/AIL-3/" title="AIL03 命题逻辑">
+                        <span class="hidden-mobile">AIL03 命题逻辑</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

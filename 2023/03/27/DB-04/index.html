@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SQL Data Types and Schemas  ref P153-164  There are additional built-in data types and basic user-defined types supported by SQL. Date and Time Types   date: A calendar date containing a (four-digit)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB C4 Advanced SQL">
+<meta property="og:url" content="http://example.com/2023/03/27/DB-04/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="SQL Data Types and Schemas  ref P153-164  There are additional built-in data types and basic user-defined types supported by SQL. Date and Time Types   date: A calendar date containing a (four-digit)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-27T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-27T08:02:10.826Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Database">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>DB C4 Advanced SQL - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DB C4 Advanced SQL"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-27 18:00" pubdate>
+          March 27, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          52 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DB C4 Advanced SQL</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="SQL-Data-Types-and-Schemas">SQL Data Types and Schemas</h2>
+<blockquote>
+<p><code>ref</code> P153-164</p>
+</blockquote>
+<p>There are <em><strong>additional built-in data types</strong></em> and <em><strong>basic user-defined types</strong></em> supported by SQL.</p>
+<h4 id="Date-and-Time-Types">Date and Time Types</h4>
+<ul>
+<li>
+<p><em><strong>date</strong></em>: A calendar date containing a (four-digit) <u><em>year, month, and day of the month</em></u>.</p>
+</li>
+<li>
+<p><em><strong>time</strong></em>: The time of day, in hours, minutes, and seconds. A variant, time§, can be used to specify the number of fractional digits for seconds (the default being 0). It is also possible to store time-zone information along with the time by specifying time with timezone.</p>
+</li>
+<li>
+<p><em><strong>timestamp</strong></em>: A combination of date and time.Avariant, timestamp§, can be used to specify the number of fractional digits for seconds (the default here being 6). Time-zone information is also stored if with timezone is specified.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-type">date</span> <span class="hljs-string">&#x27;2018-04-25&#x27;</span> <br><span class="hljs-type">time</span> <span class="hljs-string">&#x27;09:30:00&#x27;</span><br><span class="hljs-type">timestamp</span> <span class="hljs-string">&#x27;2018-04-25 10:29:01.45&#x27;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Large-object-types">Large-object types</h4>
+<p><em><strong>Large objects</strong></em> (e.g., photos, videos, CAD files, etc.) are stored as a <u><em>large object</em></u>.</p>
+<ul>
+<li><em><strong>blob</strong></em>: <em>binary large object</em>, a large collection of uninterpreted binary data (whose interpretation is left to an application outside of the database system)</li>
+<li><em><strong>clob</strong></em>: <em>character large object</em> , a large collection of character data</li>
+</ul>
+<p>When a query returns a large object, <u><em>a pointer is returned rather than the large object itself.</em></u></p>
+<h4 id="User-Defined-Types">User-Defined Types</h4>
+<ul>
+<li>
+<p><em><strong>Structured data types</strong></em></p>
+</li>
+<li>
+<p><em><strong>Distinct types</strong></em></p>
+</li>
+</ul>
+<div class="note note-success">
+            <p><em><strong>domain</strong></em></p><p><code>c.f</code> <em><strong>domain vs. type</strong></em></p><p>Domain is</p><ul><li>Constraints</li><li>not strongly typed</li></ul>
+          </div> 
+<h2 id="Integrity-Constraints">Integrity Constraints</h2>
+<p><em><strong>Integrity constraints</strong></em> guard against <em>accidental damage</em> to the database, by ensuring <u><em>that authorized changes</em></u> to the database <u><em>do not result in a loss of data consistency</em></u>.</p>
+<p><strong>实体完整性</strong>、<strong>参照完整性</strong>和<strong>用户定义的完整性</strong></p>
+<ul>
+<li><em><strong>single relation</strong></em> :  Not null, Primary key, Unique, Check (<em>P</em>) where <em>P</em> is a predicate</li>
+</ul>
+<h3 id="Domain-Constraints">Domain Constraints</h3>
+<p>The check clause in SQL-92 permits domains to be restricted.</p>
+<p>The clause constraint <em>value-test</em> is optional;</p>
+<p>useful to indicate which constraint an update violated.</p>
+<h3 id="Referential-Integrity">Referential Integrity</h3>
+<p>Let <em>r</em>1(<em>R</em>1) and <em>r</em>2(<em>R</em>2) be the relations with primary keys <em>K</em>1 and <em>K</em>2, respectively.</p>
+<ul>
+<li>The subset a of <em>R**2</em> is a <em>foreign key</em> referencing <em>K</em>1 in relation <em>r</em>1, if for every <em>t</em>2 in <em>r</em>2 there must be a tuple <em>t</em>1 in <em>r</em>1 such that <em>t</em>1[<em>K</em>1] = <em>t</em>2[a].</li>
+<li>Referential integrity constraint also called subset dependency, since its can be written as</li>
+</ul>
+<h4 id="Insert">Insert</h4>
+<p>If a tuple <em>t</em>2 is inserted into <em>r</em>2, the system must ensure that there is a tuple <em>t</em>1 in <em>r</em>1 such that <em>t</em>1[<em>K</em>] = <em>t</em>2[a]</p>
+<h4 id="Delete">Delete</h4>
+<p>If a tuple <em>t</em>1 is deleted from <em>r</em>1, the system must compute the set of tuples in <em>r</em>2 that reference <em>t</em>1:</p>
+<p>If this set is not empty, then</p>
+<p>Either the delete command is rejected as an error,</p>
+<p>or the tuples in <em>t</em>2 that references <em>t</em>1 must themselves be deleted (cascading deletions are possible).</p>
+<h4 id="Update">Update</h4>
+<p>Similar to Insert and Delete, requires check.</p>
+<div class="note note-info">
+            <p>Primary, candidate keys, and foreign keys can be specified as part of the SQL create table statement:</p><p>The primary key clause lists attributes that comprise the primary key.</p><p>The unique key clause lists attributes that comprise a candidate key.</p><p>The foreign key clause lists the attributes that comprise the foreign key, and the name of the relation referenced by the foreign key.</p>
+          </div>
+<p>By default, a foreign key references the primary key attributes of the referenced table:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Create</span> <span class="hljs-keyword">table</span> account <br>	(account<span class="hljs-operator">-</span>number		<span class="hljs-type">char</span>(<span class="hljs-number">10</span>), <br>	 branch<span class="hljs-operator">-</span>name		<span class="hljs-type">char</span>(<span class="hljs-number">15</span>), <br>	 balance			<span class="hljs-type">integer</span>, <br>	 <span class="hljs-keyword">primary</span> key (account<span class="hljs-operator">-</span>number), <br>	 <span class="hljs-keyword">foreign</span> key (branch<span class="hljs-operator">-</span>name) <span class="hljs-keyword">references</span> branch); <br><br><span class="hljs-keyword">Create</span> <span class="hljs-keyword">table</span> depositor <br>	(customer<span class="hljs-operator">-</span>name		<span class="hljs-type">char</span>(<span class="hljs-number">20</span>), <br>	 account<span class="hljs-operator">-</span>number		<span class="hljs-type">char</span>(<span class="hljs-number">10</span>), <br>	 <span class="hljs-keyword">primary</span> key (customer<span class="hljs-operator">-</span>name, account<span class="hljs-operator">-</span>number), <br>	 <span class="hljs-keyword">foreign</span> key (account<span class="hljs-operator">-</span>number) <span class="hljs-keyword">references</span> account, <br>	 <span class="hljs-keyword">foreign</span> key (customer<span class="hljs-operator">-</span>name) <span class="hljs-keyword">references</span> customer(customer<span class="hljs-operator">-</span>name)); <br></code></pre></td></tr></table></figure>
+<h4 id="Cascading-Actions-in-SQL">Cascading Actions in SQL</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Create</span> <span class="hljs-keyword">table</span> account ( <br>    ... <br>	<span class="hljs-keyword">foreign</span> key (branch<span class="hljs-operator">-</span>name) <span class="hljs-keyword">references</span> branch <br>		[ <span class="hljs-keyword">on</span> <span class="hljs-keyword">delete</span> cascade] <br>		[ <span class="hljs-keyword">on</span> <span class="hljs-keyword">update</span> cascade ] <br>		... ); <br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>If there is a chain of foreign-key dependencies across multiple relations, with on delete cascade specified for each dependency, <u><em>a deletion or update at one end of the chain can propagate across the entire chain.</em></u></li>
+<li>But, if a cascading update or delete causes a constraint violation that cannot be handled by a further cascading operation, the system aborts the transaction. All the changes caused by the transaction and its cascading actions are undone.</li>
+<li>Referential integrity is only checked at the end of a transaction !! Intermediate steps are allowed to violate referential integrity provided later steps remove the violation by the end of the transaction.</li>
+</ul>
+<h3 id="Assertions">Assertions</h3>
+<p>An <em><strong>assertion</strong></em> is a <u><em>predicate</em></u> expressing a condition that we wish the database always to satisfy for <u><em>complex check condition on several relations</em></u>!</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> ASSERTION <span class="hljs-operator">&lt;</span>assertion<span class="hljs-operator">-</span>name<span class="hljs-operator">&gt;</span> <br>			  <span class="hljs-keyword">CHECK</span> <span class="hljs-operator">&lt;</span>predicate<span class="hljs-operator">&gt;</span>; <br></code></pre></td></tr></table></figure>
+<p>When an assertion is made, the system <u><em>tests it for validity</em></u> <em><u>on every update</u></em> that may violate the assertion: when the <code>predicate</code> is true, it is Ok, otherwise report error.</p>
+<p>May introduce a significant amount of overhead! hence assertions should be used with great care.</p>
+<p>In SQL, using <code>non exists</code> to express the predicate.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> ASSERTION sum<span class="hljs-operator">-</span><span class="hljs-keyword">constraint</span> <span class="hljs-keyword">CHECK</span> <br>	     		(<span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> (<span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <br>                              <span class="hljs-keyword">from</span> branch B <br>                              <span class="hljs-keyword">where</span> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(amount) <span class="hljs-keyword">from</span> loan <span class="hljs-keyword">where</span> loan.branch<span class="hljs-operator">-</span>name <span class="hljs-operator">=</span> B.branch<span class="hljs-operator">-</span>name)<br>                           <span class="hljs-operator">&gt;</span> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(balance) <span class="hljs-keyword">from</span> account <span class="hljs-keyword">where</span> account.branch<span class="hljs-operator">-</span>name <span class="hljs-operator">=</span> B.branch<span class="hljs-operator">-</span>name))) <br></code></pre></td></tr></table></figure>
+<h3 id="Triggers">Triggers</h3>
+<p>A <em><strong>trigger</strong></em> is a <u><em>statement</em></u> that is executed <u><em>automatically</em></u> by the system as <u><em>a side-effect of a modification</em></u> to the database.</p>
+<p>To design a trigger mechanism, we must:</p>
+<ul>
+<li>Specify the conditions under which the trigger is to be executed.</li>
+<li>Specify the actions to be taken when the trigger executes.</li>
+</ul>
+<p>A kind of stored procedures .</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> overdraftTrigger after <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> account <br>	<span class="hljs-keyword">referencing</span> <span class="hljs-keyword">new</span> <span class="hljs-type">row</span> <span class="hljs-keyword">as</span> nrow <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-type">row</span> <br>	<span class="hljs-keyword">when</span> nrow.balance <span class="hljs-operator">&lt;</span> <span class="hljs-number">0</span> <br>		<span class="hljs-keyword">begin</span> <span class="hljs-keyword">atomic</span> <br>		<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> borrower <br>			(<span class="hljs-keyword">select</span> customer<span class="hljs-operator">-</span>name, account<span class="hljs-operator">-</span>number <span class="hljs-keyword">from</span> depositor <br>	 		 <span class="hljs-keyword">where</span> nrow.account<span class="hljs-operator">-</span>number <span class="hljs-operator">=</span> depositor.account<span class="hljs-operator">-</span>number) <br>	    <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> loan <span class="hljs-keyword">values</span> <br>			(nrow.account<span class="hljs-operator">-</span>number, nrow.branch<span class="hljs-operator">-</span>name, – nrow.balance) <br>	    <span class="hljs-keyword">update</span> account <span class="hljs-keyword">set</span> balance <span class="hljs-operator">=</span> <span class="hljs-number">0</span> <br>			<span class="hljs-keyword">where</span> account.account<span class="hljs-operator">-</span>number <span class="hljs-operator">=</span> nrow.account<span class="hljs-operator">-</span>number <br>	    <span class="hljs-keyword">end</span> <br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><em><strong>Triggering event</strong></em>: can be insert, delete or update. Triggers on update can be restricted to specific attributes,<br>
+<code>e.g</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Create</span> <span class="hljs-keyword">trigger</span> overdraftTrigger<br>after <span class="hljs-keyword">update</span> <span class="hljs-keyword">of</span> balance <span class="hljs-keyword">on</span> account<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><em><strong>Values of attributes</strong></em>:  before and after an update can be referenced,</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">referencing</span> <span class="hljs-keyword">old</span> <span class="hljs-type">row</span> <span class="hljs-keyword">as</span> #<span class="hljs-keyword">for</span> deletes <span class="hljs-keyword">and</span> updates <br><span class="hljs-keyword">referencing</span> <span class="hljs-keyword">new</span> <span class="hljs-type">row</span> <span class="hljs-keyword">as</span> #<span class="hljs-keyword">for</span> inserts <span class="hljs-keyword">and</span> updates <br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Statement-Level-Triggers">Statement Level Triggers</h4>
+<h2 id="Authorization">Authorization</h2>
+<p><em><strong>Security</strong></em>: protection from malicious attempts to steal or modify data.</p>
+<h3 id="Security-Level">Security Level</h3>
+<h4 id="Database-system-level">Database system level</h4>
+<ul>
+<li>Authentication and authorization mechanisms allow specific users access only to required data.</li>
+<li>We concentrate on authorization in the rest of this chapter.</li>
+</ul>
+<h4 id="Operating-system-level">Operating system level</h4>
+<ul>
+<li>Operating system super-users can do anything they want to the database!  Good operating system level security is required.</li>
+</ul>
+<h4 id="Network-level-must-use-encryption-to-prevent">Network level: must use encryption to prevent</h4>
+<ul>
+<li>Eavesdropping (unauthorized reading of messages)</li>
+<li>Masquerading (pretending to be an authorized user or sending messages supposedly from authorized users)</li>
+</ul>
+<h4 id="Physical-level">Physical level</h4>
+<ul>
+<li>
+<p>Physical access to computers allows destruction of data by intruders; traditional lock-and-key security is needed</p>
+</li>
+<li>
+<p>Computers must also be protected from floods, fire, etc. – (Recovery)</p>
+</li>
+</ul>
+<h4 id="Human-level">Human level</h4>
+<ul>
+<li>
+<p>Users must be screened to ensure that an authorized users do not give access to intruders</p>
+</li>
+<li>
+<p>Users should be trained on password selection and secrecy Embedded SQL</p>
+</li>
+</ul>
+<h3 id="Views">Views</h3>
+<h2 id="Dynamic-SQL">Dynamic SQL</h2>
+<h2 id="ODBC-and-JDBC">ODBC and JDBC</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Database-system/" class="category-chain-item">Database system</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Database/">#Database</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DB C4 Advanced SQL</div>
+      <div>http://example.com/2023/03/27/DB-04/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 27, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/25/DB-03/" title="DB C3 Basic SQL">
+                        <span class="hidden-mobile">DB C3 Basic SQL</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
