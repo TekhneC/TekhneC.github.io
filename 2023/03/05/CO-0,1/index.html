@@ -18,7 +18,7 @@
   
     <meta name="description" content="Course Intro Kernel  How does Hardware support HLL? Arithmetic for Computers Datapath and Control Exploiting Memory Hierarchy I&#x2F;O, Networks, and Other Peripherals Experiments  Course Calendar  Grading">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CO0,1 Introduction">
+<meta property="og:title" content="CO C0,1 Introduction">
 <meta property="og:url" content="http://example.com/2023/03/05/CO-0,1/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
 <meta property="og:description" content="Course Intro Kernel  How does Hardware support HLL? Arithmetic for Computers Datapath and Control Exploiting Memory Hierarchy I&#x2F;O, Networks, and Other Peripherals Experiments  Course Calendar  Grading">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://example.com/img/posts/CO/1_3.png">
 <meta property="og:image" content="http://example.com/img/posts/CO/1_4.png">
 <meta property="article:published_time" content="2023-03-05T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-06T03:32:30.582Z">
+<meta property="article:modified_time" content="2023-04-04T03:10:13.639Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Computer Hardware">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
   
   
   
-  <title>CO0,1 Introduction - Tek&#39;s Notes</title>
+  <title>CO C0,1 Introduction - Tek&#39;s Notes</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CO0,1 Introduction"></span>
+            <span id="subtitle" data-typed-text="CO C0,1 Introduction"></span>
           
         </div>
 
@@ -279,7 +279,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CO0,1 Introduction</h1>
+            <h1 style="display: none">CO C0,1 Introduction</h1>
             
             
               <div class="markdown-body">
@@ -729,7 +729,9 @@ It determines <u><em>system performance</em></u>.</p>
 <li>
 <p><em><strong>Average cycles per instruction(CPI)</strong></em> : Determined by <u><em>CPU hardware</em></u>.<br>
 If different instructions have different CPI : <u><em>Average CPI</em></u> affected by instruction mix.</p>
-<p>Must point out that CPI and Clock period have influnces on each other.</p>
+<blockquote>
+<p><em>Must point out that CPI and Clock period have influences on each other.</em></p>
+</blockquote>
 </li>
 </ul>
 <p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mspace width="1em"/><mi mathvariant="normal">C</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mrow></mfrac><mo>=</mo><munderover><mo>∑</mo><mrow><mi mathvariant="normal">i</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">n</mi></munderover><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><msub><mi mathvariant="normal">I</mi><mi mathvariant="normal">i</mi></msub><mo>×</mo><mfrac><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><msub><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi></msub></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi></mrow></mfrac></mrow></mrow><annotation encoding="application/x-tex">\rm CPI = \frac{CPU\quad ClockCycles}{InstructionsCount} = \sum_{i = 1}^{n}{\rm CPI_i\times \frac{InstructionsCount_i}{InstructionsCount}}
@@ -851,7 +853,7 @@ If different instructions have different CPI : <u><em>Average CPI</em></u> affec
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CO0,1 Introduction</div>
+      <div>CO C0,1 Introduction</div>
       <div>http://example.com/2023/03/05/CO-0,1/</div>
     </div>
     <div class="license-meta">
@@ -896,9 +898,9 @@ If different instructions have different CPI : <u><em>Average CPI</em></u> affec
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/06/CO-3/" title="CO3 Arithmetic">
+                      <a href="/2023/03/06/CO-3/" title="CO C3 Arithmetic">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CO3 Arithmetic</span>
+                        <span class="hidden-mobile">CO C3 Arithmetic</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -906,8 +908,8 @@ If different instructions have different CPI : <u><em>Average CPI</em></u> affec
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/03/AIL-1/" title="AIL01 Intro">
-                        <span class="hidden-mobile">AIL01 Intro</span>
+                      <a href="/2023/03/03/AIL-1/" title="AIL C1 Intro">
+                        <span class="hidden-mobile">AIL C1 Intro</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

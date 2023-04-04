@@ -16,15 +16,15 @@
   <meta name="author" content="Tekhne Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="STL">
+    <meta name="description" content="Collection objects are objects that can store an arbitrary number of other objects. STL Standard Template Library, STL: Part of the ISO Standard C++ Library and Data Structures and algorithms for C++.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOP C3 Container">
 <meta property="og:url" content="http://example.com/2023/03/21/OOP-3/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
-<meta property="og:description" content="STL">
+<meta property="og:description" content="Collection objects are objects that can store an arbitrary number of other objects. STL Standard Template Library, STL: Part of the ISO Standard C++ Library and Data Structures and algorithms for C++.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-21T00:55:29.247Z">
-<meta property="article:modified_time" content="2023-03-21T14:16:57.042Z">
+<meta property="article:published_time" content="2023-03-21T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-03T18:50:04.987Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-21 08:55" pubdate>
-          March 21, 2023 am
+        <time datetime="2023-03-21 18:00" pubdate>
+          March 21, 2023 pm
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3 words
+          4.2k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          1 mins
+          35 mins
         
       </span>
     
@@ -279,7 +279,121 @@
             
               <div class="markdown-body">
                 
-                <h2 id="STL">STL</h2>
+                <p><em><strong>Collection objects</strong></em> are objects that can <u><em>store an arbitrary number of other objects</em></u>.</p>
+<h2 id="STL">STL</h2>
+<p><em><strong>Standard Template Library, STL</strong></em>: Part of the ISO Standard C++ Library and <u><em>Data Structures and algorithms</em></u> for C++.</p>
+<h3 id="Advantages">Advantages</h3>
+<ul>
+<li><u><em>Reduce development time</em></u>: Data-structures already written and debugged.</li>
+<li><u><em>Code readability</em></u>: Fit more meaningful stuff on one page.</li>
+<li><u><em>Robustness</em></u>: STL data structures grow automatically.</li>
+<li>Portable, Maintainable code</li>
+<li>Easy</li>
+</ul>
+<h3 id="Components">Components</h3>
+<p>The <code>library</code> includes:</p>
+<ul>
+<li>A <em><strong>Pair class</strong></em> (pairs of <em><u>anything</u></em>, <code>e.g</code>int/int, int/char, etc)</li>
+<li><em><strong>Containers</strong></em>:
+<ul>
+<li><em><strong>Vector</strong></em>: expandable array</li>
+<li><em><strong>Deque</strong></em>: expandable array at both ends</li>
+<li><em><strong>List</strong></em>: double-linked</li>
+<li><em><strong>Sets</strong></em> and <em><strong>Maps</strong></em></li>
+</ul>
+</li>
+<li>Basic <em><strong>Algorithms</strong></em> like sort, search, etc</li>
+</ul>
+<p>All <em><strong>identifiers</strong></em> in library are in <code>std</code> <code>namespace</code>: <code>using namespace std;</code></p>
+<p>In summary, the three parts of STL are: <code>Containers</code>,<code> Algorithms</code> and<br>
+<em><strong>Iterators</strong></em>.</p>
+<div class="note note-info">
+            <p><em><strong>All Sequential Containers</strong></em></p><ul><li>vector: variable array</li><li>deque : dual-end queue</li><li>list : double-linked-list</li><li>forward_list : as it</li><li>array : as “array”</li><li>string : char. array</li></ul>
+          </div>
+<h2 id="Vector">Vector</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br>vector&lt;ElementType&gt; myVec;<br></code></pre></td></tr></table></figure>
+<p>When declaring a collection,we need to specify the type of the collection itself  <code>vector</code> and the <u><em>type of the elements</em></u> that we plan to store in the collection.</p>
+<h4 id="Property">Property</h4>
+<ul>
+<li><u><em>increase its internal capacity</em></u> as required: as more items are added, it simply makes enough room for them.</li>
+<li>keeps its <u><em>own private count</em></u> of how many items it is currently storing. Its <em><strong>size method</strong></em> returns the number of objects currently stored in it.</li>
+<li>maintains the <u><em>order</em></u> of items you <u><em>insert</em></u> into it. You can later retrieve them in the same order.</li>
+</ul>
+<h4 id="Operations">Operations</h4>
+<h5 id="Constructors">Constructors</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">vector&lt;ElemType&gt; c; <br><span class="hljs-function">vector&lt;ElemType&gt; <span class="hljs-title">c1</span><span class="hljs-params">(c2)</span></span>;  <span class="hljs-comment">//construct with another vec</span><br></code></pre></td></tr></table></figure>
+<h5 id="Simple-Methods">Simple Methods</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">c.<span class="hljs-built_in">size</span>( ); <span class="hljs-comment">// num items </span><br>c.<span class="hljs-built_in">empty</span>( ); <span class="hljs-comment">// empty? </span><br>==, !=, &lt;, &gt;, &lt;=, &gt;=  <span class="hljs-comment">//betwn vecs!</span><br>c.<span class="hljs-built_in">swap</span>(v1); <span class="hljs-comment">// swap</span><br></code></pre></td></tr></table></figure>
+<h5 id="Iterators">Iterators</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">c.<span class="hljs-built_in">begin</span>( ); <span class="hljs-comment">// first position</span><br>c.<span class="hljs-built_in">end</span>( ); <span class="hljs-comment">// last position</span><br></code></pre></td></tr></table></figure>
+<h5 id="Element-access">Element access</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">c.<span class="hljs-built_in">at</span>(index); <span class="hljs-comment">//item at index  </span><br>c[index]; <br>c.<span class="hljs-built_in">front</span>(); <span class="hljs-comment">// first item </span><br>c.<span class="hljs-built_in">back</span>( ); <span class="hljs-comment">// last item </span><br></code></pre></td></tr></table></figure>
+<h5 id="Add-Remove-Find">Add/Remove/Find</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++">c.<span class="hljs-built_in">push_back</span>(e);	  	 <span class="hljs-comment">//push e at the end of c, grow tails automatically </span><br>c.<span class="hljs-built_in">pop_back</span>();   	 <span class="hljs-comment">//pop the last inserted element</span><br>c.<span class="hljs-built_in">insert</span>(pos, e); 	 <span class="hljs-comment">//insert e at pos</span><br>c.<span class="hljs-built_in">erase</span>(pos);		<span class="hljs-comment">//erase element at pos</span><br>c.<span class="hljs-built_in">clear</span>( );			<span class="hljs-comment">//make c empty</span><br>c.<span class="hljs-built_in">find</span>(first, last, item); <span class="hljs-comment">//find item from pos first to last </span><br></code></pre></td></tr></table></figure>
+<h2 id="List">List</h2>
+<h3 id="Property-2">Property</h3>
+<p>Same basic concepts as <code>vector</code> and similar <em><strong>constructors</strong></em>, ability to compare <code>lists</code> (== , != , &lt; , &lt;= , &gt; , &gt;= ) and ability to access front and back of list.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;list&gt;</span></span><br>list&lt;ElementType&gt; myList;<br>list&lt;<span class="hljs-type">char</span>&gt; d;<br>d.<span class="hljs-built_in">front</span>(); <span class="hljs-comment">// first item </span><br>d.<span class="hljs-built_in">back</span>();  <span class="hljs-comment">// last item </span><br>d.<span class="hljs-built_in">begin</span>( ); <span class="hljs-comment">// first position</span><br>d.<span class="hljs-built_in">end</span>( ); <span class="hljs-comment">// last position</span><br></code></pre></td></tr></table></figure>
+<p><u><em>BUT</em></u> additional ability on <strong><u>Add/Remove/Find</u></strong>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++">d.<span class="hljs-built_in">push_back</span>(e);<br>d.<span class="hljs-built_in">push_front</span>(e);<br>d.<span class="hljs-built_in">pop_back</span>();<br>d.<span class="hljs-built_in">pop_front</span>();<br>d.<span class="hljs-built_in">insert</span>(pos,e);<br>d.<span class="hljs-built_in">remove</span>(e);<br>d.<span class="hljs-built_in">erase</span>(pos);<br></code></pre></td></tr></table></figure>
+<h2 id="Map">Map</h2>
+<p><em><strong>Maps</strong></em>: collections that contain <u><em>pairs of values</em></u>.<br>
+<em><strong>Pairs</strong></em>: consisting of a <em><strong>key</strong></em> and a <em><strong>value</strong></em>. Supplying a <code>key</code>, a <code>value</code> <u><em>paired</em></u> will be retrieved.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br>map&lt;string,<span class="hljs-type">float</span>&gt; price; <br>price[“snapple”] = <span class="hljs-number">0.75</span>; <br>price[“coke”] = <span class="hljs-number">0.50</span>; <br>string item; <br><span class="hljs-type">double</span> total=<span class="hljs-number">0</span>; <br><span class="hljs-keyword">while</span> ( cin &gt;&gt; item )<br>	total += price[item];<br></code></pre></td></tr></table></figure>
+<h2 id="Iterator">Iterator</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++">list&lt;<span class="hljs-type">int</span>&gt; L;<br>L.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">1</span>);<br>L.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">2</span>);<br>list&lt;<span class="hljs-type">int</span>&gt;::iterator li; <span class="hljs-comment">//declaring</span><br>li = L.<span class="hljs-built_in">end</span>();           <span class="hljs-comment">//end</span><br>li = L.<span class="hljs-built_in">begin</span>();         <span class="hljs-comment">//front</span><br>++li;                   <span class="hljs-comment">//increment</span><br>*li = <span class="hljs-number">5</span>;                <span class="hljs-comment">//derenferenced</span><br></code></pre></td></tr></table></figure>
+<h4 id="as-arguments">as arguments</h4>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++">list&lt;<span class="hljs-type">int</span>&gt; L; <br>vector&lt;<span class="hljs-type">int</span>&gt; V; <br><span class="hljs-comment">// put list in vector </span><br><span class="hljs-built_in">copy</span>( L.<span class="hljs-built_in">begin</span>(), L.<span class="hljs-built_in">end</span>(), V.<span class="hljs-built_in">begin</span>());<br></code></pre></td></tr></table></figure>
+<h4 id="Loop">Loop</h4>
+<ul>
+<li>
+<p><em><strong>for-each</strong></em> loop:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(ElementType varName: array/vector/...Name) &#123;<br>	loop statements ...<br>&#125;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i : L) <span class="hljs-comment">// auto </span><br>&#123; <br>    cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>A <code>for-each</code> loop iterates over the elements of <u><em>arrays, vectors, or any other data sets</em></u>. It <u><em><strong>assigns</strong> the value of the current element</em></u> to the <u><em>variable iterator</em></u> declared inside the loop.</p>
+<blockquote>
+<p><em><strong>Pros and Cons</strong></em></p>
+<ul>
+<li><em><strong>Advantages</strong></em>
+<ul>
+<li>Eliminates the possibility of <u><em>errors</em></u></li>
+<li>Makes the code more <u><em>readable</em></u>.</li>
+<li><u><em>Easy</em></u> to implement</li>
+<li><u><em>No pre-initialization</em></u> of the iterator</li>
+</ul>
+</li>
+<li><em><strong>Disadvantages</strong></em></li>
+<li><u><em>Cannot directly access</em></u> the corresponding element indices</li>
+<li>Cannot traverse the elements in <u><em>reverse order</em></u></li>
+<li>Doesn’t allow the user to <u><em>skip</em></u> any element as it traverses over each one</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="Typdef">Typdef</h4>
+<ul>
+<li><u><em>Annoying</em></u> to type long names</li>
+<li>Simplify with typedef typedef.</li>
+<li>Easy to change implementation.</li>
+</ul>
+<h2 id="Sevral-Pitfalls">Sevral Pitfalls</h2>
+<h3 id="Accessing-an-invalid">Accessing an invalid</h3>
+<ul>
+<li>use <code>push_back()</code></li>
+<li>Preallocate with <code>constructor</code>.</li>
+<li>Reallocate with <code>reserve()</code></li>
+<li>Check <code>capacity()</code></li>
+</ul>
+<h3 id="Inadvertently-inserting-into-map">Inadvertently inserting into map&lt;&gt; .</h3>
+<p><code>foo[&quot;bob&quot;]==1</code> will silently created entry “bob” with value 1!</p>
+<ul>
+<li>Use <code>count()</code> to check for a key <u><em>without creating a new entry.</em></u></li>
+</ul>
+<h3 id="Forget-using-empty-on-list">Forget using empty() on list&lt;&gt;</h3>
+<ul>
+<li><code>empty()</code> is garuanted to be done in constant time, while <code>size()</code>/<code>count()</code> doesn’t !</li>
+</ul>
+<h3 id="Use-invalid-iterator">Use invalid iterator</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++">list&lt;<span class="hljs-type">int</span>&gt; L; <br>list&lt;<span class="hljs-type">int</span>&gt;::iterator li; <br>li = L.<span class="hljs-built_in">begin</span>(); <br>L.<span class="hljs-built_in">erase</span>(li); <br>++li; <span class="hljs-comment">// WRONG</span><br><span class="hljs-comment">// Use return value of erase</span><br>li = L.<span class="hljs-built_in">erase</span>(li); <span class="hljs-comment">//Right</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -377,9 +491,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/21/CN-03/" title="CN 03">
+                      <a href="/2023/03/21/DS-04/" title="DS C4 Heaps">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CN 03</span>
+                        <span class="hidden-mobile">DS C4 Heaps</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -387,8 +501,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/19/CN%20HW/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2023/03/21/CN-03/" title="CN C3">
+                        <span class="hidden-mobile">CN C3</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Variables local variable Local variables are defined inside a method, have a scope limited to the method to which they belong.  A local variable of the same name as a field will prevent the field bein">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OOP C4 Function">
+<meta property="og:url" content="http://example.com/2023/03/28/OOP-4/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Variables local variable Local variables are defined inside a method, have a scope limited to the method to which they belong.  A local variable of the same name as a field will prevent the field bein">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-28T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-04T03:04:18.739Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>OOP C4 Function - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OOP C4 Function"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-28 18:00" pubdate>
+          March 28, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OOP C4 Function</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Variables">Variables</h2>
+<h3 id="local-variable">local variable</h3>
+<p><em><strong>Local variables</strong></em> are defined <u><em>inside a method</em></u>, have a <em><strong>scope</strong></em> limited to the method to which they belong.</p>
+<ul>
+<li>A <code>local variable</code> of the <u><em>same name</em></u> as a field will <u><em>prevent the field</em></u> being accessed from within a method.</li>
+<li><code>Local variables</code> are defined <u><em>inside the body of a constructor or method</em></u>. They can be <u><em>initialized and used only within the body</em></u> of their <u><em>defining</em></u> constructor or method.</li>
+<li><code>Local variables</code> must be initialized before they are used in an expression – they are not given a default value.</li>
+<li><code>Local variables</code> have a <code>scope</code> that is limited to the block in which they are defined. They are not accessible from anywhere outside that block.</li>
+</ul>
+<h3 id="Fields">Fields</h3>
+<p><em><strong>Fields</strong></em>: defined <u><em>outside constructors</em></u> and <u><em>methods</em></u>.</p>
+<ul>
+<li><code>Fields</code> are used to store data that <u><em>persists throughout the life</em></u> of an object. As such, they maintain the current state of an object. They have a <u><em>lifetime that lasts as long as their object lasts</em></u>.</li>
+<li><code>Fields</code> have <code>class scope</code>: their <em><strong>accessibility</strong></em> extends <u><em>throughout the whole class</em></u>, and so they can be used within <u><em>any</em></u> of the <u><em>constructors</em></u> or <u><em>methods</em></u> of the class in which they are defined.</li>
+<li>But as long as they are defined as <u><em>private</em></u>, fields cannot be accessed from anywhere outside their defining class.</li>
+</ul>
+<h3 id="Formal-parameter">Formal parameter</h3>
+<p><em><strong>Formal parameters</strong></em>: defined in the <u><em>header of a constructor</em></u> or <u><em>method</em></u>.</p>
+<ul>
+<li><code>Formal parameters</code> receive their values <u><em>from outside</em></u>, being <u><em>initialized</em></u> by the <em><strong>actual parameter</strong></em> values that form part of the constructor or method call.</li>
+<li><code>Formal parameters</code> have a <code>scope</code> that is <u><em>limited to their defining constructor or method</em></u>.</li>
+</ul>
+<h3 id="Relationship-of-three">Relationship of three</h3>
+<ul>
+<li>
+<p><code>Formal parameters</code> and <code>local variables</code> persist only for the period that a <u><em>constructor</em></u> or <u><em>method</em></u> executes.</p>
+<p>Their lifetime is only as long as a <u><em>single call</em></u>, so their values are lost between calls. As such, they act as <u><em>temporary</em></u> rather than permanent storage locations.</p>
+</li>
+<li>
+<p>All three kinds of variable are able to <u><em>store a value</em></u> that is appropriate to their defined type.</p>
+</li>
+</ul>
+<h2 id="C-access-control">C++ access control</h2>
+<h3 id="public">public</h3>
+<p>All member declarations that follow are <u><em>available to everyone</em></u>.</p>
+<blockquote>
+<p><code>struct</code> defaults to <code>public</code>.</p>
+</blockquote>
+<h3 id="private">private</h3>
+<p>No one can access that member <u><em>except inside function members</em></u> of that type.</p>
+<blockquote>
+<p><code>class</code> defaults to <code>private</code>.</p>
+</blockquote>
+<h3 id="Friends">Friends</h3>
+<p><em><strong>Friend</strong></em> : a way to <u><em>explicitly grant access</em></u> to a function that <u><em>isn’t a member</em></u> of the structure.</p>
+<ul>
+<li>The <u><em>class itself</em></u> controls which code has access to its members.</li>
+<li>Can declare a <u><em>global function, a member function of another class, or even an entire class</em></u>, as a friend.</li>
+</ul>
+<h3 id="protected">protected</h3>
+<h2 id="Initialization">Initialization</h2>
+<h3 id="Initializer-list">Initializer list</h3>
+<ul>
+<li>Can initialize <u><em>any type of data</em></u>
+<ul>
+<li>pseudo-constructor calls for built-ins</li>
+<li>No need to perform assignment within body of ctor</li>
+</ul>
+</li>
+<li><u><em>Order</em></u> of initialization is order of declaration – Not the order in the list!
+<ul>
+<li>Destroyed in the <u><em>reverse order</em></u>.</li>
+</ul>
+</li>
+</ul>
+<div class="note note-info">
+            <p><em><strong>Initialization vs. assignment</strong></em></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">Student::<span class="hljs-built_in">Student</span>(string s):<span class="hljs-built_in">name</span>(s) &#123;&#125; <br>Student::<span class="hljs-built_in">Student</span>(string s) &#123;name=s;&#125;<br></code></pre></td></tr></table></figure><ul><li><p>initialization: <u><em>before constructor</em></u></p></li><li><p>assignment: <u><em>inside constructor</em></u></p><blockquote><p>string must have a default constructor.</p></blockquote></li></ul>
+          </div>
+<h2 id="Arguments">Arguments</h2>
+<h3 id="Overloaded-constructors-Function-overloading">Overloaded constructors / Function overloading</h3>
+<p><u><em>Same functions</em></u> with <u><em>different arguments</em></u> list.</p>
+<h3 id="Default-arguments">Default arguments</h3>
+<p>A <em><strong>default argument</strong></em> is a value <u><em>given in the declaration</em></u> that the compiler automatically inserts if <u><em>you don’t provide</em></u> a value in the function call.</p>
+<ul>
+<li>
+<p>defaults <u><em>must</em></u> be added from right to left !</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">harpo</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m = <span class="hljs-number">4</span>, <span class="hljs-type">int</span> j = <span class="hljs-number">5</span>)</span></span>; <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">chico</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m = <span class="hljs-number">6</span>, <span class="hljs-type">int</span> j)</span></span>; <span class="hljs-comment">//illeagle</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>The default arguments are <u><em>declared in its prototype</em></u>, not defined in its function head.</p>
+</li>
+</ul>
+<h2 id="function-and-Function-call">function and Function call</h2>
+<h3 id="Overhead-开销-for-a-function-call">Overhead(开销) for a function call</h3>
+<p>The processing time required by a device prior to the execution of a command:</p>
+<ul>
+<li>Push parameters</li>
+<li>Push return address</li>
+<li>…</li>
+<li>Prepare return values</li>
+<li>Pop all pushed</li>
+</ul>
+<h3 id="inline-function">inline function</h3>
+<blockquote>
+<p><code>ref</code> <em>Introduction to Programming with C++</em> P244 -</p>
+</blockquote>
+<p>An <em><strong>inline function</strong></em> is <u><em>expanded</em></u> in place, like a preprocessor macro, so the <u><em>overhead of the function call is eliminated</em></u>: <code>inline functions</code> are not called; rather, the compiler <u><em>copies the function code</em></u> in line at the point of each invocation.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">plusOne</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>; <br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">plusOne</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<span class="hljs-keyword">return</span> ++x; &#125;;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Repeat <code>inline</code> keyword at <u><em>declaration</em></u> and <u><em>definition</em></u>.</li>
+<li>An <code>inline function</code> definition <u><em>may not generate any code in <code>.obj</code> file</em></u>.</li>
+<li>Any function you <u><em>define inside a class</em></u> declaration is <u><em>automatically</em></u> inline.</li>
+</ul>
+<h4 id="in-header-file">in header file</h4>
+<p>We can put inline functions’ bodies in <code>header file</code>, then <code>#include</code> it where the function is needed.</p>
+<ul>
+<li>Never be afraid of <u><em>multi-definition</em></u> of inline functions, <u><em>Definitions of inline functions are just declarations.</em></u> since they have no body at all.</li>
+</ul>
+<h4 id="Tradeoff">Tradeoff</h4>
+<p>Body of the called function is to be inserted into the caller.</p>
+<ul>
+<li>May <u><em>expand the code size</em></u></li>
+<li>But <u><em>deduces the overhead</em></u> of calling time.</li>
+</ul>
+<p>It <u><em>gains speed</em></u> <u><em>at the expenses of space.</em></u> In most cases, it is worth.</p>
+<div class="note note-info">
+            <ul><li><p>Inline function is much better than macro in C.</p></li><li><p>It checks the types of the parameters.</p></li></ul>
+          </div>
+<h4 id="Sp-Inline-may-not-in-line">Sp: Inline may not in-line</h4>
+<p>The <u><em>compiler</em></u> might decide not make it <code>inline</code> if</p>
+<ul>
+<li>it finds the function is <u><em>too large</em></u></li>
+<li>it finds the function calls itself (<u><em>recursion</em></u> is not allowed or indeed possible for inline functions)</li>
+<li>the feature might not be implemented for your particular compiler.</li>
+</ul>
+<h4 id="Pit-falls">Pit-falls</h4>
+<ul>
+<li>You can put the definition of an inline member function out of the class braces.</li>
+<li>But the <u><em>definition</em></u> of the functions <u><em>should be put before where they may be called</em></u>.</li>
+</ul>
+<h4 id="Reducing-clutter">Reducing clutter</h4>
+<p><code>Member functions</code> defined within <code>classes</code> use the in situ (in place) and maintains that<br>
+<em><u>all definitions should be placed outside the class</em></u> to keep the interface clean.</p>
+<h4 id="Inline-or-not">Inline or not?</h4>
+<table>
+<thead>
+<tr>
+<th>Inline</th>
+<th>Not inline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small functions, 2 or 3 lines</td>
+<td>Very large functions, more than 20 lines</td>
+</tr>
+<tr>
+<td>Frequently called functions</td>
+<td>Recursive functions</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>A lazy way is to Make all your functions inline, or Never make your functions inline.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Computer-Science/Object-Oriented/" class="category-chain-item">Object-Oriented</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Programming/">#Programming</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OOP C4 Function</div>
+      <div>http://example.com/2023/03/28/OOP-4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 28, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/29/MA-04/" title="MA4 贝多芬“命运”交响曲">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MA4 贝多芬“命运”交响曲</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/28/CN-04/" title="CN C4 piking Neuron Models">
+                        <span class="hidden-mobile">CN C4 piking Neuron Models</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
