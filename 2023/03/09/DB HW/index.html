@@ -29,8 +29,10 @@
 <meta property="og:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410124852868.png">
 <meta property="og:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410124915912.png">
 <meta property="og:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410124829452.png">
+<meta property="og:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230417114852889.png">
+<meta property="og:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230417123039075.png">
 <meta property="article:published_time" content="2023-03-09T09:07:34.627Z">
-<meta property="article:modified_time" content="2023-04-10T05:31:37.986Z">
+<meta property="article:modified_time" content="2023-04-17T04:33:25.601Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410120317166.png">
@@ -231,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.6k words
+          11k words
         
       </span>
     
@@ -242,7 +244,7 @@
         
         
         
-          81 mins
+          92 mins
         
       </span>
     
@@ -285,7 +287,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="LEC3-SQL">LEC3 SQL</h2>
+                <h1>LEC3 SQL</h1>
 <blockquote>
 <p><em>3210102492</em> 陈雪阳</p>
 </blockquote>
@@ -363,7 +365,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">Select</span> <span class="hljs-keyword">distinct</span> branch_name<br><span class="hljs-keyword">From</span> branch<br><span class="hljs-keyword">Where</span> assets <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">some</span>(<span class="hljs-keyword">Select</span> assets <span class="hljs-keyword">From</span> branch <span class="hljs-keyword">Where</span> branch_city <span class="hljs-operator">=</span> &quot;Brooklyn&quot;) <br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="LEC4-Advanced-SQL">LEC4 Advanced SQL</h2>
+<h1>LEC4 Advanced SQL</h1>
 <blockquote>
 <p><em>3210102492</em> 陈雪阳</p>
 </blockquote>
@@ -396,7 +398,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> company_name<br><span class="hljs-keyword">from</span>  works<br><span class="hljs-keyword">where</span> avg_salary(company_name) <span class="hljs-operator">&gt;=</span> avg_salary(&quot;First Bank&quot;)<br></code></pre></td></tr></table></figure>
 <h3 id="5-Suppose-there-are-two-relations-r-and-s-such-that-the-foreign-key-B-of-r-references-the-primary-key-A-of-s-Describe-how-the-trigger-mechanism-can-be-used-to-implement-the-on-delete-cascade-option-when-a-tuple-is-deleted-from-s">5.Suppose there are two relations r and s, such that the foreign key B of r references the primary key A of s. Describe how the trigger mechanism can be used to implement the on delete cascade option when a tuple is deleted from s.</h3>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> op_delete after <span class="hljs-keyword">delete</span> <span class="hljs-keyword">of</span> A <span class="hljs-keyword">on</span> s<br>	<span class="hljs-keyword">referencing</span> <span class="hljs-keyword">old</span> <span class="hljs-type">row</span> <span class="hljs-keyword">as</span> orow<br>	<span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-type">row</span><br>	<span class="hljs-keyword">when</span> orow.A <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> B <span class="hljs-keyword">from</span> r)<br>	<span class="hljs-keyword">and</span> orow.A <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> A <span class="hljs-keyword">from</span> s)<br>	<span class="hljs-keyword">begin</span> <span class="hljs-keyword">atomic</span><br>		<span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> r<br>		<span class="hljs-keyword">where</span> r.B <span class="hljs-operator">=</span> orow.A<br>	<span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
-<h2 id="Lec5-E-R-model">Lec5 E-R model</h2>
+<h1>Lec5 E-R model</h1>
 <h3 id="1-Construct-an-E-R-diagram-for-a-car-insurance-company">1. Construct an E-R diagram for a car insurance company.</h3>
 <ul>
 <li>The customers own one or more cars each.</li>
@@ -413,7 +415,7 @@
 </li>
 <li>
 <p>Construct an alternative E-R diagram that uses only a binary relationship between student and section. Make sure that only one relationship exists between a particular student and section pair, yet you can represent the marks that a student gets in different exams.</p>
-<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410122251270.png" srcset="/img/loading.gif" lazyload alt="image-20230410122251270"></p>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230410122251270.png" srcset="/img/loading.gif" lazyload alt="                                                                                                                                  "></p>
 </li>
 </ul>
 <h3 id="3-Consider-the-E-R-diagram-in-Figure-6-30-which-models-an-online-bookstore">3.Consider the E-R diagram in Figure 6.30, which models an online bookstore.</h3>
@@ -436,7 +438,74 @@
 <li>Each model can be offered with a variety of options, but an individual car may have only some (or none) of the available options.</li>
 <li>The database needs to store information about models, brands, and options, as well as information about individual dealers, customers, and cars.</li>
 </ul>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230417114852889.png" srcset="/img/loading.gif" lazyload alt="image-20230417114852889"></p>
+<ul>
+<li>brand(<u>name</u>)</li>
+<li>model(<u>model_id</u>, name)</li>
+<li>vehicle(<u>VIN</u>)</li>
+<li>options(<u>option_id</u>, name)</li>
+<li>customer(<u>customer_id</u>, name, address)</li>
+<li>dealer(<u>dealer_id</u>, name, address)</li>
+<li>has_model(<u>name</u>,<br>
+<u>model_id</u> ,<br>
+<em><strong>foreign key</strong></em> name <em><strong>references</strong></em> brand ,<br>
+<em><strong>foreign key</strong></em> model_id <em><strong>references</strong></em> model)</li>
+<li>has_vehicles(<u>model_id</u>,<br>
+<u>VIN</u>,<br>
+<em><strong>foreign key</strong></em> VIN <em><strong>references</strong></em> vehicle,<br>
+<em><strong>foreign key</strong></em> model_id <em><strong>references</strong></em> model)</li>
+<li>available(<u>model_id</u>,<br>
+<u>option_id</u>,<br>
+<em><strong>foreign key</strong></em> option_id <em><strong>references</strong></em> option,<br>
+<em><strong>foreign key</strong></em> model_id <em><strong>references</strong></em> model)</li>
+<li>has_options(<u>VIN</u>,<br>
+<u>model_id</u>,<br>
+<u>option_id</u>,<br>
+<em><strong>foreign key</strong></em> VIN <em><strong>references</strong></em> vehicle,<br>
+<em><strong>foreign key</strong></em> (model_id, option_id) <em><strong>references</strong></em> available)</li>
+<li>deals(<u>VIN</u>,<br>
+<u>dealer_id</u> ,<br>
+<em><strong>foreign key</strong></em> dealer_id <em><strong>references</strong></em> dealer,<br>
+<em><strong>foreign key</strong></em> VIN <em><strong>references</strong></em> vehicle)</li>
+<li>owns(<u>VIN</u>,<br>
+<u>customer_id</u>,<br>
+<em><strong>foreign key</strong></em> customer_id <em><strong>references</strong></em> customer,<br>
+<em><strong>foreign key</strong></em> VIN <em><strong>references</strong></em> vehicle)</li>
+</ul>
 <h3 id="5-Design-a-database-for-an-airline-The-database-must-keep-track-of-customers-and-their-reservations-flights-and-their-status-seat-assignments-on-individual-flights-and-the-schedule-and-routing-of-future-flights-Your-design-should-include-an-E-R-diagram-a-set-of-relational-schemas-and-a-list-of-constraints-including-primary-key-and-foreign-key-constraints">5.Design a database for an airline. The database must keep track of customers and their reservations, flights and their status, seat assignments on individual flights, and the schedule and routing of future flights. Your design should include an E-R diagram, a set of relational schemas, and a list of constraints, including primary-key and foreign-key constraints.</h3>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230417123039075.png" srcset="/img/loading.gif" lazyload alt="image-20230417123039075"></p>
+<ul>
+<li>flight_instance(<u>flight_i_id</u>,capacity,date)</li>
+<li>traveler(<u>traveler_id</u>, name)</li>
+<li>flight(<u>flight_id</u>, run_days)</li>
+<li>station(<u>station_id</u>, name)</li>
+<li>reserves(<u>flight_i_id</u>,<br>
+<u>traveler_id</u>,<br>
+seat_no,<br>
+<em><strong>foreign key</strong></em> flight_i_id <em><strong>references</strong></em> flight_instance,<br>
+<em><strong>foreign key</strong></em> traveler_id <em><strong>references</strong></em> traveler)</li>
+<li>instances(<u>flight_i_id</u>,<br>
+<u>flight_id</u>,<br>
+<em><strong>foreign key</strong></em> flight_i_id <em><strong>references</strong></em> flight_instance,<br>
+<em><strong>foreign key</strong></em> flight_id <em><strong>references</strong></em> flight)</li>
+<li>schedules(<u>flight_id</u>,<br>
+<u>station_id</u>,<br>
+order,<br>
+arrive_d_no,<br>
+arrive_time,<br>
+depart_d_no,<br>
+depart_time,<br>
+<em><strong>foreign key</strong></em> flight_id <em><strong>references</strong></em> flight,<br>
+<em><strong>foreign key</strong></em> station_id <em><strong>references</strong></em> station)</li>
+<li>status(<u>flight_i_id</u>,<br>
+<u>station_id</u>,<br>
+arrive_date,<br>
+arrive_time,<br>
+depart_date,<br>
+depart_time,<br>
+<em><strong>foreign key</strong></em> flight_i_id <em><strong>references</strong></em> flight_instance,<br>
+<em><strong>foreign key</strong></em> station_id <em><strong>references</strong></em> station)</li>
+</ul>
 
                 
               </div>
