@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Introduction  Instructions and Instruction set are Language of the computer The Design goals are: Maximize performance Minimize cost Reduce design time   Our chosen instruction set is RISC-V.  Instruc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CO C2 Instructions">
+<meta property="og:url" content="http://example.com/2023/04/18/CO-2/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Introduction  Instructions and Instruction set are Language of the computer The Design goals are: Maximize performance Minimize cost Reduce design time   Our chosen instruction set is RISC-V.  Instruc">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_1.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_6.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_7.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_8.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_9.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_2.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_5.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_3.png">
+<meta property="og:image" content="http://example.com/img/posts/CO/3_4.png">
+<meta property="article:published_time" content="2023-04-18T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-19T01:31:57.396Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Computer Hardware">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/CO/3_1.png">
+  
+  
+  
+  <title>CO C2 Instructions - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CO C2 Instructions"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-18 18:00" pubdate>
+          April 18, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CO C2 Instructions</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Introduction">Introduction</h2>
+<ul>
+<li><u><em>Instructions and Instruction set</em></u> are Language of the computer</li>
+<li>The Design goals are:</li>
+<li>Maximize <u><em>performance</em></u></li>
+<li>Minimize <u><em>cost</em></u></li>
+<li>Reduce <u><em>design time</em></u></li>
+</ul>
+<blockquote>
+<p>Our chosen instruction set is <em><strong>RISC-V</strong></em>.</p>
+</blockquote>
+<h3 id="Instruction-characteristics">Instruction characteristics</h3>
+<ul>
+<li>
+<p><u><em>Type</em></u> of internal storage in processer, <code>e.g Regs</code></p>
+<blockquote>
+<ul>
+<li><em><strong>Stack</strong></em></li>
+<li><em><strong>Accumulator</strong></em></li>
+<li>General purpose <em><strong>register</strong></em>
+<ul>
+<li>Register-Memory</li>
+<li>Register-Register：<code>load/store</code></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>The <u><em>number</em></u> of the memory operand in the instruction</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Instruction Type</th>
+<th>Maximum number of operands</th>
+<th>Number of memory addresses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Register-Register</strong></td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Register-memory</strong></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Memory-memory</strong></td>
+<td>2 / 3</td>
+<td>2 / 3</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li>
+<p>Operations in the instruction Set</p>
+</li>
+<li>
+<p>Type, <code>e.g Reg/Memory</code> and Size of Operands <code>e.g 32/64</code></p>
+</li>
+<li>
+<p>Representation in the Computer: Encoding</p>
+</li>
+</ul>
+<h3 id="Variables-difference">Variables difference</h3>
+<ul>
+<li>in <em><strong>C</strong></em> : <code>int, char, float</code></li>
+<li>in <em><strong>Instruction Set</strong></em> :
+<ul>
+<li><code>Register</code></li>
+<li><code>Memory address</code> with <em><strong>Displacement ,Immediate</strong></em></li>
+<li><code>Stack</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Design-Principle">Design Principle</h3>
+<ol>
+<li>Simplicity favors regularity.</li>
+<li>Smaller is faster.</li>
+<li>Make the common case fast.</li>
+</ol>
+<h2 id="Operations-and-Operands-of-the-Computer-Hardware">Operations and Operands of the Computer Hardware</h2>
+<h3 id="Operation">Operation</h3>
+<p>Every computer must be able to perform <u><em>arithmetic</em></u>:</p>
+<ul>
+<li>Only <em>one operation per instruction</em>;</li>
+<li><em>Exactly three</em> variables / operands.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">add a,b,c  #a &lt;- b + c<br>sub a,b,c  #a &lt;- b - c<br></code></pre></td></tr></table></figure>
+<h3 id="Operand">Operand</h3>
+<h4 id="Register-Operands">Register Operands</h4>
+<ul>
+<li>
+<p><code>Arithmetic instructions</code> operands must be <code>registers</code> or <code>immediate</code>.</p>
+</li>
+<li>
+<p>32 registers in RISC-V: <code>x0 - x31</code>, 32 bits(<code>word</code>) /64 bits(<code>doubleword</code>) for each.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Register Name</th>
+<th>Usage</th>
+<th>Preserved On call?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x0</code></td>
+<td>0</td>
+<td>The constant value 0</td>
+<td>n.a</td>
+</tr>
+<tr>
+<td><code>x1</code>(ra)</td>
+<td>1</td>
+<td>Return address(link register)</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x2</code>(sp)</td>
+<td>2</td>
+<td>Stack pointer</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x3</code>(gp)</td>
+<td>3</td>
+<td>Global pointer</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x4</code>(tp)</td>
+<td>4</td>
+<td>Thread pointer</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x5</code>-<code>x7</code></td>
+<td>5-7</td>
+<td>Temporaries</td>
+<td>n</td>
+</tr>
+<tr>
+<td><code>x8</code>-<code>x9</code></td>
+<td>8-9</td>
+<td>Saved</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x10</code>-<code>x17</code></td>
+<td>10-17</td>
+<td>Arguments/results</td>
+<td>n</td>
+</tr>
+<tr>
+<td><code>x18</code>-<code>x27</code></td>
+<td>18-27</td>
+<td>Saved</td>
+<td>y</td>
+</tr>
+<tr>
+<td><code>x28</code>-<code>x31</code></td>
+<td>28-31</td>
+<td>Temporaries</td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="note note-info">
+            <p>寄存器个数的增加会导致指令中表示寄存器的bit增加。</p>
+          </div>
+<h4 id="Memory-Operands">Memory Operands</h4>
+<ul>
+<li>
+<p>save much <u><em>more data</em></u> and  <u><em>complex data structures</em></u></p>
+</li>
+<li>
+<p><em><strong>Data transfer instructions</strong></em>: <code>load,store</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs assembly">ld a,i(b)  #from memory b[i] to register a, 64 bits <br>lw c,i(d)  #32bits<br>sd a,i(b)  #from register a into memory b[i]<br>sw c,i(d)<br># i must be an immediate!<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<div class="note note-info">
+            <ul><li>In RISC-V: Memory Accessed <u><em>only</em></u> by data <code>transfer instructions</code>.</li><li><em><strong>Byte addressed</strong></em>: Each address identifies an 8-bit byte.<br>按照byte(8bits)寻址，即对于一个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>64</mn></mrow><annotation encoding="application/x-tex">64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">64</span></span></span></span>bits长的地址，可以寻址到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mn>64</mn><mo>−</mo><mn>3</mn></mrow></msup><mo>=</mo><msup><mn>2</mn><mn>61</mn></msup></mrow><annotation encoding="application/x-tex">2^{64-3} = 2^{61}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">64</span><span class="mbin mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">61</span></span></span></span></span></span></span></span></span></span></span></span>个地址。</li><li><em><strong>Little Endian</strong></em>: Least-significant byte at least address of a word.</li><li><em><strong>Memory Alignment ? NOT REQUIRED!</strong></em></li></ul>
+          </div>
+<div class="note note-info">
+            <p><em><strong>Endianness/byte order</strong></em></p><ul><li><em><strong>Big endian</strong></em>：数据的高字节存放在低地址,低字节存放在高地址.<code>e.g PowerPC</code></li><li><em><strong>Little endian</strong></em>: 数据的高字节存放在高地址,低字节存放在低地址. <code>e.g RISC-V</code></li></ul><blockquote><p><code>e.g</code> 32位机器上存放0x123456789:</p><p><img src="/img/posts/CO/3_1.png" srcset="/img/loading.gif" lazyload alt=""></p><p>处理时一般从低地址开始处理。大端方便人阅读；小端方便机器处理，也是机器架构的主流。</p></blockquote>
+          </div>
+<div class="note note-info">
+            <ul><li><code>Registers</code> are <em><strong>faster</strong></em> to access than memory.</li><li>Operating on <code>memory data</code> requires <code>loads</code> and <code>stores</code></li><li>Compiler must use registers for variables as much as possible.<ul><li><em><strong>Spilling</strong></em> registers: Putting <u><em>less commonly used</em></u> variables(or those needed later) into <code>memory</code></li><li>Register optimization</li></ul></li></ul>
+          </div>
+<h4 id="Constant-or-Immediate-Operand">Constant or Immediate Operand</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs assembly">addi a,b,i # a &lt;- b + i<br></code></pre></td></tr></table></figure>
+<h3 id="signed-and-unsigned-numbers">signed and unsigned numbers</h3>
+<p>Bits are just bits (no inherent meaning)，but there are conventions define relationship between bits and numbers.</p>
+<ul>
+<li>
+<p>Unsigned: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mi>n</mi></msub><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><mo>⋯</mo><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><msup><mn>2</mn><mn>1</mn></msup><mo>+</mo><msub><mi>x</mi><mn>0</mn></msub><msup><mn>2</mn><mn>0</mn></msup><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>∩</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">x = x_n2^{n - 1} + \cdots + x_12^1 + x_02^0 \in [0,2^n - 1]\cap Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></p>
+</li>
+<li>
+<p>2’s-Complement Signed: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo>−</mo><msub><mi>x</mi><mi>n</mi></msub><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><mo>⋯</mo><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><msup><mn>2</mn><mn>1</mn></msup><mo>+</mo><msub><mi>x</mi><mn>0</mn></msub><msup><mn>2</mn><mn>0</mn></msup><mo>∈</mo><mo stretchy="false">[</mo><mo>−</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo separator="true">,</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>∩</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">x = -x_n2^{n - 1} + \cdots + x_12^1 + x_02^0 \in [-2^{n-1},2^{n - 1}-1]\cap Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9641em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></p>
+</li>
+<li>
+<p>Sign Extension: Replicate the sign bit to the left; extend with 0s for unsigned values.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs assembly">lb a,i(b)<br>lbu a,i(b)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Representing-Instructions-in-the-Computer">Representing Instructions in the Computer</h2>
+<div class="note note-info">
+            <p><em><strong>Stored-program</strong></em></p><ul><li><p>Instructions are represented as numbers</p></li><li><p>Programs can be stored in memory like numbers</p></li><li><p>Instructions represented in binary, just like data</p></li><li><p>Instructions and data stored in memory</p></li><li><p>Programs can operate on programs <code>e.g</code> compilers, linkers, …</p></li><li><p>Binary compatibility allows compiled programs to work on different computers, Standardized ISAs</p></li></ul>
+          </div>
+<p><img src="/img/posts/CO/3_6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/posts/CO/3_7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/posts/CO/3_8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/posts/CO/3_9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Logical-Operation">Logical Operation</h2>
+<p><img src="/img/posts/CO/3_2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/posts/CO/3_5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Instructions-for-Making-Decisions">Instructions for Making Decisions</h2>
+<h2 id="Supporting-Procedures-in-Computer-Hardware">Supporting Procedures in Computer Hardware</h2>
+<p><em><strong>Procedure/function</strong></em> is be used to <u><em>structure programs</em></u>.</p>
+<ul>
+<li>A stored subroutine that performs a specific task based on the parameters with which it is provided</li>
+<li>easier to understand, allow code to be reused</li>
+</ul>
+<h3 id="Steps">Steps</h3>
+<ol>
+<li>Place Parameters in a place where the procedure can access them （in registers x10~x17）</li>
+<li>Transfer control to the procedure</li>
+<li>Acquire the storage resources needed for the procedure</li>
+<li>Perform the desired task</li>
+<li>Place the result value in a place where the calling program can access it</li>
+<li>Return control to the point of origin (address in x1)</li>
+</ol>
+<h3 id="Instructions">Instructions</h3>
+<h4 id="Procedure-call-jump-and-link">Procedure call: jump and link</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs assembly">jal x1,Label # x1 &lt;- pc + 4 and jump to Label<br></code></pre></td></tr></table></figure>
+<h4 id="Procedure-return-jump-and-link-register">Procedure return: jump and link register</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs assembly">jalr x0,0(x1) #jump to 0 + x1(ra)<br></code></pre></td></tr></table></figure>
+<h3 id="Using-More-Registers">Using More Registers</h3>
+<p><em><strong>Stack</strong></em>：Ideal data structure for <u><em>spilling registers</em></u>. For <code>saved registers</code>, the callee saves in satck and restores them back.</p>
+<ul>
+<li>Stack pointer <code>sp</code></li>
+<li>grow from higher address to lower address.
+<ul>
+<li>Push: sp= sp-8</li>
+<li>Pop: sp = sp+8</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs assembly">addi sp,sp,-24 <br>sd x5,16(sp) <br>sd x6,8(sp)<br>sd x20,0(sp)<br>...<br>ld x20,0(sp) <br>ld x6,8(sp)<br>ld x5,16(sp)<br>addi sp,sp,24 <br>jalr x0,0(x1)<br></code></pre></td></tr></table></figure>
+<p><img src="/img/posts/CO/3_3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/posts/CO/3_4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Communicating-with-People">Communicating with People</h2>
+<p>MIPS Addressing for 32 Bit Immediates and Addresses</p>
+<p>Translanting and starting a Program</p>
+<p>A C Sort Example to Put It All together</p>
+<p>Arrays Versus Pointers</p>
+<p>Real Stuff: IA-32 Instructions</p>
+<p>Fallacies and Pitfalls</p>
+<p>Concluding Remarks</p>
+<p>Historical Perspective and Further Reading</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Computer-Science/Computer-Organization/" class="category-chain-item">Computer Organization</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Computer-Hardware/">#Computer Hardware</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CO C2 Instructions</div>
+      <div>http://example.com/2023/04/18/CO-2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 18, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/18/OOP-7/" title="OOP 7 Polymorphism">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OOP 7 Polymorphism</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/17/DB-06/" title="DB C6 Relational Database Design">
+                        <span class="hidden-mobile">DB C6 Relational Database Design</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
