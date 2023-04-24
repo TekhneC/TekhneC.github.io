@@ -29,6 +29,31 @@
   
   
   <entry>
+    <title>DB C8 Indexing</title>
+    <link href="/2023/04/24/DB-08/"/>
+    <url>/2023/04/24/DB-08/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Basic-Concepts">Basic Concepts</h2><p>Indexing mechanisms used <u><em>to speed up access</em></u> to <u><em>desired</em></u> data. <code>e.g</code> author catalog in library.</p><p><strong><em>Search</em> Key</strong>: <code>attribute</code> to set of attributes used to <u><em>look up <code>records</code></em></u> in a file.</p><p><em><strong>index file</strong></em>: consists of <code>records</code> (called <em><strong>index entries</strong></em>) of the form <code>&lt;search-key&gt;&lt;pointer&gt;</code>.</p><ul><li><code>Index files</code> are <u><em>typically</em></u> much <u><em>smaller</em></u> than the original file.</li><li>Two basic kinds of indices:<ul><li><em><strong>Ordered indices</strong></em>: <code>search keys</code> are stored in <u><em>sorted order</em></u></li><li><em><strong>Hash indices</strong></em>: <code>search keys</code> are <u><em>distributed</em></u> uniformly across “buckets” using a <code>hash function</code>.</li></ul></li></ul><h3 id="Index-Evaluation">Index Evaluation</h3><ul><li><u><em>Access types</em></u> supported efficiently. <code>e.g</code><ul><li><em><strong>Point query</strong></em>: records with a <u><em>specified value</em></u> in the attribute.</li><li><em><strong>Range query</strong></em>: or records with an attribute value falling in a specified range of values.</li></ul></li><li>Access time</li><li>Insertion time</li><li>Deletion time</li><li>Space overhead</li></ul><p>Time and Space efficiency is the most significant indicators in DBS.</p><h2 id="Ordered-Indices">Ordered Indices</h2><p>In an <em><strong>ordered index</strong></em>, index entries are stored sorted on the search key value. <code>e.g</code>, author catalog in library.</p><p>n<strong>Primary index****（主索引****）****:</strong> in a sequentially ordered file, the index whose search key specifies the sequential order of the file.</p><p>lAlso called <strong>clustering index</strong>**（聚集索引）**</p><p>lThe search key of a primary index is usually but not necessarily the primary key.</p><p>n<strong>Secondary index****（辅助索引）</strong>: an index whose search key specifies an order different from the sequential order of the file. Also called<br>non-clustering index**.**</p><p>n<strong>Index-sequential file****（索引顺序文件）****:</strong> ordered sequential file with a primary index.</p><h2 id="B±Tree-Index">B±Tree Index</h2><h2 id="B±Tree-File-Organization">B±Tree File Organization</h2><h2 id="B-Tree-Index-Files">B-Tree Index Files</h2><h2 id="Indices-on-Multiple-Keys">Indices on Multiple Keys</h2><h2 id="Indexing-on-Flash">Indexing on Flash</h2><h2 id="Indexing-in-Main-Memory">Indexing in Main Memory</h2><h2 id="Write-Optimized-Indices">Write Optimized Indices</h2><h3 id="Log-Structured-Merge-LSM-Tree">Log Structured Merge (LSM) Tree</h3><h3 id="Buffer-Tree">Buffer Tree</h3><h2 id="Bitmap-Indices">Bitmap Indices</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Database system</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Database</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AIL C5 知识图谱与描述逻辑</title>
     <link href="/2023/04/21/AIL-5/"/>
     <url>/2023/04/21/AIL-5/</url>
