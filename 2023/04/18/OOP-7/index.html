@@ -24,7 +24,7 @@
 <meta property="og:description" content="Subtyping:  subtype and supertype A class defines a type.  subtype: A type defined by a derived class. supertype: A type defined by its base class.               RECALLL The inheritance relationship e">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-18T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-18T02:06:38.639Z">
+<meta property="article:modified_time" content="2023-05-11T04:57:27.162Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k words
+          4.2k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          24 mins
+          36 mins
         
       </span>
     
@@ -294,24 +294,31 @@
 <h4 id="Conversions">Conversions</h4>
 <p>Public <code>Inheritance</code> should imply substitution.</p>
 <ul>
-<li>If B isa A, you can use a B any where an A can be used.</li>
-<li>if B isa A, then everything that is true for A is also true of B.</li>
+<li>If B <code>is-a</code> A, you can use a B any where an A can be used.</li>
+<li>if B <code>is-a</code> A, then everything that is true for A is also true of B.</li>
 <li>Be careful if the substitution is not valid!</li>
 </ul>
 <p>Given <code>Derived</code> is derived from <code>Base</code>, serval ways:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">Base* B;<br>Derived* D;<br>B = D;              <span class="hljs-comment">//nothing happened to data stored</span><br>*B = *D;            <span class="hljs-comment">//copy the commen data of *D to *B </span><br>B&amp; = D&amp;;<br></code></pre></td></tr></table></figure>
 <h4 id="Upcasting-向上造型">Upcasting, 向上造型</h4>
 <ul>
-<li>Upcasting is to regard an object of the <code>derived class</code> as an object of the <code>base class</code>.</li>
-<li>Upcasting is the act of <u><em>converting</em></u> from a <code>Derived reference</code> or <code>pointer</code> to a <code>base class reference</code> or <code>pointer</code>.</li>
+<li>
+<p>Upcasting is to regard an object of the <code>derived class</code> as an object of the <code>base class</code>.</p>
+</li>
+<li>
+<p>Upcasting is the act of <u><em>converting</em></u> from a <code>Derived reference</code> or <code>pointer</code> to a <code>base class reference</code> or <code>pointer</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/* Now give the Manager derived from Employee */</span><br><span class="hljs-comment">/* the Member function Print is not virtual. It is redefined in the Manager class.*/</span> <br><span class="hljs-function">Manager <span class="hljs-title">pete</span><span class="hljs-params">( <span class="hljs-string">&quot;Pete&quot;</span>, <span class="hljs-string">&quot;444-55-6666&quot;</span>, <span class="hljs-string">&quot;Bakery&quot;</span>)</span></span>; <br>Employee* ep = &amp;pete; 				<span class="hljs-comment">// Upcast</span><br>Employee&amp; er = pete; 				<span class="hljs-comment">// Upcast</span><br>ep -&gt; <span class="hljs-built_in">print</span>(cout);					<span class="hljs-comment">//perform in base class version</span><br>er.<span class="hljs-built_in">print</span>(cout);<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="Virtual-Functions-and-Dynamic-Binding">Virtual Functions and Dynamic Binding</h3>
 <h4 id="Virtual-Functions">Virtual Functions</h4>
-<p>A function can be implemented in several classes along the <code>inheritance chain</code>. <em><strong>Virtual functions</strong></em> enable the system to <u><em>decide which function is invoked</em></u> at runtime based <u><em>on the actual type of the object</em></u>.</p>
+<p>A function can be implemented in several classes <u><em>along the <code>inheritance chain</code></em></u>. <em><strong>Virtual functions</strong></em> enable the system to <u><em>decide which function is invoked</em></u> at runtime based <u><em>on the actual type of the object</em></u>.</p>
 <p>The keyword <code>virtual</code> means that there <u><em>may be</em></u> other functions with the same name in the <code>inheritance chain</code>.</p>
 <ul>
 <li>If a function is defined <code>virtual</code> in a <code>base class</code>, it is <u><em>automatically</em></u> <code>virtual</code> in all its <code>derived classes</code>.  That’s to say <code>virtual</code> <u><em>need not</em></u> be added in the function declaration in the <code>derived class</code>.</li>
 </ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">/*Point:(x,y)*/</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">XYPos</span>&#123; ... &#125;;<br><span class="hljs-comment">/*Base class: Shape*/</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> &#123; <br><span class="hljs-keyword">public</span>: <br>    <span class="hljs-built_in">Shape</span>(); <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">Shape</span>(); <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>; <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">move</span><span class="hljs-params">(<span class="hljs-type">const</span> XYPos&amp;)</span></span>; <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">resize</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">protected</span>: <br>    XYPos center;<br>&#125;;<br><span class="hljs-comment">/*Derived class:Ellipse from Shape*/</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Ellipse</span> : <span class="hljs-keyword">public</span> Shape &#123; <br><span class="hljs-keyword">public</span>: <br>    <span class="hljs-built_in">Ellipse</span>(<span class="hljs-type">float</span> maj, <span class="hljs-type">float</span> minr); <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// will define its own</span><br><span class="hljs-keyword">protected</span>: <br>    <span class="hljs-type">float</span> major_axis, minor_axis;<br>&#125;;<br><span class="hljs-comment">/*Derived class:Circle from Ellipse*/</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> Ellipse &#123; <br><span class="hljs-keyword">public</span>: <br>    <span class="hljs-built_in">Circle</span>(<span class="hljs-type">float</span> radius) : <span class="hljs-built_in">Ellipse</span>(radius, radius)&#123;&#125; <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">resize</span><span class="hljs-params">()</span></span>; <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">float</span> <span class="hljs-title">radius</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-type">float</span> area;<br>&#125;;<br><span class="hljs-comment">/*call by pointer;calls correct render function*/</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">(Shape* p)</span> </span>&#123; <br>    p-&gt;<span class="hljs-built_in">render</span>(); <br>&#125; <br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">Ellipse <span class="hljs-title">ell</span><span class="hljs-params">(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>)</span></span>; <br>ell.<span class="hljs-built_in">render</span>();			<span class="hljs-comment">// static -- Ellipse::render();</span><br><span class="hljs-function">Circle <span class="hljs-title">circ</span><span class="hljs-params">(<span class="hljs-number">40</span>)</span></span>; <br>circ.<span class="hljs-built_in">render</span>(); 			<span class="hljs-comment">// static -- Circle::render(); </span><br><span class="hljs-built_in">render</span>(&amp;ell);			<span class="hljs-comment">// dynamic -- Ellipse::render();</span><br><span class="hljs-built_in">render</span>(&amp;circ); 			<span class="hljs-comment">// dynamic -- Circle::render()</span><br></code></pre></td></tr></table></figure>
 <h4 id="Dynamic-Binding">Dynamic Binding</h4>
 <p>The capability of <u><em>determining which function to invoke at runtime</em></u> is known as <em><strong>dynamic binding</strong></em>.</p>
 <div class="note note-info">
@@ -354,20 +361,24 @@
 <td><code>p -&gt; func()</code></td>
 </tr>
 <tr>
-<td>virtual function by ref</td>
+<td>virtual function by <strong>ref</strong></td>
 <td>dynamic</td>
 <td><code>ref.vfunc()</code></td>
 </tr>
 <tr>
-<td>virtual function by pointer</td>
+<td>virtual function by <strong>pointer</strong></td>
 <td>dynamic</td>
 <td><code>p -&gt; vfunc()</code></td>
 </tr>
 </tbody>
 </table>
 <div class="note note-info">
-            <ul><li>Static function are faster to execute.</li><li>If a function defined in a base class needs to be redefined in its derived classes, you should define it virtual to avoid confusions and mistakes.</li><li>On the other hand, if a function will not be redefined, it is more efficient not to declare it virtual, because more time and system resource are required to bind virtual functions dynamically at<br>runtime. We call a class with a virtual function a <em><strong>polymorphic type.</strong></em></li></ul>
+            <ul><li>Static function are faster to execute.</li><li>If a function defined in a base class needs to be <code>redefined</code> in its derived classes, you should define it <code>virtual</code> to avoid confusions and mistakes.</li><li>On the other hand, if a function will not be <code>redefined</code>, it is more efficient <u><em>not</em></u> to declare it <code>virtual</code>, because <u><em>more time and system resource are required</em></u> to <u><em>bind virtual functions dynamically</em></u> at<br>runtime.</li></ul>
           </div>
+<ul>
+<li><em><strong>polymorphic type</strong></em>: a class with a <code>virtual function</code>.</li>
+<li><em><strong>Polymorphic variables</strong></em>: <code>Pointers</code> or <code>reference</code> variables of objects. They can hold objects of the <code>declared type</code>, or of <code>subtypes</code> of the <code>declared type</code>.</li>
+</ul>
 
                 
               </div>
@@ -465,9 +476,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/24/DB-08/" title="DB C8 Indexing">
+                      <a href="/2023/04/24/DB-07/" title="DB C7 Storage and File Structure">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">DB C8 Indexing</span>
+                        <span class="hidden-mobile">DB C7 Storage and File Structure</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
