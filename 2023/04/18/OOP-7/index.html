@@ -24,7 +24,7 @@
 <meta property="og:description" content="Subtyping:  subtype and supertype A class defines a type.  subtype: A type defined by a derived class. supertype: A type defined by its base class.               RECALLL The inheritance relationship e">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-18T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-11T08:53:33.315Z">
+<meta property="article:modified_time" content="2023-05-11T14:48:49.652Z">
 <meta property="article:author" content="Tekhne Chen">
 <meta property="article:tag" content="Programming">
 <meta name="twitter:card" content="summary_large_image">
@@ -392,7 +392,7 @@
 <h5 id="Virtual-pointer-and-virtual-table">Virtual pointer and virtual table</h5>
 <p><code>Polymorphic variables</code> has <em><strong>virtual pointer</strong></em>, which points to <em><strong>virtual table</strong></em>. All virtual function pointers are stored in <code>virtual table</code>.</p>
 <div class="note note-warning">
-            <p><code>virtual pointer</code> is only initialized in constructor and never changes again!</p>
+            <p><code>virtual pointer</code> is only initialized in the initialize list of constructor and never changes again!</p>
           </div>
 <h4 id="Virtual-destructors">Virtual destructors</h4>
 <p>Please always make destructors virtual since all classes might be inherited.</p>
