@@ -16,22 +16,24 @@
   <meta name="author" content="Tekhne Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="论证 论证是由">
+    <meta name="description" content="Corrections of PTA HW 9  Let S be the set of activities in Activity Selection Problem. Then the earliest finish activity ama_mam​ must be included in all the maximum-size subset of mutually compatible">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AIL C8 论证与攻击关系">
-<meta property="og:url" content="http://example.com/2023/05/26/AIL-8/index.html">
+<meta property="og:title" content="DS C9 Review">
+<meta property="og:url" content="http://example.com/2023/06/15/DS-Review/index.html">
 <meta property="og:site_name" content="Tek&#39;s Notes">
-<meta property="og:description" content="论证 论证是由">
+<meta property="og:description" content="Corrections of PTA HW 9  Let S be the set of activities in Activity Selection Problem. Then the earliest finish activity ama_mam​ must be included in all the maximum-size subset of mutually compatible">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-26T10:12:07.594Z">
+<meta property="og:image" content="http://example.com/img/posts/OOP/R_1.png">
+<meta property="article:published_time" content="2023-06-15T05:30:53.000Z">
+<meta property="article:modified_time" content="2023-06-13T07:48:08.270Z">
 <meta property="article:author" content="Tekhne Chen">
-<meta property="article:tag" content="AI">
+<meta property="article:tag" content="DataStructures">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/OOP/R_1.png">
   
   
   
-  <title>AIL C8 论证与攻击关系 - Tek&#39;s Notes</title>
+  <title>DS C9 Review - Tek&#39;s Notes</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AIL C8 论证与攻击关系"></span>
+            <span id="subtitle" data-typed-text="DS C9 Review"></span>
           
         </div>
 
@@ -213,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-26 18:00" pubdate>
-          May 26, 2023 pm
+        <time datetime="2023-06-15 13:30" pubdate>
+          June 15, 2023 pm
         </time>
       </span>
     
@@ -225,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6 words
+          826 words
         
       </span>
     
@@ -236,7 +238,7 @@
         
         
         
-          1 mins
+          7 mins
         
       </span>
     
@@ -274,13 +276,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">AIL C8 论证与攻击关系</h1>
+            <h1 style="display: none">DS C9 Review</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="论证">论证</h2>
-<p>论证是由</p>
+                <h2 id="Corrections-of-PTA">Corrections of PTA</h2>
+<h3 id="HW-9">HW 9</h3>
+<blockquote>
+<p>Let S be the set of activities in Activity Selection Problem. Then the earliest finish activity <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">a_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> <u><em>must</em> be</u> included in <u><em>all</em></u> the maximum-size subset of mutually compatible activities of S.</p>
+<p>Correction: <em><strong>False</strong></em></p>
+</blockquote>
+<p>The Activity Selection Problem could be solved by <em><strong>Greedy Algorithm</strong></em>: <em><strong>One</strong></em> solution given, with the earliest finish activity. However, not <em><strong>all solutions</strong></em> choose the he earliest finish activity. Take the following example:</p>
+<p><img src="/img/posts/OOP/R_1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Both <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub><mo>=</mo><mo stretchy="false">{</mo><msub><mi>a</mi><mi>m</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>4</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>5</mn></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">S_1 = \{a_m,a_2,a_4,a_5\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub><mo>=</mo><mo stretchy="false">{</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>4</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>5</mn></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">S_2 = \{a_1,a_2,a_4,a_5\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> could be accepted as the best solution. However, only <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> will be given by Greedy algorithm.</p>
+<h3 id="HW-11">HW 11</h3>
+<blockquote>
+<p>Greedy method is a special case of local search.</p>
+<p>Correction: <em><strong>False</strong></em></p>
+</blockquote>
+<p>Local search is a process of iterating the <em><strong>solutions</strong></em>, which means the <em><strong>solutions are possible</strong></em>( but may not be optimal) at any moment.</p>
+<p>However the Greedy method <em><strong>only gives one best solution</strong></em> at the end of process.</p>
 
                 
               </div>
@@ -299,12 +315,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
   
   
     <span>></span>
     
-  <a href="/categories/AI/Logic/" class="category-chain-item">Logic</a>
+  <a href="/categories/Computer-Science/Data-Structures/" class="category-chain-item">Data Structures</a>
   
   
 
@@ -321,7 +337,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/AI/">#AI</a>
+        <a href="/tags/DataStructures/">#DataStructures</a>
       
     </div>
   
@@ -333,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AIL C8 论证与攻击关系</div>
-      <div>http://example.com/2023/05/26/AIL-8/</div>
+      <div>DS C9 Review</div>
+      <div>http://example.com/2023/06/15/DS-Review/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 26, 2023</div>
+          <div>June 15, 2023</div>
         </div>
       
       
@@ -378,18 +394,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/26/AIL-7/" title="AIL C7 回答集编程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AIL C7 回答集编程</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/16/OOP-8/" title="OOP C8 Copy constructor">
-                        <span class="hidden-mobile">OOP C8 Copy constructor</span>
+                      <a href="/2023/06/09/AIL-9/" title="AIL C9 抽象论辩理论">
+                        <span class="hidden-mobile">AIL C9 抽象论辩理论</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
