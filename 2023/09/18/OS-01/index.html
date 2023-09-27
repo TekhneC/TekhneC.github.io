@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tekhne Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Assembly   Lecture notes &#x2F; computer system concepts &#x2F; Linux内核完全注释 &#x2F;   Grading Policy:  50 final exam(3 A4± cheating sheet) 50 project: Linux 0.11&#x2F;0.12-like OS on RSIC-Ⅴ  Lab 0 - 6, 50 &#x2F; Lab 7, 5 bon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS C1 Computer Organ Review">
+<meta property="og:url" content="http://example.com/2023/09/18/OS-01/index.html">
+<meta property="og:site_name" content="Tek&#39;s Notes">
+<meta property="og:description" content="Assembly   Lecture notes &#x2F; computer system concepts &#x2F; Linux内核完全注释 &#x2F;   Grading Policy:  50 final exam(3 A4± cheating sheet) 50 project: Linux 0.11&#x2F;0.12-like OS on RSIC-Ⅴ  Lab 0 - 6, 50 &#x2F; Lab 7, 5 bon">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_01.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_02.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_03.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_04.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_05.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_06.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_07.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_08.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_10.png">
+<meta property="og:image" content="http://example.com/img/posts/OS/1_11.png">
+<meta property="article:published_time" content="2023-09-18T08:19:58.000Z">
+<meta property="article:modified_time" content="2023-09-23T15:20:40.536Z">
+<meta property="article:author" content="Tekhne Chen">
+<meta property="article:tag" content="Operating system">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/posts/OS/1_01.png">
+  
+  
+  
+  <title>OS C1 Computer Organ Review - Tek&#39;s Notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":45,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div>
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=16139397&auto=1&height=32"></iframe>
+  </div>
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tek&#39;s Notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OS C1 Computer Organ Review"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-18 16:19" pubdate>
+          September 18, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OS C1 Computer Organ Review</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>
+<p>Assembly</p>
+</li>
+<li>
+<p>Lecture notes / computer system concepts / Linux内核完全注释 /</p>
+</li>
+<li>
+<p>Grading Policy:</p>
+<ul>
+<li>50 final exam(3 A4± cheating sheet)</li>
+<li>50 project: Linux 0.11/0.12-like OS on RSIC-Ⅴ
+<ul>
+<li>Lab 0 - 6, 50 / Lab 7, 5 bonus</li>
+<li><a target="_blank" rel="noopener" href="http://zju-sec.github.io/os23fall-stu">tutorial</a></li>
+<li>individual / source code, detailed-report, on <a target="_blank" rel="noopener" href="http://courses.zju.edu.cn">courses.zju.edu.cn</a> / delay penalty 20% per day</li>
+<li>NO CHEATING: code similarity</li>
+</ul>
+</li>
+<li>0 homework(helpful to final)</li>
+</ul>
+</li>
+</ul>
+<h1>Computer Architecture Review</h1>
+<h3 id="Von-Neumann-architecture-model">Von Neumann architecture model</h3>
+<ul>
+<li>A processor - performs operations and controls all that happens</li>
+<li>A memory - contains code and data</li>
+<li>I/O of some kind</li>
+</ul>
+<p><img src="/img/posts/OS/1_01.png" srcset="/img/loading.gif" lazyload alt="Simplified Organ"></p>
+<h3 id="Memory">Memory</h3>
+<h4 id="Data-Stored-in-Memory">Data Stored in Memory</h4>
+<ul>
+<li>All <u><em>information</em></u> in the computer is in <u><em>binary form</em></u>
+<ul>
+<li>Claude Shannon’s M.S. thesis</li>
+<li><strong>0</strong> -  zero / <strong>1</strong> - positive voltage</li>
+<li><em><strong>bit</strong></em>: the smallest unit of information (0 or 1)</li>
+</ul>
+</li>
+<li><em><strong>byte</strong></em>: The basic unit of <u><em>memory</em></u> <code>1 Byte = 8 bits</code>
+<ul>
+<li>Each byte in memory is <u><em>labeled</em></u> by <u><em>a unique address</em></u></li>
+<li>in 1 machine, all addresses has same length</li>
+</ul>
+</li>
+</ul>
+<h4 id="Both-Code-and-Data-in-Memory">Both Code and Data in Memory</h4>
+<p>Once a program is loaded in memory, its address space contains<br>
+<u><em>both code and data</em></u>.</p>
+<h3 id="CPU">CPU</h3>
+<p><img src="/img/posts/OS/1_02.png" srcset="/img/loading.gif" lazyload alt="CPU Organ"></p>
+<ul>
+<li>
+<p><strong>Registers Files</strong>: a collection of <u><em>word-size</em></u> <em><strong>registers</strong></em>: the “variables” that hardware instructions work with</p>
+<ul>
+<li>load data from memory / store data from a register</li>
+<li>Operands and results of computations are in registers</li>
+<li>Accessing fast but number limited</li>
+</ul>
+</li>
+<li>
+<p><strong>ALU, Arithmetic and Logic Unit</strong>: compute a value</p>
+<ul>
+<li>based on current register values</li>
+<li>store the <code>+/-/*/÷/AND/OR/XOR/...</code> result back into a register</li>
+</ul>
+</li>
+<li>
+<p><strong>Program Counter</strong>: Points to the <u>next instruction</u> in main memory.</p>
+<blockquote>
+<p>Somehow <code>pc</code> is initialized to some content, which is an<br>
+address.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Current Instruction</strong>: Holds the instruction currently executed</p>
+</li>
+<li>
+<p><strong>Control Unit</strong>: Decodes instructions and make them happen</p>
+</li>
+</ul>
+<h4 id="simplified-Cycle-Fetch-Decode-Execute-Cycle">simplified Cycle: Fetch-Decode-Execute Cycle</h4>
+<ul>
+<li><em><strong>Fetch</strong></em>: <code>Control Unit</code> fetches the <u>next instruction</u> from <code>memory</code>, using <code>pc</code>.</li>
+<li><em><strong>Decode</strong></em>: <code>cu</code> decode the instruction and generate control signals to hardwares(e.g. regs/memory/…) and operands
+<ul>
+<li>fetch operands</li>
+</ul>
+</li>
+<li><em><strong>Execute</strong></em>: <code>ALU</code> execute computation and store (back) results.</li>
+</ul>
+<blockquote>
+<ol>
+<li><strong>Multiple</strong>: There are multiple ALUs / caches / multiple CPUs in fact (“cores”).</li>
+<li><strong>Pipelined</strong>: 5-stage pipelined cpu.</li>
+<li><strong>Architrcture</strong>: Computer architecture research leads to staggering hardware complexity. – Smart things in hardware requires more logic gates and wires (processor cost)!</li>
+</ol>
+</blockquote>
+<h4 id="DMA-Direct-Memory-Access">DMA, Direct Memory Access</h4>
+<p><em><strong>DMA</strong></em> is a way for the CPU to let <u><em>memory-I/O operations (data transfers)</em></u> occur <em>independently</em>.</p>
+<ul>
+<li>CPU can still do works while <code>DMA controller</code> can make data transfer operations independently</li>
+<li>CPU simply
+<ul>
+<li>tells the <code>DMA controller</code> to <u><em>initiate</em></u> a transfer (done by writing to some registers of the DMA controller)</li>
+<li>knows transfer completion by the interrupt generated by <code>DMA</code></li>
+</ul>
+</li>
+</ul>
+<div class="note note-info">
+            <p><code>DMA</code> - not completely free, but generally making better performance</p><p>Memory BUS using of  <code>DMA</code> and code that CPU executed interfere !</p><ul><li>priority of DMA / CPU?</li></ul>
+          </div>
+<h4 id="Cache">Cache</h4>
+<blockquote>
+<p>Levels of caches: L1 - on <code>CPU</code>/ L2 - a sapecial <code>bus</code> / L3</p>
+<table>
+<thead>
+<tr>
+<th>registers</th>
+<th>caches</th>
+<th>main memory</th>
+<th>disk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>complier</td>
+<td>hardware</td>
+<td>OS</td>
+<td>OS</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li><strong>Hit</strong>: a data item is found in a level.</li>
+<li><strong>Miss</strong>: a data item is not found in a level. – try next level until <code>hit</code></li>
+</ul>
+<p>More Hit Rate:</p>
+<ul>
+<li><strong>Temporal Locality</strong>: reference addresses recently referenced</li>
+<li><strong>Spatial Locality</strong>:  reference addresses next to addresses recently referenced</li>
+</ul>
+<h3 id="SMP-Systems">SMP Systems</h3>
+<p><img src="/img/posts/OS/1_03.png" srcset="/img/loading.gif" lazyload alt="SMP"></p>
+<ul>
+<li>Multi-core Chips for Power/heat issue</li>
+<li>Multi-Core: private L1 cache and public L2</li>
+<li>Multi-Proc: public memory and multiple Multi-Cores</li>
+</ul>
+<div class="note note-success">
+            <h2 id="Reading-material-CSAPP-1-1-1-6"><em><strong>Reading material:</strong></em> CSAPP 1.1-1.6</h2><blockquote><p><em>A computer system consists of <u>hardware and systems software</u> that work together to run application programs.</em></p></blockquote><p>Take <code>hello.c</code> as instance.</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello, world\n&quot;</span>); <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li><p>a <em><strong>source program / source file</strong></em>:  a sequence of <code>bits(0/1)</code> organized in <code>bytes(8-bit chunks)</code>. Each byte represents some text character (<code>ASCII standard</code>).</p></li><li><p><em><strong>text files</strong></em>: consist <u><em>exclusively</em></u> of ASCII characters. while All other files are <em><strong>binary files</strong></em>.</p><blockquote><p><em>All information is represented in binary form, the ONLY way to  distinguish is the context in which we view them.</em></p></blockquote></li><li><p><em><strong>executable object program / file</strong></em>: a sequence of <u><em>low-level</em></u> <code>machine-language instructions</code>. The high-level individual C statements must be translated by other programs(like <code> compiler driver</code>) into those instructions.</p></li></ul><p>The translation may be complicated.</p>  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">linux&gt; gcc <span class="hljs-literal">-o</span> hello hello.c<br></code></pre></td></tr></table></figure><p>The gcc compiler driver reads <code>source file</code> and translates it into an <code>executable object file</code> by the <em><strong>compilation system</strong></em>:</p><ul><li><p><em><strong>pre-processor</strong></em>: according to <u><em>directives that begin with <code>#</code></em></u> modifies the original <code>C program</code>, resulting in another <code>C program</code>(<code>text file</code>)<code>hello.i</code>.</p></li><li><p><em><strong>compiler</strong></em>:  translates <code>hello.i</code> into an <u><em>assembly-language program</em></u>(<code>text file</code>) <code>hello.s</code>.</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs assembly">main: <br>subq $8, %rsp<br>movl $.LC0, %edi <br>call puts<br>movl $0, %eax <br>addq $8, %rsp<br>ret<br></code></pre></td></tr></table></figure></li><li><p><em><strong>assembler</strong></em>: translates <code>hello.s</code> into <u><em>machine-language instructions</em></u>, which are packaged in <code>relocatable object program</code> and stored in the <code>object file</code>(<code>binary file</code>) <code>hello.o</code>.</p></li><li><p><em><strong>linker</strong></em>: handles merging of <code>.o</code>s, resulting in <code>executable (object file)</code> <code>hello</code>, which is ready to be loaded into memory and executed by the system.</p></li></ul><p><img src="/img/posts/OS/1_04.png" srcset="/img/loading.gif" lazyload alt="compliation sys"></p><ul><li><h4 id="Hardware-organization"><strong>Hardware organization</strong></h4><p><img src="/img/posts/OS/1_05.png" srcset="/img/loading.gif" lazyload alt="Intel Organ"></p><ul><li><p><em><strong>Buses</strong></em>: <u><em>carry bytes</em></u> of information back and forth <u><em>between the components</em></u>; designed for to <u>transfer <em><strong>words</strong></em></u>.</p><blockquote><p><em><strong>word</strong></em>: <u><em>fixed-size</em></u> chunks of <code>bytes</code></p><p><em><strong>word size</strong></em>:  a fundamental system parameter, varying across systems. always <code>4 bytes/32 bits</code> or <code>8 bytes/64 bits</code>.</p></blockquote><ul><li><code>System BUS</code> / <code>Memory BUS</code> / <code>I/O BUS</code></li></ul></li><li><p><em><strong>I/O Devices</strong></em>:  system’s connection to the external world like keyboard, mouse(input) and display, disk(output).  connected to <code>I/O bus</code> by either</p><ul><li><p><em><strong>controller</strong></em>: chip sets in the device itself or on the system’s <em><strong>motherboard</strong></em></p><blockquote><p><em><strong>motherboard</strong></em>: main printed circuit board</p></blockquote></li><li><p><em><strong>adapter</strong></em>: a card that plugs into a slot on <code>motherboard</code></p></li></ul></li><li><p><em><strong>main memory</strong></em>: a <u><em>temporary storage</em></u> device that holds <u><em>both a program and the data</em></u> it manipulates while the processor is executing the program.</p><ul><li>Physically, consists of a collection of <em><strong>DRAM</strong></em></li><li>Logically,   organized as a <u><em>linear array</em></u> of <code>bytes</code>, each with its own unique <code>address</code> (<u><em>array index</em></u>) <u><em>starting at zero</em></u>.</li></ul></li><li><p><em><strong>Processor</strong></em>: interprets / executes instructions stored in main memory.</p><ul><li><em><strong>ISA, instruction set architecture</strong></em>: instruction execution model</li></ul></li></ul></li><li><p><em><strong>Caches</strong></em>: designed for processor–memory gap, temporary staging areas for info that <code>CPU</code> is likely to need in the near future.</p><p><img src="/img/posts/OS/1_06.png" srcset="/img/loading.gif" lazyload alt="memory hierarchy"></p></li><li><p><em><strong>Storage Devices</strong></em>: storage at one level serves as a <code>cache</code> for storage at the next lower level.</p></li><li><p><em><strong>shell</strong></em>: a <u><em>command-line interpreter</em></u> that cycles like</p><ul><li>prints a prompt</li><li>waits to type a command line: <code>built-in cmd</code> / <code>executable</code></li><li>performs the command.</li></ul><p>an application program to run the <code>executable</code> on a Unix system.</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">linux&gt; ./hello <br></code></pre></td></tr></table></figure><ol><li><p>type <code>./hello</code>: <code>shell</code> reads each one character into a register and then stores in memory.</p></li><li><p>hit the <code>enter</code> key: <code>shell</code> knows the finish of cmd-typing, then loads <code>hello</code> by executing a sequence of instructions that <u><em>copies the code and data</em></u> from <code>disk</code> to <code>main memory</code>. (Using <code>DMA</code>)</p></li><li><p>Once loading done: <code>processor</code> begins executing the instructions in <code>hello program</code>’s main routine.</p><blockquote><ul><li>copy the <code>bytes</code> in <code>hello, world\n</code> string from <code>memory</code> to <code>register file</code></li><li>copy from there to the <code>display device</code></li></ul></blockquote></li></ol><p><strong>NOTE:</strong> The direct access of keyboard/disk relys on the services provided by the <em><strong>operating system</strong></em>. – <code>Program</code> can’t access directly!</p><ul><li>to protect the hardware from misuse</li><li>to provide applications with simple and uniform mechanisms for manipulating complicated and different low-level hardware devices.</li></ul></li></ul>
+          </div>
+<h1>Overview</h1>
+<p><img src="/img/posts/OS/1_07.png" srcset="/img/loading.gif" lazyload alt="Layered view"></p>
+<h3 id="what-is-OS">what is OS?</h3>
+<ul>
+<li>
+<p><em><strong>resource abstractor</strong></em>: abstract <u><em>logical resources</em></u> from <u><em>hardware resources</em></u>.</p>
+<div class="note note-success">
+            <p><img src="/img/posts/OS/1_08.png" srcset="/img/loading.gif" lazyload alt="abstractions"></p><ul><li><em><strong>Processes</strong></em>: <code>OS</code>’s abstraction for a running program. Each <code>process</code> appears to have <u><em>exclusive use</em></u> of the hardware while actually multiple processes run <u><em>concurrently</em></u>.</li></ul>
+          </div>
+</li>
+<li>
+<p><em><strong>resource allocator</strong></em>: decide who and when get resources</p>
+</li>
+</ul>
+<p>OS connects between Hardware layer and App layer.</p>
+<h3 id="Start-OS">Start OS</h3>
+<ul>
+<li>bootstrap program: stored in ROM, so-called bootloader</li>
+<li>s</li>
+</ul>
+<h3 id="Multi-programming">Multi-programming</h3>
+<p>allow multiple jobs: <em><strong>context-switch</strong></em>, OS pick another job to run when one job is ‘waiting’.</p>
+<ul>
+<li>before: single-user mode</li>
+<li>batch processing:</li>
+</ul>
+<h3 id="Time-sharing">Time-sharing</h3>
+<p>The running OS</p>
+<p>kernel is not a running job</p>
+<p>divide the instructions into</p>
+<ul>
+<li>protected instruction</li>
+<li>privileged instruction</li>
+</ul>
+<p>1 extra bit to tell CPU the processing mode:</p>
+<ul>
+<li>unprivilege mode: only protected instructions</li>
+<li>privileged mode: all instructions</li>
+</ul>
+<h4 id="Modern-modes">Modern modes</h4>
+<ul>
+<li>RSIC-V: U,S,(Reserved),M</li>
+<li></li>
+</ul>
+<h3 id="OS-Events">OS Events</h3>
+<p><em><strong>Event</strong></em>: an ‘<em><u>unusual</u></em>’ change in control flow</p>
+<p>OS is <code>switch-likely</code></p>
+<h2 id="Step-by-step-bootflow">Step by step bootflow</h2>
+<h3 id="x86">x86</h3>
+<p><img src="/img/posts/OS/1_10.png" srcset="/img/loading.gif" lazyload alt="image-20230919142256855"></p>
+<h3 id="rsic-v">rsic-v</h3>
+<p><img src="/img/posts/OS/1_11.png" srcset="/img/loading.gif" lazyload alt="image-20230919142256855"></p>
+<h3 id=""></h3>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Computer-Science/Operating-Systems/" class="category-chain-item">Operating Systems</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Operating-system/">#Operating system</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OS C1 Computer Organ Review</div>
+      <div>http://example.com/2023/09/18/OS-01/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Tekhne Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 18, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/20/TCS-01/" title="TCS L1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TCS L1</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/18/ICV-01/" title="ICV C1">
+                        <span class="hidden-mobile">ICV C1</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
